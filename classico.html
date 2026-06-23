@@ -1,0 +1,731 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>China Business Experience 2026 · Imersão Empresarial na China</title>
+<meta name="description" content="De 11 a 22 de outubro de 2026, viva uma imersão empresarial na China, com Canton Fair, fábricas, fornecedores e oportunidades reais de negócio ao lado de outros empresários.">
+
+<!-- Open Graph (para compartilhar no WhatsApp/redes) -->
+<meta property="og:title" content="China Business Experience 2026">
+<meta property="og:description" content="Canton Fair, fábricas, negócios e oportunidades ao lado de empresários. 11 a 22 de outubro de 2026.">
+<meta property="og:type" content="website">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Playfair+Display:wght@600;700;800&display=swap" rel="stylesheet">
+
+<style>
+  :root{
+    --red:#b8141a;
+    --red-dark:#7d0d11;
+    --gold:#d4a437;
+    --ink:#16181d;
+    --ink-soft:#3a3f4a;
+    --paper:#fbf8f3;
+    --paper-2:#f3ede2;
+    --line:rgba(0,0,0,.08);
+    --shadow:0 18px 50px rgba(0,0,0,.12);
+    --radius:18px;
+    --max:1140px;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{
+    font-family:'Manrope',system-ui,sans-serif;
+    color:var(--ink);
+    background:var(--paper);
+    line-height:1.65;
+    -webkit-font-smoothing:antialiased;
+  }
+  h1,h2,h3{font-family:'Playfair Display',serif;line-height:1.15;font-weight:700}
+  a{color:inherit;text-decoration:none}
+  .wrap{max-width:var(--max);margin:0 auto;padding:0 22px}
+  .eyebrow{
+    text-transform:uppercase;letter-spacing:.22em;font-size:.74rem;
+    font-weight:700;color:var(--gold);font-family:'Manrope',sans-serif;
+  }
+  .btn{
+    display:inline-block;font-weight:700;font-size:.98rem;
+    padding:15px 30px;border-radius:999px;cursor:pointer;border:none;
+    transition:transform .15s ease, box-shadow .2s ease, background .2s;
+  }
+  .btn-primary{background:var(--red);color:#fff;box-shadow:0 10px 24px rgba(184,20,26,.35)}
+  .btn-primary:hover{transform:translateY(-2px);background:var(--red-dark)}
+  .btn-ghost{background:transparent;color:#fff;border:1.5px solid rgba(255,255,255,.5)}
+  .btn-ghost:hover{background:rgba(255,255,255,.12)}
+
+  /* NAV */
+  header.nav{
+    position:sticky;top:0;z-index:50;
+    background:rgba(251,248,243,.85);backdrop-filter:blur(12px);
+    border-bottom:1px solid var(--line);
+  }
+  .nav-inner{display:flex;align-items:center;justify-content:space-between;height:68px}
+  .logo{font-family:'Playfair Display',serif;font-weight:800;font-size:1.18rem}
+  .logo span{color:var(--red)}
+  .nav-links{display:flex;gap:30px;align-items:center}
+  .nav-links a{font-size:.93rem;font-weight:600;color:var(--ink-soft)}
+  .nav-links a:hover{color:var(--red)}
+  .nav-cta{
+    padding:10px 24px;font-size:.9rem;background:#fff;color:var(--red);
+    border:1.5px solid var(--red);box-shadow:0 6px 16px rgba(184,20,26,.18);
+  }
+  .nav-cta:hover{background:var(--red);color:#fff;transform:translateY(-2px)}
+  .menu-btn{display:none;background:none;border:none;font-size:1.6rem;cursor:pointer}
+
+  /* HERO */
+  .hero{
+    position:relative;color:#fff;text-align:center;
+    padding:120px 0 130px;
+    background:
+      radial-gradient(circle at 20% 10%, rgba(212,164,55,.18), transparent 40%),
+      linear-gradient(160deg,#1a0405 0%, var(--red-dark) 55%, var(--red) 120%);
+    overflow:hidden;
+  }
+  .hero::after{
+    content:"中国";position:absolute;right:-2%;bottom:-8%;
+    font-size:30vw;font-family:'Playfair Display',serif;font-weight:800;
+    color:rgba(255,255,255,.04);pointer-events:none;line-height:1;
+  }
+  .hero .wrap{position:relative;z-index:2}
+  .hero h1{font-size:clamp(2.3rem,6vw,4.3rem);margin:18px auto 20px;max-width:14ch}
+  .hero .sub{font-size:clamp(1.05rem,2.2vw,1.3rem);max-width:62ch;margin:0 auto 14px;color:rgba(255,255,255,.92)}
+  .hero .meta{display:flex;gap:14px;justify-content:center;flex-wrap:wrap;margin:28px 0 34px}
+  .chip{
+    background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.2);
+    padding:9px 18px;border-radius:999px;font-size:.92rem;font-weight:600;
+  }
+  .hero-ctas{display:flex;gap:14px;justify-content:center;flex-wrap:wrap}
+
+  /* SECTIONS */
+  section{padding:88px 0}
+  .section-head{max-width:64ch;margin-bottom:46px}
+  .section-head.center{margin-left:auto;margin-right:auto;text-align:center}
+  .section-head h2{font-size:clamp(1.8rem,4vw,2.7rem);margin:12px 0}
+  .section-head p{color:var(--ink-soft);font-size:1.08rem}
+  .alt{background:var(--paper-2)}
+
+  /* SOBRE / cards */
+  .grid-3{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
+  .card{
+    background:#fff;border:1px solid var(--line);border-radius:var(--radius);
+    padding:30px;box-shadow:0 6px 18px rgba(0,0,0,.04);
+  }
+  .card .ico{font-size:1.8rem;margin-bottom:12px;display:block}
+  .card h3{font-size:1.25rem;margin-bottom:8px;font-family:'Manrope';font-weight:800}
+  .card p{color:var(--ink-soft);font-size:.98rem}
+
+  /* QUOTE */
+  .quote{
+    text-align:center;max-width:54ch;margin:0 auto;
+    font-family:'Playfair Display',serif;font-size:clamp(1.4rem,3.2vw,2.05rem);
+    line-height:1.4;font-weight:600;color:var(--ink);
+  }
+  .quote .accent{color:var(--red)}
+
+  /* TIMELINE */
+  .timeline{position:relative;max-width:860px;margin:0 auto}
+  .timeline::before{
+    content:"";position:absolute;left:26px;top:8px;bottom:8px;width:2px;
+    background:linear-gradient(var(--gold),var(--red));
+  }
+  .day{position:relative;padding:0 0 30px 70px}
+  .day .dot{
+    position:absolute;left:14px;top:4px;width:26px;height:26px;border-radius:50%;
+    background:var(--red);color:#fff;display:grid;place-items:center;
+    font-size:.78rem;font-weight:800;box-shadow:0 0 0 5px var(--paper);
+  }
+  .day .date{font-weight:800;font-size:.82rem;color:var(--red);text-transform:uppercase;letter-spacing:.05em}
+  .day h3{font-size:1.22rem;margin:3px 0 8px;font-family:'Manrope';font-weight:800}
+  .day p{color:var(--ink-soft);font-size:.97rem;margin-bottom:10px}
+  .day .sched{
+    background:#fff;border:1px solid var(--line);border-left:3px solid var(--gold);
+    border-radius:12px;padding:14px 16px;font-size:.88rem;color:var(--ink-soft);
+  }
+  .day .sched li{list-style:none;padding:3px 0;border-bottom:1px dashed var(--line)}
+  .day .sched li:last-child{border-bottom:none}
+  .day .sched b{color:var(--ink)}
+  .day .stay{
+    display:inline-block;margin-top:10px;font-size:.8rem;font-weight:700;
+    background:var(--paper-2);padding:5px 13px;border-radius:999px;color:var(--ink-soft);
+  }
+  details.day-wrap{margin-bottom:0}
+  .timeline .day:last-child{padding-bottom:0}
+
+  /* INCLUSO */
+  .incl{display:grid;grid-template-columns:repeat(2,1fr);gap:14px 30px;max-width:920px;margin:0 auto}
+  .incl li{list-style:none;display:flex;gap:12px;align-items:flex-start;font-size:1rem;color:var(--ink-soft)}
+  .incl li::before{content:"✓";color:var(--red);font-weight:800;flex:0 0 auto}
+
+  /* STAY summary */
+  .stays{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;max-width:880px;margin:42px auto 0}
+  .stay-card{
+    background:#fff;border:1px solid var(--line);border-radius:var(--radius);
+    overflow:hidden;text-align:center;box-shadow:0 8px 24px rgba(0,0,0,.07);
+    transition:transform .18s ease, box-shadow .2s ease;
+  }
+  .stay-card:hover{transform:translateY(-4px);box-shadow:0 16px 36px rgba(0,0,0,.14)}
+  .stay-photo{
+    position:relative;height:175px;overflow:hidden;
+    background:linear-gradient(160deg,var(--red-dark),var(--red));
+  }
+  .stay-photo img{width:100%;height:100%;object-fit:cover;display:block}
+  .stay-photo::after{content:"";position:absolute;inset:0;background:linear-gradient(transparent 45%,rgba(0,0,0,.35))}
+  .stay-photo .badge{
+    position:absolute;left:14px;top:14px;z-index:2;
+    background:rgba(184,20,26,.95);color:#fff;font-family:'Playfair Display',serif;
+    font-weight:800;font-size:1.5rem;width:54px;height:54px;border-radius:14px;
+    display:grid;place-items:center;box-shadow:0 6px 16px rgba(0,0,0,.3);
+  }
+  .stay-photo .pin{position:absolute;left:16px;bottom:12px;z-index:2;color:#fff;font-weight:800;font-size:1.15rem;text-shadow:0 2px 8px rgba(0,0,0,.5)}
+  .stay-body{padding:18px 20px 24px}
+  .stay-body .d{font-weight:800;color:var(--red);font-size:1rem}
+  .stay-body .dates{font-size:.85rem;color:var(--ink-soft);margin-top:3px}
+
+  /* CTA / FORM */
+  .cta-band{
+    background:linear-gradient(160deg,var(--red-dark),var(--red));color:#fff;
+    border-radius:26px;padding:54px;text-align:center;
+  }
+  .cta-band h2{font-size:clamp(1.8rem,4vw,2.6rem);margin-bottom:12px}
+  .cta-band p{max-width:54ch;margin:0 auto 26px;color:rgba(255,255,255,.92)}
+
+  /* DUAS OPÇÕES DE AÇÃO */
+  .choices{display:grid;grid-template-columns:1fr 1fr;gap:24px;max-width:880px;margin:0 auto}
+  .choice{
+    background:#fff;border:1px solid var(--line);border-radius:22px;padding:34px 30px;
+    text-align:center;box-shadow:0 8px 24px rgba(0,0,0,.06);
+    display:flex;flex-direction:column;transition:transform .18s ease, box-shadow .2s;
+  }
+  .choice:hover{transform:translateY(-4px);box-shadow:0 16px 36px rgba(0,0,0,.12)}
+  .choice.featured{border:2px solid var(--red);position:relative}
+  .choice.featured .tag{
+    position:absolute;top:-13px;left:50%;transform:translateX(-50%);
+    background:var(--red);color:#fff;font-size:.72rem;font-weight:800;
+    text-transform:uppercase;letter-spacing:.1em;padding:5px 16px;border-radius:999px;
+  }
+  .choice .ico{font-size:2.2rem;margin-bottom:10px}
+  .choice h3{font-family:'Manrope';font-weight:800;font-size:1.3rem;margin-bottom:8px}
+  .choice p{color:var(--ink-soft);font-size:.96rem;flex:1;margin-bottom:22px}
+  .choice .btn{width:100%}
+  .btn-wa{background:#25D366;color:#fff}
+  .btn-wa:hover{background:#1da851;transform:translateY(-2px)}
+
+  /* OPÇÕES DE PAGAMENTO (radios) */
+  .pay-opts{display:grid;gap:12px;margin-top:6px}
+  .pay-opt{
+    display:flex;align-items:center;gap:12px;border:1.5px solid var(--line);
+    border-radius:12px;padding:13px 16px;cursor:pointer;transition:border .15s, background .15s;
+  }
+  .pay-opt:hover{border-color:var(--red)}
+  .pay-opt input{width:auto;accent-color:var(--red)}
+  .pay-opt span{font-weight:600;font-size:.96rem}
+  .check-row{display:flex;gap:10px;align-items:flex-start;margin:18px 0 4px;font-size:.9rem;color:var(--ink-soft)}
+  .check-row input{width:auto;margin-top:4px;accent-color:var(--red)}
+  .form-card{
+    background:#fff;border:1px solid var(--line);border-radius:26px;
+    padding:42px;max-width:720px;margin:46px auto 0;box-shadow:var(--shadow);scroll-margin-top:90px;
+  }
+  .form-card.hidden{display:none}
+  .form-section-title{font-family:'Manrope';font-weight:800;font-size:.82rem;text-transform:uppercase;letter-spacing:.08em;color:var(--red);margin:26px 0 12px}
+  .form-card h2{font-size:1.9rem;margin-bottom:6px;text-align:center}
+  .form-card .lead{text-align:center;color:var(--ink-soft);margin-bottom:28px}
+  .field{margin-bottom:18px}
+  .field label{display:block;font-weight:700;font-size:.9rem;margin-bottom:7px}
+  .field input,.field textarea{
+    width:100%;padding:13px 15px;border:1.5px solid var(--line);border-radius:12px;
+    font-family:inherit;font-size:1rem;background:var(--paper);transition:border .15s;
+  }
+  .field input:focus,.field textarea:focus{outline:none;border-color:var(--red)}
+  .form-row{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+  .form-card .btn-primary{width:100%;margin-top:6px}
+  .form-note{font-size:.82rem;color:var(--ink-soft);text-align:center;margin-top:14px}
+
+  /* FOOTER */
+  footer{background:var(--ink);color:rgba(255,255,255,.75);padding:54px 0 30px}
+  footer .wrap{display:flex;justify-content:space-between;gap:30px;flex-wrap:wrap}
+  footer .logo{color:#fff}
+  footer a{color:rgba(255,255,255,.75)}
+  footer a:hover{color:var(--gold)}
+  .foot-bottom{border-top:1px solid rgba(255,255,255,.1);margin-top:34px;padding-top:20px;font-size:.82rem;text-align:center;color:rgba(255,255,255,.5)}
+  .disclaimer{font-size:.86rem;color:var(--ink-soft);max-width:70ch;margin:30px auto 0;text-align:center;font-style:italic}
+
+  /* RESPONSIVE */
+  @media(max-width:860px){
+    .grid-3{grid-template-columns:1fr}
+    .incl{grid-template-columns:1fr}
+    .stays{grid-template-columns:1fr}
+    .form-row{grid-template-columns:1fr}
+    .choices{grid-template-columns:1fr}
+    .nav-links{
+      display:none;position:absolute;top:68px;left:0;right:0;flex-direction:column;
+      background:var(--paper);padding:18px 22px;gap:16px;border-bottom:1px solid var(--line);
+    }
+    .nav-links.open{display:flex}
+    .menu-btn{display:block}
+    .cta-band{padding:38px 24px}
+    .form-card{padding:28px 22px}
+    .day{padding-left:58px}
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<header class="nav">
+  <div class="wrap nav-inner">
+    <div class="logo">China Business <span>Experience</span></div>
+    <nav class="nav-links" id="navLinks">
+      <a href="#sobre">A imersão</a>
+      <a href="#porque">Por que a China</a>
+      <a href="#roteiro">Roteiro</a>
+      <a href="#incluso">O que inclui</a>
+      <a href="#inscricao" class="btn nav-cta">Quero participar</a>
+    </nav>
+    <button class="menu-btn" id="menuBtn" aria-label="Menu">☰</button>
+  </div>
+</header>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="wrap">
+    <div class="eyebrow">Imersão empresarial · Edição 2026</div>
+    <h1>China Business Experience 2026</h1>
+    <p class="sub">Canton Fair, fábricas, negócios e oportunidades reais ao lado de empresários, no lugar onde produtos, fornecedores e tendências acontecem antes de chegarem ao Brasil.</p>
+    <div class="meta">
+      <span class="chip">📅 11 a 22 de outubro de 2026</span>
+      <span class="chip">📍 Xangai · Guangzhou · Shenzhen</span>
+      <span class="chip">🏨 9 noites de hospedagem</span>
+    </div>
+    <div class="hero-ctas">
+      <a href="#inscricao" class="btn btn-primary">Garantir minha vaga</a>
+      <a href="#roteiro" class="btn btn-ghost">Ver o roteiro completo</a>
+    </div>
+  </div>
+</section>
+
+<!-- SOBRE -->
+<section id="sobre">
+  <div class="wrap">
+    <div class="section-head center">
+      <div class="eyebrow">A proposta</div>
+      <h2>Não é apenas visitar a China. É viver a China ao seu lado.</h2>
+      <p>Uma viagem pensada para empresários que querem estar no lugar certo, com as pessoas certas, olhando de perto para produtos, fornecedores, tendências e oportunidades reais de negócio, com clima próximo, troca entre empresários e visão prática de mercado.</p>
+    </div>
+    <div class="grid-3">
+      <div class="card">
+        <span class="ico">🤝</span>
+        <h3>Networking de verdade</h3>
+        <p>Uma viagem com clima próximo e troca constante entre empresários. Muitas vezes a percepção de um participante revela uma oportunidade que você não enxergaria sozinho.</p>
+      </div>
+      <div class="card">
+        <span class="ico">🏭</span>
+        <h3>Fornecedores e fábricas</h3>
+        <p>Canton Fair e visitas técnicas a fábricas estratégicas. Avalie produto, qualidade, margem, MOQ, prazos e personalização diretamente na fonte.</p>
+      </div>
+      <div class="card">
+        <span class="ico">📈</span>
+        <h3>Visão prática de mercado</h3>
+        <p>Entre na China com mentalidade de empresário: buscando oportunidade, margem, diferenciação e novos caminhos para o seu negócio.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- POR QUE A CHINA -->
+<section id="porque" class="alt">
+  <div class="wrap">
+    <p class="quote">
+      A China é onde muita coisa acontece <span class="accent">antes de chegar ao Brasil</span>. É onde produtos nascem, fornecedores se apresentam, tendências aparecem primeiro, e empresários atentos enxergam novos caminhos para seus negócios.
+    </p>
+  </div>
+</section>
+
+<!-- ROTEIRO -->
+<section id="roteiro">
+  <div class="wrap">
+    <div class="section-head center">
+      <div class="eyebrow">Dia a dia</div>
+      <h2>O roteiro da imersão</h2>
+      <p>12 dias de experiência: da chegada em Xangai à Canton Fair em Guangzhou, visitas técnicas e o encerramento em Shenzhen.</p>
+    </div>
+
+    <div class="timeline">
+
+      <div class="day">
+        <div class="dot">11</div>
+        <div class="date">11/10 · Domingo</div>
+        <h3>Embarque do Brasil para a China</h3>
+        <p>Início da jornada. O grupo embarca em São Paulo (Guarulhos) com destino a Xangai, com conexão internacional em Doha.</p>
+        <ul class="sched">
+          <li><b>01h55</b> · Embarque em São Paulo / GRU</li>
+          <li>Conexão internacional em Doha · pernoite em trânsito</li>
+        </ul>
+      </div>
+
+      <div class="day">
+        <div class="dot">12</div>
+        <div class="date">12/10 · Segunda</div>
+        <h3>Chegada em Xangai</h3>
+        <p>Nossa porta de entrada para a China moderna: velocidade, escala, inovação e visão de futuro. Recepção do grupo, traslado ao hotel e descanso.</p>
+        <ul class="sched">
+          <li><b>16h20</b> · Chegada em Xangai / PVG</li>
+          <li><b>17h30–19h00</b> · Imigração, bagagens e recepção</li>
+          <li><b>19h00–20h30</b> · Traslado ao hotel</li>
+          <li><b>20h30–21h30</b> · Check-in · noite livre</li>
+        </ul>
+        <span class="stay">🏨 Hospedagem: Xangai</span>
+      </div>
+
+      <div class="day">
+        <div class="dot">13</div>
+        <div class="date">13/10 · Terça</div>
+        <h3>Boas-vindas e preparação empresarial</h3>
+        <p>Manhã livre para adaptação ao fuso. Almoço de boas-vindas e briefing empresarial: como aproveitar a Canton Fair, abordar fornecedores, avaliar produtos, MOQ, amostras e próximos passos comerciais.</p>
+        <ul class="sched">
+          <li><b>09h00–11h30</b> · Manhã livre</li>
+          <li><b>12h00–14h00</b> · Almoço de boas-vindas (incluso)</li>
+          <li><b>14h30–16h30</b> · Briefing empresarial</li>
+          <li><b>A partir das 17h00</b> · Horário livre</li>
+        </ul>
+        <span class="stay">🏨 Hospedagem: Xangai</span>
+      </div>
+
+      <div class="day">
+        <div class="dot">14</div>
+        <div class="date">14/10 · Quarta</div>
+        <h3>Xangai → Guangzhou em trem-bala</h3>
+        <p>Uma das experiências mais marcantes da infraestrutura chinesa. Guangzhou será nossa base para a Canton Fair, a maior feira multissetorial da China.</p>
+        <ul class="sched">
+          <li><b>07h00</b> · Check-out em Xangai</li>
+          <li><b>09h00–16h00</b> · Trem de alta velocidade → Guangzhou</li>
+          <li><b>16h00–17h30</b> · Chegada e traslado ao hotel</li>
+          <li><b>17h30–18h30</b> · Check-in · noite livre</li>
+        </ul>
+        <span class="stay">🏨 Hospedagem: Guangzhou</span>
+      </div>
+
+      <div class="day">
+        <div class="dot">15</div>
+        <div class="date">15/10 · Quinta</div>
+        <h3>Canton Fair · 1º dia</h3>
+        <p>Reconhecimento dos pavilhões, entendimento da dinâmica da feira e primeiros contatos comerciais. Mais que uma feira de produtos: um ambiente de leitura de mercado.</p>
+        <ul class="sched">
+          <li><b>08h00</b> · Saída para a Canton Fair</li>
+          <li><b>09h30–12h30</b> · Reconhecimento dos pavilhões</li>
+          <li><b>14h00–17h30</b> · Continuação da visita</li>
+          <li><b>18h00–19h00</b> · Retorno ao hotel · noite livre</li>
+        </ul>
+        <span class="stay">🏨 Hospedagem: Guangzhou</span>
+      </div>
+
+      <div class="day">
+        <div class="dot">16</div>
+        <div class="date">16/10 · Sexta</div>
+        <h3>Canton Fair · Fornecedores e oportunidades</h3>
+        <p>Foco direcionado: fornecedores estratégicos, catálogos, preços, prazos, MOQ e capacidade produtiva. Transformar curiosidade em oportunidade.</p>
+        <ul class="sched">
+          <li><b>09h30–12h30</b> · Visita aos setores prioritários</li>
+          <li><b>14h00–17h30</b> · Análise de fornecedores e contatos</li>
+          <li><b>18h00–19h00</b> · Retorno ao hotel · noite livre</li>
+        </ul>
+        <span class="stay">🏨 Hospedagem: Guangzhou</span>
+      </div>
+
+      <div class="day">
+        <div class="dot">17</div>
+        <div class="date">17/10 · Sábado</div>
+        <h3>Canton Fair · Negociação e comparação</h3>
+        <p>Dia de aprofundamento: retornar aos melhores stands, tirar dúvidas técnicas e construir uma lista qualificada de potenciais parceiros. Separar curiosidade de oportunidade real.</p>
+        <ul class="sched">
+          <li><b>09h30–12h30</b> · Retorno aos fornecedores prioritários</li>
+          <li><b>14h00–17h30</b> · Rodadas de negociação e comparação</li>
+          <li><b>18h00–19h00</b> · Retorno ao hotel · noite livre</li>
+        </ul>
+        <span class="stay">🏨 Hospedagem: Guangzhou</span>
+      </div>
+
+      <div class="day">
+        <div class="dot">18</div>
+        <div class="date">18/10 · Domingo</div>
+        <h3>Consolidação de oportunidades</h3>
+        <p>Dia flexível: retorno à feira, reuniões com fornecedores ou agendas individuais. No fim da tarde, encontro do grupo para troca de percepções e próximos passos.</p>
+        <ul class="sched">
+          <li><b>09h00–16h30</b> · Dia flexível (feira / reuniões / agendas)</li>
+          <li><b>17h00–18h30</b> · Encontro de consolidação do grupo</li>
+        </ul>
+        <span class="stay">🏨 Hospedagem: Guangzhou</span>
+      </div>
+
+      <div class="day">
+        <div class="dot">19</div>
+        <div class="date">19/10 · Segunda</div>
+        <h3>Visita técnica + Guangzhou → Shenzhen</h3>
+        <p>1ª visita técnica a uma fábrica/fornecedor estratégico: operação, showroom e linha produtiva, seguida de reuniões e negociações. À noite, trem-bala para Shenzhen.</p>
+        <ul class="sched">
+          <li><b>09h00–11h30</b> · Visita técnica 1</li>
+          <li><b>13h30–16h30</b> · Reuniões e negociações</li>
+          <li><b>18h00–18h40</b> · Trem de alta velocidade → Shenzhen</li>
+          <li><b>A partir das 20h00</b> · Check-in · noite livre</li>
+        </ul>
+        <span class="stay">🏨 Hospedagem: Shenzhen</span>
+      </div>
+
+      <div class="day">
+        <div class="dot">20</div>
+        <div class="date">20/10 · Terça</div>
+        <h3>Visita técnica em Shenzhen</h3>
+        <p>Shenzhen, símbolo da China tecnológica e inovadora. 2ª visita técnica (Shenzhen, Dongguan, Huizhou ou polo compatível) com tempo real para reuniões, showrooms e negociação.</p>
+        <ul class="sched">
+          <li><b>09h30–12h00</b> · Visita técnica 2</li>
+          <li><b>13h30–17h30</b> · Reuniões, showrooms e agendas comerciais</li>
+          <li><b>17h30–18h30</b> · Retorno ao hotel · noite livre</li>
+        </ul>
+        <span class="stay">🏨 Hospedagem: Shenzhen</span>
+      </div>
+
+      <div class="day">
+        <div class="dot">21</div>
+        <div class="date">21/10 · Quarta</div>
+        <h3>Dia livre estratégico + despedida</h3>
+        <p>Manhã livre para compras técnicas, showrooms ou reuniões individuais. Almoço de despedida e, à noite, traslado de Shenzhen ao Aeroporto Internacional de Hong Kong.</p>
+        <ul class="sched">
+          <li><b>09h00–12h00</b> · Manhã livre em Shenzhen</li>
+          <li><b>12h30–14h30</b> · Almoço de despedida (incluso)</li>
+          <li><b>19h30</b> · Saída para o aeroporto de Hong Kong</li>
+          <li><b>01h25</b> · Embarque Hong Kong → Doha → São Paulo</li>
+        </ul>
+        <span class="stay">✈️ Embarque na madrugada de 22/10</span>
+      </div>
+
+      <div class="day">
+        <div class="dot">22</div>
+        <div class="date">22/10 · Quinta</div>
+        <h3>Retorno ao Brasil</h3>
+        <p>Mais que uma viagem: cada empresário volta com novas referências, novos contatos, visão ampliada de mercado e clareza sobre oportunidades reais.</p>
+        <ul class="sched">
+          <li><b>01h25</b> · Embarque em Hong Kong · conexão em Doha</li>
+          <li><b>17h05</b> · Chegada prevista em São Paulo / GRU</li>
+        </ul>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- INCLUSO -->
+<section id="incluso" class="alt">
+  <div class="wrap">
+    <div class="section-head center">
+      <div class="eyebrow">Tudo pensado para você</div>
+      <h2>O que está incluso na experiência</h2>
+    </div>
+    <ul class="incl">
+      <li>Passagem aérea internacional conforme voos definidos para o grupo</li>
+      <li>9 noites de hospedagem em hotéis selecionados</li>
+      <li>Traslado de chegada em Xangai</li>
+      <li>Almoço de boas-vindas em Xangai</li>
+      <li>Briefing empresarial de preparação para a imersão</li>
+      <li>Trem de alta velocidade Xangai → Guangzhou</li>
+      <li>Traslado estação → hotel em Guangzhou</li>
+      <li>Participação na primeira fase da Canton Fair</li>
+      <li>Traslados operacionais para a Canton Fair nos dias definidos</li>
+      <li>Visita técnica a fábrica/fornecedor em Guangzhou ou região</li>
+      <li>Períodos reservados para reuniões e negociações</li>
+      <li>Trem de alta velocidade Guangzhou → Shenzhen</li>
+      <li>Visita técnica a fábrica/fornecedor em Shenzhen ou região</li>
+      <li>Meio período livre estratégico em Shenzhen</li>
+      <li>Almoço de despedida em Shenzhen</li>
+      <li>Traslado final de Shenzhen ao aeroporto de Hong Kong</li>
+      <li>Acompanhamento operacional do grupo durante toda a imersão</li>
+      <li>Suporte pré-viagem: documentos, bagagem e preparação comercial</li>
+    </ul>
+
+    <div class="stays">
+      <div class="stay-card">
+        <div class="stay-photo">
+          <img src="img/xangai.jpg" alt="Xangai" onerror="this.style.display='none'">
+          <span class="badge">2</span>
+          <span class="pin">Xangai</span>
+        </div>
+        <div class="stay-body">
+          <div class="d">2 dias · 2 Noites</div>
+          <div class="dates">12/10 a 14/10</div>
+        </div>
+      </div>
+      <div class="stay-card">
+        <div class="stay-photo">
+          <img src="img/guangzhou.jpg" alt="Guangzhou" onerror="this.style.display='none'">
+          <span class="badge">5</span>
+          <span class="pin">Guangzhou</span>
+        </div>
+        <div class="stay-body">
+          <div class="d">5 dias · 5 Noites</div>
+          <div class="dates">14/10 a 19/10</div>
+        </div>
+      </div>
+      <div class="stay-card">
+        <div class="stay-photo">
+          <img src="img/shenzhen.jpg" alt="Shenzhen" onerror="this.style.display='none'">
+          <span class="badge">2</span>
+          <span class="pin">Shenzhen</span>
+        </div>
+        <div class="stay-body">
+          <div class="d">2 dias · 2 Noites</div>
+          <div class="dates">19/10 a 21/10</div>
+        </div>
+      </div>
+    </div>
+    <p class="disclaimer">A programação é uma previsão operacional e poderá sofrer ajustes conforme confirmação de voos, hotéis, horários de trens, localização das fábricas, disponibilidade dos fornecedores e agenda da Canton Fair. A essência permanece: estar na China ao lado de empresários, onde as oportunidades acontecem primeiro.</p>
+  </div>
+</section>
+
+<!-- INSCRIÇÃO -->
+<section id="inscricao">
+  <div class="wrap">
+    <div class="section-head center">
+      <div class="eyebrow">Próximo passo</div>
+      <h2>Faça parte da China Business Experience 2026</h2>
+      <p>As vagas são limitadas para manter o clima próximo do grupo. Escolha como deseja seguir:</p>
+    </div>
+
+    <!-- DUAS OPÇÕES -->
+    <div class="choices">
+      <!-- OPÇÃO 1: WhatsApp -->
+      <div class="choice">
+        <div class="ico">💬</div>
+        <h3>Gostaria de mais informações</h3>
+        <p>Fale com a nossa equipe pelo WhatsApp e tire todas as suas dúvidas sobre a imersão, datas, valores e condições.</p>
+        <!-- TROQUE 55SEUNUMERO pelo seu número com DDI+DDD, ex: 5511999998888 -->
+        <a href="https://wa.me/55SEUNUMERO?text=Ol%C3%A1!%20Gostaria%20de%20mais%20informa%C3%A7%C3%B5es%20sobre%20a%20China%20Business%20Experience%202026."
+           target="_blank" rel="noopener" class="btn btn-wa">Falar no WhatsApp</a>
+      </div>
+
+      <!-- OPÇÃO 2: Garantir vaga -->
+      <div class="choice featured">
+        <span class="tag">Vagas limitadas</span>
+        <div class="ico">✈️</div>
+        <h3>Quero garantir minha vaga na imersão</h3>
+        <p>Preencha a ficha de inscrição com seus dados para o contrato e escolha a forma de pagamento. Em seguida enviamos o link de pagamento para você.</p>
+        <button type="button" class="btn btn-primary" id="openFormBtn">Preencher inscrição</button>
+      </div>
+    </div>
+
+    <!-- FORMULÁRIO COMPLETO (oculto até clicar) -->
+    <div class="form-card hidden" id="formCard">
+      <h2>Ficha de inscrição</h2>
+      <p class="lead">Preencha seus dados para gerarmos o contrato. O pagamento é feito por fora do site: após o recebimento, enviamos o link de pagamento.</p>
+
+      <!--
+        IMPORTANTE: troque o action pelo seu endpoint real (gratuito em https://formspree.io).
+        Ex.: action="https://formspree.io/f/SEUCODIGO"
+      -->
+      <form action="https://formspree.io/f/SEU_CODIGO_AQUI" method="POST" id="vagaForm">
+
+        <div class="form-section-title">Dados pessoais</div>
+        <div class="form-row">
+          <div class="field">
+            <label for="nome">Nome completo *</label>
+            <input type="text" id="nome" name="nome" required placeholder="Seu nome completo">
+          </div>
+          <div class="field">
+            <label for="cpf">CPF *</label>
+            <input type="text" id="cpf" name="cpf" required placeholder="000.000.000-00">
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="field">
+            <label for="email">E-mail *</label>
+            <input type="email" id="email" name="email" required placeholder="voce@empresa.com">
+          </div>
+          <div class="field">
+            <label for="whatsapp">WhatsApp *</label>
+            <input type="tel" id="whatsapp" name="whatsapp" required placeholder="(00) 00000-0000">
+          </div>
+        </div>
+        <div class="field">
+          <label for="endereco">Endereço completo *</label>
+          <input type="text" id="endereco" name="endereco" required placeholder="Rua, número, bairro, cidade/UF, CEP">
+        </div>
+
+        <div class="form-section-title">Dados da empresa</div>
+        <div class="form-row">
+          <div class="field">
+            <label for="empresa">Empresa</label>
+            <input type="text" id="empresa" name="empresa" placeholder="Razão social / nome fantasia">
+          </div>
+          <div class="field">
+            <label for="cnpj">CNPJ</label>
+            <input type="text" id="cnpj" name="cnpj" placeholder="00.000.000/0000-00">
+          </div>
+        </div>
+
+        <div class="form-section-title">Forma de pagamento</div>
+        <div class="pay-opts">
+          <!-- Edite os textos conforme suas condições reais -->
+          <label class="pay-opt"><input type="radio" name="pagamento" value="À vista (Pix/transferência)" required><span>À vista · Pix ou transferência</span></label>
+          <label class="pay-opt"><input type="radio" name="pagamento" value="Cartão de crédito parcelado"><span>Cartão de crédito parcelado</span></label>
+          <label class="pay-opt"><input type="radio" name="pagamento" value="Entrada + parcelas"><span>Entrada + parcelas</span></label>
+        </div>
+
+        <div class="field" style="margin-top:18px">
+          <label for="obs">Observações (opcional)</label>
+          <textarea id="obs" name="observacoes" rows="2" placeholder="Alguma informação adicional?"></textarea>
+        </div>
+
+        <label class="check-row">
+          <input type="checkbox" name="aceite_contrato" value="sim" required>
+          <span>Li e concordo em receber o contrato e o link de pagamento para confirmação da minha vaga. *</span>
+        </label>
+
+        <button type="submit" class="btn btn-primary" style="width:100%;margin-top:14px">Enviar inscrição</button>
+        <p class="form-note">Após o envio, nossa equipe confirma os dados, encaminha o contrato e o link de pagamento. O pagamento é processado fora do site.</p>
+      </form>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="wrap">
+    <div>
+      <div class="logo">China Business <span style="color:var(--gold)">Experience</span></div>
+      <p style="max-width:34ch;margin-top:10px;font-size:.92rem">Imersão empresarial na China · Canton Fair, fábricas e oportunidades reais de negócio. 11 a 22 de outubro de 2026.</p>
+    </div>
+    <div>
+      <h3 style="color:#fff;font-family:'Manrope';font-size:1rem;margin-bottom:12px">Contato</h3>
+      <p style="font-size:.92rem">📱 WhatsApp: <a href="https://wa.me/55SEUNUMERO" target="_blank">(00) 00000-0000</a></p>
+      <p style="font-size:.92rem">✉️ <a href="mailto:contato@seudominio.com">contato@seudominio.com</a></p>
+      <p style="font-size:.92rem">📷 <a href="#">@seuinstagram</a></p>
+    </div>
+  </div>
+  <div class="foot-bottom">
+    © 2026 China Business Experience · Todos os direitos reservados.
+  </div>
+</footer>
+
+<script>
+  // Menu mobile
+  const menuBtn = document.getElementById('menuBtn');
+  const navLinks = document.getElementById('navLinks');
+  menuBtn.addEventListener('click', () => navLinks.classList.toggle('open'));
+  navLinks.querySelectorAll('a').forEach(a =>
+    a.addEventListener('click', () => navLinks.classList.remove('open'))
+  );
+
+  // Abrir a ficha de inscrição ao clicar em "Preencher inscrição"
+  const openFormBtn = document.getElementById('openFormBtn');
+  const formCard = document.getElementById('formCard');
+  openFormBtn.addEventListener('click', () => {
+    formCard.classList.remove('hidden');
+    formCard.scrollIntoView({behavior:'smooth', block:'start'});
+    setTimeout(() => formCard.querySelector('input')?.focus(), 500);
+  });
+
+  // Os botões "Quero participar / Garantir vaga" do topo já apontam para #inscricao;
+  // ao chegar na seção, deixamos as duas opções visíveis (comportamento padrão).
+</script>
+
+</body>
+</html>

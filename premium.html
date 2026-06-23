@@ -1,0 +1,458 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>China Business Experience · Imersão de Negócios na China</title>
+<meta name="description" content="Uma imersão de negócios para empresários e empreendedores que querem ver de perto mercados, fornecedores, tendências e possibilidades reais de negócio na China.">
+
+<meta property="og:title" content="China Business Experience · Imersão de Negócios na China">
+<meta property="og:description" content="A China não é apenas um destino. É onde muitas oportunidades começam antes de chegarem ao Brasil.">
+<meta property="og:type" content="website">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,500&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+<style>
+  :root{
+    --bg:#0a0b0e;
+    --bg-2:#101319;
+    --panel:#141821;
+    --petrol:#0c1a20;
+    --gold:#c8a464;
+    --gold-soft:#ddc294;
+    --bronze:#9c7842;
+    --text:#ece9e2;
+    --muted:#9b9a92;
+    --muted-2:#76756e;
+    --line:rgba(255,255,255,.09);
+    --line-strong:rgba(200,164,100,.32);
+    --max:1180px;
+    --serif:'Cormorant Garamond',Georgia,serif;
+    --sans:'Inter',system-ui,sans-serif;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{
+    font-family:var(--sans);background:var(--bg);color:var(--text);
+    line-height:1.7;-webkit-font-smoothing:antialiased;overflow-x:hidden;
+  }
+  ::selection{background:var(--gold);color:#0a0b0e}
+  .wrap{max-width:var(--max);margin:0 auto;padding:0 28px}
+  h1,h2,h3{font-family:var(--serif);font-weight:600;line-height:1.08;letter-spacing:-.01em}
+  a{color:inherit;text-decoration:none}
+
+  .eyebrow{
+    font-family:var(--sans);text-transform:uppercase;letter-spacing:.36em;
+    font-size:.72rem;font-weight:600;color:var(--gold);display:inline-block;
+  }
+  .eyebrow.line::before{content:"";display:inline-block;width:34px;height:1px;background:var(--gold);vertical-align:middle;margin-right:14px;opacity:.7}
+
+  /* BOTÕES */
+  .btn{
+    display:inline-flex;align-items:center;gap:11px;cursor:pointer;border:none;
+    font-family:var(--sans);font-weight:600;font-size:.96rem;letter-spacing:.01em;
+    padding:17px 36px;border-radius:2px;position:relative;overflow:hidden;
+    transition:transform .35s cubic-bezier(.2,.7,.2,1), box-shadow .35s, color .35s;
+  }
+  .btn .arw{transition:transform .35s}
+  .btn:hover .arw{transform:translateX(5px)}
+  .btn-gold{
+    background:linear-gradient(120deg,var(--gold-soft),var(--gold));color:#15110a;
+    box-shadow:0 14px 40px -12px rgba(200,164,100,.6);
+  }
+  .btn-gold:hover{transform:translateY(-3px);box-shadow:0 22px 55px -12px rgba(200,164,100,.75)}
+  .btn-outline{background:transparent;color:var(--text);border:1px solid var(--line-strong)}
+  .btn-outline:hover{border-color:var(--gold);color:var(--gold-soft);transform:translateY(-3px)}
+  .micro{display:block;margin-top:16px;font-size:.84rem;color:var(--muted-2);letter-spacing:.02em}
+
+  /* NAV */
+  header.nav{position:fixed;top:0;left:0;right:0;z-index:60;transition:background .4s, border-color .4s, backdrop-filter .4s;border-bottom:1px solid transparent}
+  header.nav.scrolled{background:rgba(10,11,14,.82);backdrop-filter:blur(14px);border-bottom:1px solid var(--line)}
+  .nav-inner{display:flex;align-items:center;justify-content:space-between;height:82px}
+  .brand{font-family:var(--serif);font-size:1.4rem;font-weight:600;letter-spacing:.01em}
+  .brand b{color:var(--gold);font-weight:600}
+  .nav-links{display:flex;gap:38px;align-items:center}
+  .nav-links a{font-size:.86rem;font-weight:500;letter-spacing:.04em;color:var(--muted);transition:color .25s}
+  .nav-links a:hover{color:var(--text)}
+  .nav-links .btn{padding:12px 26px;font-size:.84rem}
+  .menu-btn{display:none;background:none;border:none;color:var(--text);font-size:1.5rem;cursor:pointer}
+
+  /* HERO */
+  .hero{position:relative;min-height:100vh;display:flex;align-items:center;overflow:hidden}
+  .hero-bg{position:absolute;inset:0;z-index:0}
+  .hero-bg img{width:100%;height:100%;object-fit:cover;animation:kenburns 22s ease-out forwards;opacity:.55}
+  .hero-bg::after{content:"";position:absolute;inset:0;background:
+    linear-gradient(90deg,rgba(10,11,14,.96) 0%,rgba(10,11,14,.78) 42%,rgba(10,11,14,.35) 100%),
+    linear-gradient(0deg,var(--bg) 2%,transparent 38%);}
+  @keyframes kenburns{from{transform:scale(1.12)}to{transform:scale(1)}}
+  .hero .wrap{position:relative;z-index:2;width:100%}
+  .hero-inner{max-width:880px;padding:120px 0 80px}
+  .hero h1{font-size:clamp(2.7rem,6.6vw,5.6rem);margin:26px 0 28px;font-weight:500}
+  .hero h1 em{font-style:italic;color:var(--gold-soft)}
+  .hero .sub{font-size:clamp(1.05rem,2vw,1.4rem);color:#cfcdc6;max-width:60ch;font-weight:300;line-height:1.6}
+  .hero-cta{margin-top:42px}
+  .scroll-hint{position:absolute;bottom:34px;left:50%;transform:translateX(-50%);z-index:2;color:var(--muted-2);font-size:.72rem;letter-spacing:.3em;text-transform:uppercase;display:flex;flex-direction:column;align-items:center;gap:10px}
+  .scroll-hint span{width:1px;height:46px;background:linear-gradient(var(--gold),transparent);animation:pulse 2.4s ease-in-out infinite}
+  @keyframes pulse{0%,100%{opacity:.3;transform:scaleY(.7)}50%{opacity:1;transform:scaleY(1)}}
+
+  /* SECTIONS base */
+  section{position:relative;padding:120px 0}
+  .lede{font-size:clamp(1.05rem,1.6vw,1.22rem);color:var(--muted);font-weight:300;max-width:64ch}
+  .display{font-size:clamp(2rem,4.6vw,3.6rem);font-weight:500}
+  .display em{font-style:italic;color:var(--gold-soft)}
+
+  /* TESE — editorial 2 col */
+  .tese{background:var(--bg)}
+  .tese-grid{display:grid;grid-template-columns:1fr 1.15fr;gap:80px;align-items:center}
+  .tese h2{font-size:clamp(2rem,4.4vw,3.4rem);font-weight:500}
+  .tese .col-r p{color:var(--muted);font-weight:300;font-size:1.08rem;margin-bottom:22px}
+  .tese .col-r p:last-child{margin-bottom:0}
+  .tese .col-r strong{color:var(--text);font-weight:500}
+  .pullnum{font-family:var(--serif);font-size:5rem;color:var(--gold);opacity:.25;line-height:1;display:block;margin-bottom:10px}
+
+  /* NÃO É TURISMO — full statement */
+  .statement{background:linear-gradient(160deg,var(--petrol),var(--bg-2));border-top:1px solid var(--line);border-bottom:1px solid var(--line);text-align:center}
+  .statement .display{max-width:18ch;margin:22px auto 26px}
+  .statement .lede{margin:0 auto;text-align:center}
+  .vs{display:inline-block;color:var(--gold);font-style:italic}
+
+  /* DIFERENCIAIS — cards */
+  .grid-cards{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--line);border:1px solid var(--line);border-radius:4px;overflow:hidden;margin-top:64px}
+  .pcard{background:var(--bg);padding:46px 38px;transition:background .4s}
+  .pcard:hover{background:var(--panel)}
+  .pcard .num{font-family:var(--serif);font-size:1rem;color:var(--gold);letter-spacing:.1em}
+  .pcard h3{font-size:1.55rem;margin:18px 0 12px;font-weight:600}
+  .pcard p{color:var(--muted);font-size:.97rem;font-weight:300}
+
+  /* ENXERGAR — image + list */
+  .see{background:var(--bg-2)}
+  .see-grid{display:grid;grid-template-columns:1.05fr 1fr;gap:70px;align-items:center}
+  .see-img{position:relative;border-radius:4px;overflow:hidden;aspect-ratio:4/5}
+  .see-img img{width:100%;height:100%;object-fit:cover;transition:transform 1.2s ease}
+  .see-img:hover img{transform:scale(1.05)}
+  .see-img::after{content:"";position:absolute;inset:0;background:linear-gradient(120deg,rgba(10,11,14,.35),transparent 60%);}
+  .see-list{list-style:none}
+  .see-list li{display:flex;gap:20px;align-items:baseline;padding:20px 0;border-bottom:1px solid var(--line);font-size:1.12rem;font-weight:300}
+  .see-list li:last-child{border-bottom:none}
+  .see-list .k{font-family:var(--serif);color:var(--gold);font-size:1.05rem;min-width:34px}
+  .see-list b{font-weight:500;color:var(--text)}
+
+  /* PARA QUEM — chips */
+  .who{text-align:center}
+  .who-grid{display:flex;flex-wrap:wrap;justify-content:center;gap:14px;max-width:920px;margin:54px auto 0}
+  .who-chip{border:1px solid var(--line-strong);border-radius:999px;padding:14px 28px;font-size:1rem;color:var(--text);font-weight:300;transition:all .3s}
+  .who-chip:hover{background:var(--gold);color:#15110a;border-color:var(--gold);transform:translateY(-3px)}
+  .who-chip b{font-weight:600}
+
+  /* JORNADA — timeline */
+  .journey{background:var(--bg)}
+  .tl{margin-top:64px;border-top:1px solid var(--line)}
+  .tl-row{display:grid;grid-template-columns:90px 1fr;gap:40px;padding:38px 0;border-bottom:1px solid var(--line);align-items:start;transition:padding-left .4s}
+  .tl-row:hover{padding-left:14px}
+  .tl-row .step{font-family:var(--serif);font-size:2.4rem;color:var(--gold);opacity:.5;line-height:1}
+  .tl-row h3{font-size:1.7rem;font-weight:600;margin-bottom:8px}
+  .tl-row p{color:var(--muted);font-weight:300;max-width:62ch}
+
+  /* ESCASSEZ */
+  .scarcity{background:linear-gradient(160deg,#11151c,var(--petrol));border-top:1px solid var(--line);text-align:center}
+  .scarcity .display{max-width:20ch;margin:24px auto 18px}
+  .scarcity .lede{margin:0 auto 38px;text-align:center}
+
+  /* FAQ */
+  .faq-wrap{max-width:860px;margin:56px auto 0}
+  .faq-item{border-bottom:1px solid var(--line)}
+  .faq-q{width:100%;background:none;border:none;color:var(--text);font-family:var(--serif);font-size:1.5rem;font-weight:500;text-align:left;padding:28px 50px 28px 0;cursor:pointer;position:relative;transition:color .3s}
+  .faq-q:hover{color:var(--gold-soft)}
+  .faq-q::after{content:"+";position:absolute;right:6px;top:50%;transform:translateY(-50%);font-family:var(--sans);font-weight:300;font-size:1.7rem;color:var(--gold);transition:transform .35s}
+  .faq-item.open .faq-q::after{transform:translateY(-50%) rotate(45deg)}
+  .faq-a{max-height:0;overflow:hidden;transition:max-height .45s ease, padding .45s ease}
+  .faq-a p{color:var(--muted);font-weight:300;font-size:1.04rem;padding-bottom:0}
+  .faq-item.open .faq-a{max-height:340px}
+  .faq-item.open .faq-a p{padding-bottom:28px}
+
+  /* CTA FINAL */
+  .final{position:relative;text-align:center;overflow:hidden;padding:150px 0}
+  .final-bg{position:absolute;inset:0;z-index:0}
+  .final-bg img{width:100%;height:100%;object-fit:cover;opacity:.28}
+  .final-bg::after{content:"";position:absolute;inset:0;background:radial-gradient(circle at 50% 40%,rgba(10,11,14,.55),var(--bg) 78%)}
+  .final .wrap{position:relative;z-index:2}
+  .final .display{max-width:20ch;margin:24px auto 40px;font-size:clamp(2.2rem,5vw,4rem)}
+
+  /* FOOTER */
+  footer{background:var(--bg);border-top:1px solid var(--line);padding:70px 0 38px}
+  .foot-grid{display:flex;justify-content:space-between;gap:40px;flex-wrap:wrap;align-items:flex-start}
+  .foot-grid .brand{font-size:1.6rem;margin-bottom:14px;display:block}
+  footer p{color:var(--muted);font-weight:300;font-size:.95rem;max-width:38ch}
+  .foot-contact a{display:block;color:var(--muted);font-size:.95rem;margin-bottom:8px;transition:color .25s}
+  .foot-contact a:hover{color:var(--gold-soft)}
+  .foot-bottom{margin-top:54px;padding-top:26px;border-top:1px solid var(--line);font-size:.8rem;color:var(--muted-2);letter-spacing:.04em}
+
+  /* REVEAL ANIM */
+  [data-reveal]{opacity:0;transform:translateY(30px);transition:opacity 1s cubic-bezier(.2,.7,.2,1),transform 1s cubic-bezier(.2,.7,.2,1)}
+  [data-reveal].in{opacity:1;transform:none}
+  [data-reveal][data-delay="1"]{transition-delay:.12s}
+  [data-reveal][data-delay="2"]{transition-delay:.24s}
+  [data-reveal][data-delay="3"]{transition-delay:.36s}
+
+  /* RESPONSIVE */
+  @media(max-width:920px){
+    section{padding:84px 0}
+    .nav-links{display:none;position:absolute;top:82px;left:0;right:0;flex-direction:column;background:rgba(10,11,14,.97);backdrop-filter:blur(14px);padding:26px 28px;gap:22px;border-bottom:1px solid var(--line)}
+    .nav-links.open{display:flex}
+    .menu-btn{display:block}
+    .tese-grid,.see-grid{grid-template-columns:1fr;gap:42px}
+    .grid-cards{grid-template-columns:1fr}
+    .tl-row{grid-template-columns:60px 1fr;gap:22px}
+    .hero-inner{padding:140px 0 90px}
+  }
+  @media(prefers-reduced-motion:reduce){
+    *{animation:none!important;transition:none!important}
+    [data-reveal]{opacity:1;transform:none}
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<header class="nav" id="nav">
+  <div class="wrap nav-inner">
+    <div class="brand">China <b>Business</b> Experience</div>
+    <nav class="nav-links" id="navLinks">
+      <a href="#tese">A oportunidade</a>
+      <a href="#diferenciais">A experiência</a>
+      <a href="#jornada">A jornada</a>
+      <a href="#faq">Dúvidas</a>
+      <a href="#contato" class="btn btn-gold">Receber detalhes</a>
+    </nav>
+    <button class="menu-btn" id="menuBtn" aria-label="Menu">☰</button>
+  </div>
+</header>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-bg">
+    <img src="img/hero.jpg" alt="China moderna" onerror="this.style.display='none'">
+  </div>
+  <div class="wrap">
+    <div class="hero-inner">
+      <span class="eyebrow line" data-reveal>Imersão de Negócios · China</span>
+      <h1 data-reveal data-delay="1">A China não é apenas um destino.<br><em>É onde muitas oportunidades começam</em>, antes de chegarem ao Brasil.</h1>
+      <p class="sub" data-reveal data-delay="2">Uma imersão de negócios para empresários e empreendedores que querem ver de perto mercados, fornecedores, tendências e possibilidades reais de negócio.</p>
+      <div class="hero-cta" data-reveal data-delay="3">
+        <a href="#contato" class="btn btn-gold">Quero receber os detalhes da imersão <span class="arw">→</span></a>
+        <span class="micro">Grupo limitado. Informações enviadas pelo WhatsApp.</span>
+      </div>
+    </div>
+  </div>
+  <div class="scroll-hint"><span></span>Role para descobrir</div>
+</section>
+
+<!-- TESE / OPORTUNIDADE -->
+<section class="tese" id="tese">
+  <div class="wrap tese-grid">
+    <div class="col-l" data-reveal>
+      <span class="eyebrow line">A oportunidade</span>
+      <h2 style="margin-top:24px">Enquanto muitos tentam entender a China <em>à distância</em>, outros escolhem estar onde ela acontece.</h2>
+    </div>
+    <div class="col-r" data-reveal data-delay="1">
+      <span class="pullnum">01</span>
+      <p>Há quem tente decifrar a China por vídeos, catálogos e fornecedores soltos no WhatsApp. É possível, mas é sempre uma leitura de segunda mão, filtrada por intermediários, atrasada em relação ao que realmente está se movendo.</p>
+      <p><strong>A China é um dos maiores laboratórios comerciais do mundo:</strong> onde produtos, fornecedores, tendências e modelos de negócio surgem antes de se tornarem óbvios por aqui.</p>
+      <p>Estar presente muda a equação. Você deixa de reagir ao que já chegou ao Brasil e passa a enxergar o que ainda está por chegar, com tempo de se posicionar antes dos outros.</p>
+    </div>
+  </div>
+</section>
+
+<!-- NÃO É TURISMO -->
+<section class="statement">
+  <div class="wrap" data-reveal>
+    <span class="eyebrow line">O posicionamento</span>
+    <h2 class="display">Não é turismo. <span class="vs">É imersão de negócios.</span></h2>
+    <p class="lede">Não se trata de passear. Trata-se de ampliar visão comercial, observar mercados em funcionamento, entender como fornecedores operam, enxergar tendências antes que virem consenso, e voltar com repertório prático para decidir melhor no seu próprio negócio.</p>
+  </div>
+</section>
+
+<!-- DIFERENCIAIS -->
+<section id="diferenciais">
+  <div class="wrap">
+    <div data-reveal style="max-width:60ch">
+      <span class="eyebrow line">A experiência</span>
+      <h2 class="display" style="margin-top:22px">Uma curadoria pensada para quem decide.</h2>
+    </div>
+    <div class="grid-cards">
+      <div class="pcard" data-reveal><span class="num">01</span><h3>Curadoria estratégica</h3><p>Cada ambiente, visita e contexto é escolhido com intenção comercial, não por roteiro de cartão-postal.</p></div>
+      <div class="pcard" data-reveal data-delay="1"><span class="num">02</span><h3>Grupo seleto</h3><p>Número limitado de participantes, para preservar a profundidade das conversas e a qualidade da experiência.</p></div>
+      <div class="pcard" data-reveal data-delay="2"><span class="num">03</span><h3>Foco em negócios</h3><p>Tudo é orientado a ampliar repertório, leitura de mercado e possibilidades reais, não a entretenimento.</p></div>
+      <div class="pcard" data-reveal><span class="num">04</span><h3>Observação real de mercado</h3><p>Ver de perto como produtos nascem, como fornecedores trabalham e como a escala chinesa realmente opera.</p></div>
+      <div class="pcard" data-reveal data-delay="1"><span class="num">05</span><h3>Experiência com contexto</h3><p>Não basta ver. É preciso entender o que se está vendo, com leitura e interpretação ao longo do caminho.</p></div>
+      <div class="pcard" data-reveal data-delay="2"><span class="num">06</span><h3>Networking empreendedor</h3><p>Conviver com um grupo de perfil empresarial gera trocas que, muitas vezes, valem tanto quanto a própria viagem.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- O QUE VOCÊ PODE ENXERGAR -->
+<section class="see">
+  <div class="wrap see-grid">
+    <div class="see-img" data-reveal>
+      <img src="img/fair.jpg" alt="Mercado e feira na China" onerror="this.style.display='none';this.parentElement.style.background='linear-gradient(160deg,#15202a,#0c1419)'">
+    </div>
+    <div data-reveal data-delay="1">
+      <span class="eyebrow line">O que você pode enxergar</span>
+      <h2 class="display" style="margin:22px 0 14px;font-size:clamp(1.9rem,4vw,3rem)">O que normalmente só se vê depois, quando já é tarde.</h2>
+      <ul class="see-list">
+        <li><span class="k">i</span><span><b>Novos produtos</b> antes de se popularizarem no Brasil</span></li>
+        <li><span class="k">ii</span><span><b>Tendências de consumo</b> em formação</span></li>
+        <li><span class="k">iii</span><span><b>Fornecedores</b> e diferentes formas de operar</span></li>
+        <li><span class="k">iv</span><span><b>Modelos de operação</b> e eficiência em escala</span></li>
+        <li><span class="k">v</span><span><b>Logística</b> e a engrenagem por trás do comércio</span></li>
+        <li><span class="k">vi</span><span><b>Escala comercial</b> em sua real dimensão</span></li>
+        <li><span class="k">vii</span><span><b>Oportunidades</b> que podem inspirar negócios no Brasil</span></li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- PARA QUEM É -->
+<section class="who">
+  <div class="wrap">
+    <div data-reveal style="max-width:60ch;margin:0 auto">
+      <span class="eyebrow line">Para quem é</span>
+      <h2 class="display" style="margin-top:22px">Para quem quer sair da teoria e ver a oportunidade de perto.</h2>
+    </div>
+    <div class="who-grid" data-reveal data-delay="1">
+      <span class="who-chip"><b>Empresários</b></span>
+      <span class="who-chip"><b>Empreendedores</b></span>
+      <span class="who-chip"><b>Comerciantes</b></span>
+      <span class="who-chip"><b>Importadores</b></span>
+      <span class="who-chip"><b>Investidores</b></span>
+      <span class="who-chip">Quem quer ampliar <b>repertório comercial</b></span>
+      <span class="who-chip">Quem quer ver <b>oportunidades de perto</b></span>
+    </div>
+  </div>
+</section>
+
+<!-- JORNADA -->
+<section class="journey" id="jornada">
+  <div class="wrap">
+    <div data-reveal style="max-width:60ch">
+      <span class="eyebrow line">A jornada</span>
+      <h2 class="display" style="margin-top:22px">Do preparo ao retorno, com propósito em cada etapa.</h2>
+    </div>
+    <div class="tl">
+      <div class="tl-row" data-reveal><span class="step">01</span><div><h3>Preparação</h3><p>Antes de embarcar, o olhar é alinhado: o que observar, como interpretar e como aproveitar cada ambiente com mentalidade de negócios.</p></div></div>
+      <div class="tl-row" data-reveal><span class="step">02</span><div><h3>Chegada à China</h3><p>O primeiro contato com a escala, a velocidade e a infraestrutura de um dos ambientes comerciais mais relevantes do mundo.</p></div></div>
+      <div class="tl-row" data-reveal><span class="step">03</span><div><h3>Imersão em mercados e ambientes comerciais</h3><p>Estar dentro dos lugares onde o comércio acontece, observando produtos, dinâmicas e movimentos de mercado em primeira mão.</p></div></div>
+      <div class="tl-row" data-reveal><span class="step">04</span><div><h3>Observação de fornecedores e tendências</h3><p>Entender como fornecedores operam, comparar possibilidades e perceber tendências que ainda não chegaram por aqui.</p></div></div>
+      <div class="tl-row" data-reveal><span class="step">05</span><div><h3>Networking e troca com o grupo</h3><p>A leitura compartilhada entre empresários revela ângulos e oportunidades que dificilmente se enxerga sozinho.</p></div></div>
+      <div class="tl-row" data-reveal><span class="step">06</span><div><h3>Retorno com mais visão, repertório e possibilidades</h3><p>Voltar não com lembranças, mas com referências, contatos e clareza sobre caminhos para o seu negócio.</p></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ESCASSEZ -->
+<section class="scarcity" id="contato">
+  <div class="wrap" data-reveal>
+    <span class="eyebrow line">Grupo limitado</span>
+    <h2 class="display">Para preservar a qualidade da experiência, a imersão será realizada com <em>grupo limitado.</em></h2>
+    <p class="lede">A profundidade dessa experiência depende de manter o grupo pequeno e bem alinhado. Por isso, o acesso é por avaliação de participação.</p>
+    <a href="https://wa.me/55SEUNUMERO?text=Ol%C3%A1!%20Quero%20avaliar%20minha%20participa%C3%A7%C3%A3o%20na%20imers%C3%A3o%20de%20neg%C3%B3cios%20na%20China." target="_blank" rel="noopener" class="btn btn-gold">Quero avaliar minha participação <span class="arw">→</span></a>
+    <span class="micro">Você será direcionado para receber datas, condições e próximos passos.</span>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section id="faq">
+  <div class="wrap">
+    <div data-reveal style="max-width:60ch">
+      <span class="eyebrow line">Dúvidas frequentes</span>
+      <h2 class="display" style="margin-top:22px">O que costumam perguntar.</h2>
+    </div>
+    <div class="faq-wrap" data-reveal data-delay="1">
+      <div class="faq-item">
+        <button class="faq-q">Essa viagem é turística?</button>
+        <div class="faq-a"><p>Não. É uma imersão de negócios. O foco é ampliar visão comercial, observar mercados, fornecedores e tendências, e não fazer turismo convencional. Cada etapa tem intenção estratégica.</p></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q">Preciso já importar produtos?</button>
+        <div class="faq-a"><p>Não. A experiência é valiosa tanto para quem já importa quanto para quem deseja ampliar repertório, entender o mercado e enxergar possibilidades antes de tomar decisões.</p></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q">Para quem essa experiência é indicada?</button>
+        <div class="faq-a"><p>Para empresários, empreendedores, comerciantes, importadores e investidores, em geral para quem tem visão comercial e quer sair da teoria para ver oportunidades de perto.</p></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q">Como recebo os detalhes?</button>
+        <div class="faq-a"><p>Ao clicar em um dos botões da página, você é direcionado para o nosso WhatsApp, onde enviamos datas, condições, investimento e próximos passos com calma e de forma personalizada.</p></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q">As vagas são limitadas?</button>
+        <div class="faq-a"><p>Sim. Para preservar a qualidade da experiência e a profundidade das trocas, o grupo é intencionalmente reduzido. O acesso é por avaliação de participação.</p></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q">A viagem garante fornecedores ou negócios fechados?</button>
+        <div class="faq-a"><p>Não prometemos resultados ou negócios garantidos, seria leviano. O que oferecemos é acesso, curadoria, contexto e visão. As oportunidades reais nascem do que você enxerga e constrói a partir da experiência.</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA FINAL -->
+<section class="final">
+  <div class="final-bg"><img src="img/skyline.jpg" alt="" onerror="this.style.display='none'"></div>
+  <div class="wrap" data-reveal>
+    <span class="eyebrow line">A decisão</span>
+    <h2 class="display">A maioria escuta falar sobre a China.<br><em>Alguns escolhem enxergá-la de perto.</em></h2>
+    <a href="https://wa.me/55SEUNUMERO?text=Ol%C3%A1!%20Quero%20conhecer%20a%20experi%C3%AAncia%20completa%20da%20imers%C3%A3o%20de%20neg%C3%B3cios%20na%20China." target="_blank" rel="noopener" class="btn btn-gold">Quero conhecer a experiência completa <span class="arw">→</span></a>
+    <span class="micro">Grupo limitado. Informações enviadas pelo WhatsApp.</span>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="wrap foot-grid">
+    <div>
+      <span class="brand">China <b>Business</b> Experience</span>
+      <p>Uma imersão de negócios na China para quem prefere enxergar as oportunidades antes que se tornem óbvias.</p>
+    </div>
+    <div class="foot-contact">
+      <a href="https://wa.me/55SEUNUMERO" target="_blank" rel="noopener">WhatsApp · (00) 00000-0000</a>
+      <a href="mailto:contato@seudominio.com">contato@seudominio.com</a>
+      <a href="#">Instagram · @seuinstagram</a>
+    </div>
+  </div>
+  <div class="wrap foot-bottom">© 2026 China Business Experience · Todos os direitos reservados.</div>
+</footer>
+
+<script>
+  // Nav scroll state
+  const nav = document.getElementById('nav');
+  const onScroll = () => nav.classList.toggle('scrolled', window.scrollY > 40);
+  onScroll(); window.addEventListener('scroll', onScroll, {passive:true});
+
+  // Menu mobile
+  const menuBtn = document.getElementById('menuBtn');
+  const navLinks = document.getElementById('navLinks');
+  menuBtn.addEventListener('click', () => navLinks.classList.toggle('open'));
+  navLinks.querySelectorAll('a').forEach(a => a.addEventListener('click', () => navLinks.classList.remove('open')));
+
+  // Reveal on scroll
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach(e => { if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target); } });
+  }, {threshold:.15, rootMargin:'0px 0px -8% 0px'});
+  document.querySelectorAll('[data-reveal]').forEach(el => io.observe(el));
+
+  // FAQ accordion
+  document.querySelectorAll('.faq-q').forEach(q => {
+    q.addEventListener('click', () => {
+      const item = q.parentElement;
+      const wasOpen = item.classList.contains('open');
+      document.querySelectorAll('.faq-item.open').forEach(i => i.classList.remove('open'));
+      if(!wasOpen) item.classList.add('open');
+    });
+  });
+</script>
+
+</body>
+</html>

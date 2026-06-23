@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Guia: O que observar na Canton Fair · 12 pontos essenciais</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ink:#1a1c22;--soft:#4a4d57;--muted:#71747e;
+    --gold:#b08a3e;--gold-2:#caa45c;--line:#e6e2d8;--paper:#fbf9f4;--dark:#0e1016;
+    --serif:'Cormorant Garamond',Georgia,serif;--sans:'Inter',system-ui,sans-serif;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{font-family:var(--sans);color:var(--ink);background:#e9e6df;line-height:1.7;-webkit-font-smoothing:antialiased}
+  .page{max-width:820px;margin:0 auto;background:var(--paper)}
+  h1,h2,h3{font-family:var(--serif);line-height:1.1;font-weight:600}
+  .pad{padding:0 64px}
+
+  /* CAPA */
+  .cover{background:linear-gradient(160deg,#11141c,#0a0c12);color:#ece9e2;padding:80px 64px 70px;position:relative;overflow:hidden}
+  .cover::after{content:"广交会";position:absolute;right:-10px;bottom:-30px;font-family:var(--serif);font-size:7rem;color:rgba(202,164,92,.07);font-weight:700}
+  .brand{font-family:var(--serif);font-size:1.15rem;letter-spacing:.02em}
+  .brand b{color:var(--gold-2)}
+  .eyebrow{text-transform:uppercase;letter-spacing:.3em;font-size:.72rem;color:var(--gold-2);font-weight:600;margin:38px 0 18px;display:block}
+  .cover h1{font-size:3.3rem;font-weight:600;max-width:16ch}
+  .cover h1 em{font-style:italic;color:var(--gold-2)}
+  .cover .sub{margin-top:20px;color:#c7c5be;font-weight:300;font-size:1.1rem;max-width:54ch}
+  .cover .tag{display:inline-block;margin-top:30px;border:1px solid rgba(202,164,92,.4);border-radius:999px;padding:8px 18px;font-size:.8rem;letter-spacing:.06em;color:var(--gold-2)}
+
+  /* INTRO */
+  .intro{padding:54px 64px 10px}
+  .intro p{color:var(--soft);font-size:1.05rem;font-weight:300;margin-bottom:16px}
+  .intro p b{color:var(--ink);font-weight:600}
+  .rule{height:1px;background:var(--line);margin:40px 64px}
+
+  /* PONTOS */
+  .points{padding:10px 64px 20px}
+  .point{display:grid;grid-template-columns:64px 1fr;gap:26px;padding:30px 0;border-bottom:1px solid var(--line);break-inside:avoid}
+  .point:last-child{border-bottom:none}
+  .point .n{font-family:var(--serif);font-size:2.6rem;color:var(--gold);line-height:1;font-weight:600}
+  .point h3{font-size:1.5rem;margin-bottom:8px;color:var(--ink)}
+  .point p{color:var(--soft);font-weight:300}
+  .point .tip{margin-top:12px;background:#f3eee2;border-left:3px solid var(--gold);padding:11px 16px;font-size:.92rem;color:#5a4d31}
+  .point .tip b{color:var(--gold)}
+
+  /* CHECKLIST */
+  .checklist{background:var(--dark);color:#ece9e2;padding:50px 64px;break-inside:avoid}
+  .checklist .eyebrow{margin-top:0}
+  .checklist h2{font-size:2rem;margin-bottom:24px}
+  .checklist ul{list-style:none;columns:2;column-gap:40px}
+  .checklist li{font-weight:300;color:#cdcbc4;font-size:.96rem;padding:8px 0 8px 28px;position:relative;break-inside:avoid}
+  .checklist li::before{content:"☐";position:absolute;left:0;color:var(--gold-2);font-size:1.05rem}
+
+  /* CTA FINAL */
+  .cta{padding:54px 64px 70px;text-align:center}
+  .cta .eyebrow{margin:0 auto 16px}
+  .cta h2{font-size:2.2rem;max-width:20ch;margin:0 auto 14px}
+  .cta h2 em{font-style:italic;color:var(--gold)}
+  .cta p{color:var(--soft);font-weight:300;max-width:54ch;margin:0 auto 28px}
+  .btn{display:inline-block;background:linear-gradient(120deg,var(--gold-2),var(--gold));color:#15110a;font-weight:600;padding:16px 38px;border-radius:3px;text-decoration:none;font-size:1rem}
+  .foot{background:#0a0c12;color:#8a887f;text-align:center;padding:26px;font-size:.8rem;letter-spacing:.04em}
+  .foot b{color:var(--gold-2)}
+
+  /* BOTÃO IMPRIMIR (some na impressão) */
+  .printbar{position:fixed;top:16px;right:16px;z-index:10}
+  .printbar button{background:var(--dark);color:#ece9e2;border:1px solid var(--gold);padding:11px 20px;border-radius:4px;font-family:var(--sans);font-size:.85rem;cursor:pointer}
+
+  @media print{
+    body{background:#fff}
+    .printbar{display:none}
+    .page{max-width:none}
+    .cover::after{color:rgba(202,164,92,.05)}
+    @page{margin:0}
+  }
+  @media(max-width:680px){
+    .pad,.cover,.intro,.points,.checklist,.cta{padding-left:26px;padding-right:26px}
+    .rule{margin-left:26px;margin-right:26px}
+    .cover h1{font-size:2.3rem}
+    .checklist ul{columns:1}
+    .point{grid-template-columns:44px 1fr;gap:16px}
+  }
+</style>
+</head>
+<body>
+
+<div class="printbar"><button onclick="window.print()">⬇ Salvar como PDF</button></div>
+
+<div class="page">
+
+  <!-- CAPA -->
+  <header class="cover">
+    <div class="brand">China <b>Business</b> Experience</div>
+    <span class="eyebrow">Guia gratuito · Cortesia</span>
+    <h1>O que observar na <em>Canton Fair</em></h1>
+    <p class="sub">12 pontos que separam quem apenas passeia pela feira de quem volta com fornecedores e oportunidades mapeadas.</p>
+    <span class="tag">Leitura de 6 minutos · Guangzhou, China</span>
+  </header>
+
+  <!-- INTRODUÇÃO -->
+  <section class="intro">
+    <p>A Canton Fair (Feira de Importação e Exportação da China) acontece em Guangzhou, duas vezes ao ano, no complexo de Pazhou. É a maior feira multissetorial da China e uma das maiores do mundo, com milhares de fabricantes e compradores reunidos no mesmo lugar.</p>
+    <p>Para um empresário, ela pode ser um divisor de águas, ou um labirinto. A diferença está em <b>chegar com método</b>. Este guia reúne 12 pontos práticos para você observar, perguntar e decidir melhor. Use como checklist.</p>
+  </section>
+
+  <div class="rule"></div>
+
+  <!-- 12 PONTOS -->
+  <section class="points">
+
+    <div class="point">
+      <div class="n">01</div>
+      <div>
+        <h3>Defina seu objetivo antes de entrar</h3>
+        <p>A feira é grande demais para ser percorrida sem foco. Antes de chegar, defina 2 ou 3 categorias de produto que realmente interessam ao seu negócio. Sem isso, você gasta energia em tudo e profundidade em nada.</p>
+        <div class="tip"><b>Faça:</b> liste seus objetivos por prioridade, comprar agora, mapear para o futuro, ou apenas entender tendências.</div>
+      </div>
+    </div>
+
+    <div class="point">
+      <div class="n">02</div>
+      <div>
+        <h3>Entenda a estrutura: fases e setores</h3>
+        <p>A Canton Fair é dividida em três fases, cada uma com setores diferentes (eletrônicos, casa, têxtil, etc.). Confira em qual fase estão os produtos que você busca; visitar a fase errada é o erro mais comum de quem vai pela primeira vez.</p>
+        <div class="tip"><b>Verifique:</b> o calendário e o mapa de setores antes de embarcar. Eles mudam a cada edição.</div>
+      </div>
+    </div>
+
+    <div class="point">
+      <div class="n">03</div>
+      <div>
+        <h3>Reconheça antes de negociar</h3>
+        <p>No primeiro contato com um pavilhão, resista à tentação de negociar de imediato. Faça uma volta de reconhecimento para entender a oferta, comparar fornecedores e identificar os stands que merecem uma segunda visita mais profunda.</p>
+        <div class="tip"><b>Regra prática:</b> primeiro mapeie, depois aprofunde. Curiosidade não é oportunidade, ainda.</div>
+      </div>
+    </div>
+
+    <div class="point">
+      <div class="n">04</div>
+      <div>
+        <h3>Saiba diferenciar fabricante de trading</h3>
+        <p>Nem todo stand é uma fábrica. Muitos são <i>tradings</i> (intermediários). Não há problema em comprar de trading, mas o preço, a flexibilidade e o controle de qualidade mudam. Pergunte diretamente se eles fabricam ou revendem.</p>
+        <div class="tip"><b>Pergunte:</b> “Vocês são o fabricante? Posso visitar a fábrica?” A resposta revela muito.</div>
+      </div>
+    </div>
+
+    <div class="point">
+      <div class="n">05</div>
+      <div>
+        <h3>Faça as perguntas certas</h3>
+        <p>Boas perguntas economizam meses. Pergunte sobre quantidade mínima (MOQ), prazo de produção, possibilidade de amostra, capacidade mensal, certificações e se aceitam personalização (sua marca, sua embalagem).</p>
+        <div class="tip"><b>Anote sempre:</b> MOQ, preço por faixa de quantidade, prazo e condição de pagamento, para cada fornecedor.</div>
+      </div>
+    </div>
+
+    <div class="point">
+      <div class="n">06</div>
+      <div>
+        <h3>Entenda MOQ, amostras e personalização</h3>
+        <p>O MOQ (pedido mínimo) define se aquele produto cabe no seu momento. Avalie o custo e o prazo da amostra antes de fechar qualquer coisa, e se quiser sua própria marca, pergunte sobre OEM/ODM (fabricação com sua identidade).</p>
+        <div class="tip"><b>Atenção:</b> amostra boa não garante produção boa. Combine como será o controle de qualidade do lote.</div>
+      </div>
+    </div>
+
+    <div class="point">
+      <div class="n">07</div>
+      <div>
+        <h3>Leia o preço por inteiro</h3>
+        <p>O valor do produto não é o custo final. Entenda o que está incluído: o preço é FOB (posto no porto), EXW (na fábrica) ou outro? Frete, impostos de importação e despacho entram depois. Comparar só o preço de tabela engana.</p>
+        <div class="tip"><b>Compare:</b> custo total desembarcado (produto + frete + impostos + despacho), não o preço de etiqueta.</div>
+      </div>
+    </div>
+
+    <div class="point">
+      <div class="n">08</div>
+      <div>
+        <h3>Avalie qualidade e capacidade real</h3>
+        <p>Pegue, teste e fotografe os produtos. Verifique acabamento, materiais e certificações exigidas no Brasil para a sua categoria. E confirme se a capacidade produtiva do fornecedor aguenta o seu volume, agora e quando você crescer.</p>
+        <div class="tip"><b>Peça:</b> catálogos, fichas técnicas e referências de outros clientes/mercados atendidos.</div>
+      </div>
+    </div>
+
+    <div class="point">
+      <div class="n">09</div>
+      <div>
+        <h3>Organize contatos e catálogos com método</h3>
+        <p>Você vai conhecer dezenas de fornecedores em poucos dias. Sem um sistema, tudo vira uma pilha de cartões e PDFs soltos. Fotografe cada cartão junto do produto, anote uma nota rápida (1 a 5) e registre o porquê do interesse.</p>
+        <div class="tip"><b>Dica:</b> use uma planilha ou app no celular. Ao voltar, você lembrará exatamente quem era quem.</div>
+      </div>
+    </div>
+
+    <div class="point">
+      <div class="n">10</div>
+      <div>
+        <h3>Negocie sem erros que custam margem</h3>
+        <p>Não feche na empolgação do primeiro stand. Compare, peça melhores condições por volume e deixe claro que você está avaliando outros fornecedores. Pressa e ansiedade são as maiores inimigas da margem.</p>
+        <div class="tip"><b>Evite:</b> fechar grande no primeiro pedido. Comece com um pedido-teste antes de escalar.</div>
+      </div>
+    </div>
+
+    <div class="point">
+      <div class="n">11</div>
+      <div>
+        <h3>Pense na logística e na importação desde já</h3>
+        <p>Um bom produto com importação mal planejada vira prejuízo. Entenda os Incoterms, tenha um despachante de confiança e considere prazos alfandegários. Pergunte ao fornecedor sobre experiência em exportar para o Brasil.</p>
+        <div class="tip"><b>Planeje:</b> frete, seguro, impostos e prazo de chegada antes de assumir compromissos de venda.</div>
+      </div>
+    </div>
+
+    <div class="point">
+      <div class="n">12</div>
+      <div>
+        <h3>O verdadeiro trabalho começa depois da feira</h3>
+        <p>A Canton Fair abre portas; quem fecha negócios é o follow-up. Nos dias seguintes, retome contato com os fornecedores prioritários, peça amostras, alinhe condições e faça um pedido-teste antes de qualquer volume maior.</p>
+        <div class="tip"><b>Em 7 dias:</b> contate seus 5 fornecedores prioritários enquanto a memória e o relacionamento estão quentes.</div>
+      </div>
+    </div>
+
+  </section>
+
+  <!-- CHECKLIST RÁPIDO -->
+  <section class="checklist">
+    <span class="eyebrow">Leve no bolso</span>
+    <h2>Checklist rápido da feira</h2>
+    <ul>
+      <li>Objetivos e categorias definidos</li>
+      <li>Mapa de setores e fases conferido</li>
+      <li>Cartão de visita / credencial</li>
+      <li>Celular com bateria e armazenamento</li>
+      <li>Planilha ou app para registrar fornecedores</li>
+      <li>Perguntas-chave anotadas (MOQ, prazo, preço)</li>
+      <li>Sacola para catálogos e amostras</li>
+      <li>Calçado confortável (são quilômetros por dia)</li>
+      <li>Lista de certificações exigidas no Brasil</li>
+      <li>Plano de follow-up para a volta</li>
+    </ul>
+  </section>
+
+  <!-- CTA FINAL -->
+  <section class="cta">
+    <span class="eyebrow">A China de perto</span>
+    <h2>Você pode ler sobre a China. Ou <em>enxergá-la de dentro.</em></h2>
+    <p>Este guia é só uma amostra do nosso olhar. Na China Business Experience, você vive a Canton Fair com curadoria, contexto e ao lado de outros empresários, com tudo isso aplicado na prática.</p>
+    <a href="#" class="btn">Quero conhecer a imersão →</a>
+  </section>
+
+  <div class="foot">© 2026 China <b>Business</b> Experience · Material de cortesia. Compartilhe com quem precisa enxergar a China de perto.</div>
+
+</div>
+
+</body>
+</html>

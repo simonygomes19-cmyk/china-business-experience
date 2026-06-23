@@ -1,0 +1,1228 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>China Business Experience · Imersão de Negócios na China</title>
+<meta name="description" content="Uma imersão de negócios para empresários e empreendedores que querem ver de perto mercados, fornecedores, tendências e possibilidades reais de negócio na China.">
+
+<meta property="og:title" content="China Business Experience · Imersão de Negócios na China">
+<meta property="og:description" content="A China não é apenas um destino. É onde muitas oportunidades começam antes de chegarem ao Brasil.">
+<meta property="og:type" content="website">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,500&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+<style>
+  :root{
+    --bg:#08090c;
+    --bg-2:#0c0f15;
+    --panel:#11151d;
+    --petrol:#0a1620;
+    --gold:#c8a464;
+    --gold-soft:#e0c896;
+    --bronze:#9c7842;
+    --text:#ece9e2;
+    --muted:#9b9a92;
+    --muted-2:#76756e;
+    --line:rgba(255,255,255,.08);
+    --line-strong:rgba(200,164,100,.34);
+    --max:1180px;
+    --serif:'Cormorant Garamond',Georgia,serif;
+    --sans:'Inter',system-ui,sans-serif;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  /* Lenis (scroll suave) */
+  html.lenis{scroll-behavior:auto}
+  html.lenis,html.lenis body{height:auto}
+  .lenis.lenis-smooth [data-lenis-prevent]{overscroll-behavior:contain}
+  .lenis.lenis-stopped{overflow:hidden}
+  /* barra de progresso */
+  .scroll-prog{position:fixed;top:0;left:0;height:2px;width:0;z-index:90;background:linear-gradient(90deg,var(--bronze),var(--gold-soft));box-shadow:0 0 14px rgba(200,164,100,.7);transition:width .12s linear}
+  body{
+    font-family:var(--sans);background:var(--bg);color:var(--text);
+    line-height:1.7;-webkit-font-smoothing:antialiased;overflow-x:hidden;
+  }
+  ::selection{background:var(--gold);color:#08090c}
+
+  /* ===== CANVAS DE FUNDO (sexy canvas) ===== */
+  #bg{position:fixed;inset:0;z-index:0;display:block;pointer-events:none}
+  /* brilho que segue o cursor */
+  #glow{position:fixed;width:620px;height:620px;left:0;top:0;z-index:1;pointer-events:none;
+    transform:translate(-50%,-50%);transition:opacity .6s;opacity:0;
+    background:radial-gradient(circle, rgba(200,164,100,.16), rgba(200,164,100,.05) 38%, transparent 66%);
+    mix-blend-mode:screen;will-change:transform}
+  /* textura de grão de filme */
+  body::after{content:"";position:fixed;inset:0;z-index:2;pointer-events:none;opacity:.05;
+    background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");}
+  /* todo o conteúdo acima do canvas */
+  .site{position:relative;z-index:3}
+
+  .wrap{max-width:var(--max);margin:0 auto;padding:0 28px}
+  h1,h2,h3{font-family:var(--serif);font-weight:600;line-height:1.08;letter-spacing:-.01em}
+  a{color:inherit;text-decoration:none}
+
+  .eyebrow{font-family:var(--sans);text-transform:uppercase;letter-spacing:.36em;font-size:.72rem;font-weight:600;color:var(--gold);display:inline-block}
+  .eyebrow.line::before{content:"";display:inline-block;width:34px;height:1px;background:var(--gold);vertical-align:middle;margin-right:14px;opacity:.7}
+  /* no hero (centralizado) a tarja ganha risco dos dois lados */
+  .hero .eyebrow.line::after{content:"";display:inline-block;width:34px;height:1px;background:var(--gold);vertical-align:middle;margin-left:14px;opacity:.7}
+
+  /* BOTÕES */
+  .btn{display:inline-flex;align-items:center;gap:11px;cursor:pointer;border:none;font-family:var(--sans);font-weight:600;font-size:.96rem;letter-spacing:.01em;padding:17px 36px;border-radius:2px;position:relative;overflow:hidden;transition:transform .35s cubic-bezier(.2,.7,.2,1),box-shadow .35s,color .35s}
+  .btn .arw{transition:transform .35s}
+  .btn:hover .arw{transform:translateX(5px)}
+  .btn-gold{background:linear-gradient(120deg,var(--gold-soft),var(--gold));color:#15110a;box-shadow:0 14px 44px -12px rgba(200,164,100,.6)}
+  .btn-gold::before{content:"";position:absolute;top:0;left:-120%;width:60%;height:100%;background:linear-gradient(120deg,transparent,rgba(255,255,255,.55),transparent);transform:skewX(-20deg);transition:left .7s}
+  .btn-gold:hover{transform:translateY(-3px);box-shadow:0 24px 60px -12px rgba(200,164,100,.8)}
+  .btn-gold:hover::before{left:140%}
+  .btn-outline{background:transparent;color:var(--text);border:1px solid var(--line-strong)}
+  .btn-outline:hover{border-color:var(--gold);color:var(--gold-soft);transform:translateY(-3px)}
+  /* botão escuro premium (preto + dourado) */
+  .btn-dark{
+    background:linear-gradient(160deg,#181a21 0%,#0a0b0e 100%);
+    color:var(--gold-soft);border:1px solid rgba(200,164,100,.55);
+    box-shadow:0 16px 44px -16px rgba(0,0,0,.85), inset 0 1px 0 rgba(255,255,255,.06);
+    position:relative;overflow:hidden;
+  }
+  .btn-dark::before{content:"";position:absolute;top:0;left:-130%;width:55%;height:100%;background:linear-gradient(120deg,transparent,rgba(200,164,100,.28),transparent);transform:skewX(-20deg);transition:left .8s}
+  .btn-dark:hover{transform:translateY(-3px);border-color:var(--gold);box-shadow:0 22px 56px -16px rgba(0,0,0,.9), 0 0 26px -6px rgba(200,164,100,.45), inset 0 1px 0 rgba(255,255,255,.09)}
+  .btn-dark:hover::before{left:160%}
+  .micro{display:block;margin-top:16px;font-size:.84rem;color:var(--muted-2);letter-spacing:.02em}
+
+  /* NAV */
+  header.nav{position:fixed;top:0;left:0;right:0;z-index:60;transition:background .4s,border-color .4s;border-bottom:1px solid transparent}
+  header.nav.scrolled{background:rgba(8,9,12,.78);backdrop-filter:blur(16px);border-bottom:1px solid var(--line)}
+  .nav-inner{display:flex;align-items:center;justify-content:space-between;height:82px}
+  .brand{font-family:var(--serif);font-size:1.4rem;font-weight:600}
+  .brand b{color:var(--gold)}
+  .nav-links{display:flex;gap:38px;align-items:center}
+  .nav-links a{font-size:.86rem;font-weight:500;letter-spacing:.04em;color:var(--muted);transition:color .25s}
+  .nav-links a:hover{color:var(--text)}
+  .nav-links .btn{padding:12px 26px;font-size:.84rem}
+  .menu-btn{display:none;background:none;border:none;color:var(--text);font-size:1.5rem;cursor:pointer}
+
+  /* BOTÃO FLUTUANTE — acompanha o scroll e induz ao próximo passo */
+  .float-cta{
+    position:fixed;right:26px;bottom:26px;z-index:70;
+    display:inline-flex;align-items:center;gap:10px;
+    background:linear-gradient(120deg,var(--gold-soft),var(--gold));color:#15110a;
+    font-family:var(--sans);font-weight:700;font-size:.92rem;letter-spacing:.02em;
+    padding:15px 26px;border-radius:999px;text-decoration:none;
+    box-shadow:0 16px 42px -10px rgba(200,164,100,.6);
+    opacity:0;transform:translateY(26px) scale(.96);pointer-events:none;
+    transition:opacity .5s cubic-bezier(.2,.7,.2,1),transform .5s cubic-bezier(.2,.7,.2,1);
+  }
+  .float-cta.show{opacity:1;transform:none;pointer-events:auto;animation:floatpulse 2.8s ease-in-out infinite}
+  .float-cta:hover{transform:translateY(-3px)}
+  .float-cta .arw{transition:transform .35s}
+  .float-cta:hover .arw{transform:translateX(4px)}
+  @keyframes floatpulse{0%,100%{box-shadow:0 16px 42px -10px rgba(200,164,100,.55)}50%{box-shadow:0 18px 54px -6px rgba(200,164,100,.9)}}
+
+  /* CTA refinado do menu */
+  .nav-links .nav-cta{
+    padding:10px 20px;font-size:.7rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;
+    color:#1c1305;border-radius:999px;border:1px solid rgba(255,242,214,.5);
+    background:linear-gradient(125deg,var(--gold-soft) 0%,var(--gold) 52%,var(--bronze) 110%);
+    box-shadow:0 8px 26px -8px rgba(200,164,100,.7), inset 0 1px 0 rgba(255,255,255,.45);
+    position:relative;overflow:hidden;transition:transform .35s cubic-bezier(.2,.7,.2,1),box-shadow .35s;
+  }
+  .nav-links .nav-cta::before{content:"";position:absolute;top:0;left:-130%;width:55%;height:100%;background:linear-gradient(120deg,transparent,rgba(255,255,255,.7),transparent);transform:skewX(-20deg);transition:left .75s}
+  .nav-links .nav-cta:hover{transform:translateY(-2px);box-shadow:0 14px 36px -8px rgba(200,164,100,.95), inset 0 1px 0 rgba(255,255,255,.55)}
+  .nav-links .nav-cta:hover::before{left:160%}
+  .nav-links .nav-cta .arw{font-size:.85rem;transition:transform .35s}
+  .nav-links .nav-cta:hover .arw{transform:translateX(4px)}
+
+  /* ===== MODAL DE AVALIAÇÃO DE PERFIL ===== */
+  .modal{position:fixed;inset:0;z-index:200;display:none}
+  .modal.open{display:block}
+  .modal-backdrop{position:absolute;inset:0;background:rgba(5,6,9,.8);backdrop-filter:blur(7px);animation:mfade .35s ease}
+  @keyframes mfade{from{opacity:0}to{opacity:1}}
+  .modal-card{position:relative;z-index:2;max-width:660px;margin:4vh auto;background:linear-gradient(165deg,#13151c 0%,#0a0b0e 100%);border:1px solid var(--line-strong);border-radius:12px;box-shadow:0 50px 120px -30px rgba(0,0,0,.85);max-height:92vh;overflow:auto;padding:48px 46px;animation:mrise .45s cubic-bezier(.2,.7,.2,1)}
+  @keyframes mrise{from{opacity:0;transform:translateY(28px)}to{opacity:1;transform:none}}
+  .modal-x{position:absolute;top:14px;right:18px;background:none;border:none;color:var(--muted);font-size:2rem;line-height:1;cursor:pointer;transition:color .2s}
+  .modal-x:hover{color:var(--gold-soft)}
+  .modal h3{font-family:var(--serif);font-size:2rem;font-weight:600;margin:16px 0 8px;line-height:1.12}
+  .modal .modal-lede{color:var(--muted);font-weight:300;font-size:1rem;margin-bottom:26px}
+  .fld{margin-bottom:18px}
+  .modal-section{font-size:.72rem;letter-spacing:.12em;text-transform:uppercase;color:var(--gold);font-weight:700;margin:26px 0 12px}
+  .fld .q{display:block;font-weight:600;font-size:.94rem;color:var(--text);margin-bottom:9px}
+  .fld input[type=text],.fld input[type=email],.fld input[type=tel],.fld textarea{width:100%;padding:13px 15px;background:rgba(255,255,255,.03);border:1px solid var(--line);border-radius:8px;color:var(--text);font-family:inherit;font-size:1rem;transition:border-color .2s}
+  .fld input:focus,.fld textarea:focus{outline:none;border-color:var(--gold)}
+  .fld input::placeholder,.fld textarea::placeholder{color:var(--muted-2)}
+  .opts{display:grid;gap:9px}
+  .opt{display:flex;align-items:center;gap:12px;padding:12px 15px;border:1px solid var(--line);border-radius:8px;cursor:pointer;color:var(--muted);font-size:.95rem;font-weight:300;transition:border-color .2s,background .2s,color .2s}
+  .opt:hover{border-color:var(--line-strong)}
+  .opt input{accent-color:var(--gold);width:auto;flex:0 0 auto}
+  .opt:has(input:checked){border-color:var(--gold);background:rgba(200,164,100,.08);color:var(--text)}
+  .modal .btn-gold.modal-submit{width:100%;justify-content:center;margin-top:10px}
+  .modal-note{font-size:.8rem;color:var(--muted-2);text-align:center;margin-top:12px}
+  .modal-success{text-align:center;padding:26px 6px}
+  .modal-success .ok{width:66px;height:66px;border-radius:50%;border:1px solid var(--gold);color:var(--gold);display:grid;place-items:center;font-size:1.9rem;margin:0 auto 20px}
+  .modal-success p{color:var(--muted);font-weight:300;margin:6px auto 22px;max-width:42ch}
+  @media(max-width:680px){.modal-card{margin:0;min-height:100vh;border-radius:0;padding:64px 22px 40px}}
+
+  /* HERO */
+  .hero{position:relative;min-height:100vh;display:flex;align-items:center;overflow:hidden}
+  .hero-bg{position:absolute;inset:0;z-index:0}
+  .hero-bg img{width:100%;height:100%;object-fit:cover;animation:kenburns 24s ease-out forwards;opacity:.42}
+  .hero-bg::after{content:"";position:absolute;inset:0;background:
+    radial-gradient(120% 90% at 50% 42%, rgba(8,9,12,.25) 0%, rgba(8,9,12,.68) 68%, rgba(8,9,12,.92) 100%),
+    linear-gradient(180deg, rgba(8,9,12,.7) 0%, rgba(8,9,12,.45) 38%, rgba(8,9,12,.85) 100%),
+    linear-gradient(0deg, var(--bg) 1%, transparent 34%);}
+  @keyframes kenburns{from{transform:scale(1.14)}to{transform:scale(1)}}
+  .hero .wrap{position:relative;z-index:2;width:100%}
+  .hero-inner{max-width:880px;margin:0 auto;text-align:center;padding:70px 0 64px;text-shadow:0 2px 28px rgba(0,0,0,.55)}
+  .hero h1{font-size:clamp(1.9rem,4.3vw,3.5rem);margin:14px 0 20px;font-weight:500}
+  .hero h1 em{font-style:italic;color:var(--gold-soft)}
+  .hero .sub{font-size:clamp(.98rem,1.4vw,1.08rem);color:#cfcdc6;max-width:880px;margin:0 auto;font-weight:300;line-height:1.55;white-space:normal}
+  @media(max-width:760px){.hero .sub br{display:none}}
+  .hero-cta{margin-top:32px}
+  .scroll-hint{position:absolute;bottom:34px;left:50%;transform:translateX(-50%);z-index:2;color:var(--muted-2);font-size:.72rem;letter-spacing:.3em;text-transform:uppercase;display:flex;flex-direction:column;align-items:center;gap:10px}
+  .scroll-hint span{width:1px;height:46px;background:linear-gradient(var(--gold),transparent);animation:pulse 2.4s ease-in-out infinite}
+  @keyframes pulse{0%,100%{opacity:.3;transform:scaleY(.7)}50%{opacity:1;transform:scaleY(1)}}
+
+  /* SECTIONS — fundos translúcidos para o canvas aparecer sutilmente */
+  section{position:relative;padding:120px 0}
+
+  /* ===== LUZ AMBIENTE POR SEÇÃO (emoção via intensidade + movimento) ===== */
+  section:not(.hero){overflow:hidden}
+  section:not(.hero)::before,
+  section:not(.hero)::after{content:"";position:absolute;border-radius:50%;z-index:0;pointer-events:none;filter:blur(120px)}
+  /* luz principal — entra forte e "respira" */
+  section:not(.hero)::before{
+    width:82vw;max-width:1080px;aspect-ratio:1;top:-26%;left:-18%;opacity:.6;
+    background:radial-gradient(circle, var(--amb, rgba(200,164,100,.66)), transparent 70%);
+    animation:drift 19s ease-in-out infinite alternate, breathe 8.5s ease-in-out infinite;
+  }
+  /* luz secundária — contraponto em movimento oposto, dá dimensão */
+  section:not(.hero)::after{
+    width:58vw;max-width:760px;aspect-ratio:1;bottom:-24%;right:-15%;opacity:.45;
+    background:radial-gradient(circle, var(--amb2, rgba(224,200,150,.44)), transparent 70%);
+    animation:drift2 27s ease-in-out infinite alternate;
+  }
+  section:not(.hero) > .wrap{position:relative;z-index:1}
+  /* paleta dourada (versão anterior): dourado · champagne · bronze */
+  section:not(.hero):nth-of-type(3n+1){--amb:rgba(200,164,100,.66);--amb2:rgba(156,120,66,.46)}
+  section:not(.hero):nth-of-type(3n+2){--amb:rgba(224,200,150,.56);--amb2:rgba(200,164,100,.46)}
+  section:not(.hero):nth-of-type(3n){--amb:rgba(156,120,66,.6);--amb2:rgba(224,200,150,.42)}
+  .final{--amb:rgba(224,200,150,.64);--amb2:rgba(200,164,100,.5)}
+  @keyframes drift{from{transform:translate(0,0) scale(1)}to{transform:translate(7%,-6%) scale(1.2)}}
+  @keyframes drift2{from{transform:translate(0,0) scale(1.06)}to{transform:translate(-6%,5%) scale(1.22)}}
+  @keyframes breathe{0%,100%{opacity:.44}50%{opacity:.74}}
+  .panelbg{background:rgba(9,11,15,.72);backdrop-filter:blur(3px);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+  .lede{font-size:clamp(1.05rem,1.6vw,1.22rem);color:var(--muted);font-weight:300;max-width:64ch}
+  .display{font-size:clamp(2rem,4.6vw,3.6rem);font-weight:500}
+  .display em{font-style:italic;color:var(--gold-soft)}
+
+  /* TESE */
+  .tese-grid{display:grid;grid-template-columns:1fr 1.15fr;gap:80px;align-items:center}
+  .tese h2{font-size:clamp(2rem,4.4vw,3.4rem);font-weight:500}
+  .tese .col-r p{color:var(--muted);font-weight:300;font-size:1.08rem;margin-bottom:22px}
+  .tese .col-r p:last-child{margin-bottom:0}
+  .tese .col-r strong{color:var(--text);font-weight:500}
+  .pullnum{font-family:var(--serif);font-size:5rem;color:var(--gold);opacity:.25;line-height:1;display:block;margin-bottom:10px}
+
+  /* STATEMENT */
+  .statement{background:linear-gradient(160deg,rgba(10,22,32,.82),rgba(12,15,21,.82));text-align:center}
+  .statement .display{max-width:none;margin:22px auto 26px;font-size:clamp(1.55rem,3.3vw,2.5rem);line-height:1.2}
+  .statement .lede{margin:0 auto;text-align:center}
+  .vs{display:inline-block;color:var(--gold);font-style:italic}
+
+  /* CARDS */
+  .grid-cards{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--line);border:1px solid var(--line);border-radius:4px;overflow:hidden;margin-top:64px}
+  .pcard{background:rgba(9,11,15,.78);padding:46px 38px;transition:background .4s,transform .4s}
+  .pcard:hover{background:var(--panel)}
+  .pcard .num{font-family:var(--serif);font-size:1rem;color:var(--gold);letter-spacing:.1em}
+  .pcard h3{font-size:1.55rem;margin:18px 0 12px;font-weight:600}
+  .pcard h3.hl{color:var(--gold-soft)}
+  .pcard h3.hl::after{content:"";display:block;width:40px;height:2px;margin-top:11px;border-radius:2px;background:linear-gradient(90deg,var(--gold),rgba(200,164,100,0))}
+  .pcard p{color:var(--muted);font-size:.97rem;font-weight:300}
+
+  /* SEE */
+  .see-grid{display:grid;grid-template-columns:1.05fr 1fr;gap:70px;align-items:center}
+  .see-img{position:relative;border-radius:4px;overflow:hidden;aspect-ratio:4/5}
+  .see-img img{width:100%;height:100%;object-fit:cover;transition:transform 1.2s ease}
+  .see-img:hover img{transform:scale(1.05)}
+  .see-img::after{content:"";position:absolute;inset:0;background:linear-gradient(120deg,rgba(8,9,12,.4),transparent 60%)}
+  .see-list{list-style:none}
+  .see-list li{display:flex;gap:20px;align-items:baseline;padding:20px 0;border-bottom:1px solid var(--line);font-size:1.12rem;font-weight:300}
+  .see-list li:last-child{border-bottom:none}
+  .see-list .k{font-family:var(--serif);color:var(--gold);font-size:1.05rem;min-width:34px}
+  .see-list b{font-weight:500;color:var(--text)}
+
+  /* WHO */
+  .who{text-align:center}
+  .who-grid{display:flex;flex-wrap:wrap;justify-content:center;gap:14px;max-width:920px;margin:54px auto 0}
+  .who-chip{border:1px solid var(--line-strong);border-radius:999px;padding:14px 28px;font-size:1rem;color:var(--text);font-weight:300;transition:all .3s;background:rgba(9,11,15,.5)}
+  .who-chip:hover{background:var(--gold);color:#15110a;border-color:var(--gold);transform:translateY(-3px)}
+  .who-chip b{font-weight:600}
+
+  /* JORNADA */
+  .tl-title{font-size:clamp(1.4rem,3.3vw,2.5rem);white-space:nowrap}
+  @media(max-width:720px){.tl-title{white-space:normal;font-size:clamp(1.6rem,6vw,2rem)}}
+  .tl{margin-top:64px;border-top:1px solid var(--line)}
+  .tl-row{display:grid;grid-template-columns:90px 1fr;gap:40px;padding:38px 0;border-bottom:1px solid var(--line);align-items:start;transition:padding-left .4s,background .4s}
+  .tl-row:hover{padding-left:14px;background:rgba(200,164,100,.03)}
+  .tl-row .step{font-family:var(--serif);font-size:2.4rem;color:var(--gold);opacity:.5;line-height:1}
+  .tl-row h3{font-size:1.7rem;font-weight:600;margin-bottom:8px}
+  .tl-row p{color:var(--muted);font-weight:300;max-width:62ch}
+
+  /* SCARCITY */
+  .scarcity{background:linear-gradient(160deg,rgba(17,21,28,.85),rgba(10,22,32,.85));text-align:center}
+  .scarcity .display{max-width:none;margin:24px auto 18px;font-size:clamp(1.6rem,3.6vw,2.7rem);line-height:1.22}
+  @media(max-width:680px){.scar-title br{display:none}}
+  .scarcity .lede{margin:0 auto 38px;text-align:center}
+
+  /* FAQ */
+  .faq-wrap{max-width:860px;margin:56px auto 0}
+  .faq-item{border-bottom:1px solid var(--line)}
+  .faq-q{width:100%;background:none;border:none;color:var(--text);font-family:var(--serif);font-size:1.5rem;font-weight:500;text-align:left;padding:28px 50px 28px 0;cursor:pointer;position:relative;transition:color .3s}
+  .faq-q:hover{color:var(--gold-soft)}
+  .faq-q::after{content:"+";position:absolute;right:6px;top:50%;transform:translateY(-50%);font-family:var(--sans);font-weight:300;font-size:1.7rem;color:var(--gold);transition:transform .35s}
+  .faq-item.open .faq-q::after{transform:translateY(-50%) rotate(45deg)}
+  .faq-a{max-height:0;overflow:hidden;transition:max-height .45s ease,padding .45s ease}
+  .faq-a p{color:var(--muted);font-weight:300;font-size:1.04rem;padding-bottom:0}
+  .faq-item.open .faq-a{max-height:340px}
+  .faq-item.open .faq-a p{padding-bottom:28px}
+
+  /* FINAL */
+  .final{position:relative;text-align:center;overflow:hidden;padding:150px 0}
+  .final-bg{position:absolute;inset:0;z-index:0;overflow:hidden}
+  .final-bg img{position:absolute;top:-12%;left:0;width:100%;height:124%;object-fit:cover;opacity:.22;will-change:transform}
+  .final-bg::after{content:"";position:absolute;inset:0;background:radial-gradient(circle at 50% 40%,rgba(8,9,12,.5),var(--bg) 80%)}
+  .final .wrap{position:relative;z-index:2}
+  .final .display{max-width:20ch;margin:24px auto 40px;font-size:clamp(2.2rem,5vw,4rem)}
+
+  /* FOOTER */
+  footer{background:rgba(8,9,12,.9);border-top:1px solid var(--line);padding:70px 0 38px}
+  .foot-grid{display:flex;justify-content:space-between;gap:40px;flex-wrap:wrap;align-items:flex-start}
+  .foot-grid .brand{font-size:1.6rem;margin-bottom:14px;display:block}
+  footer p{color:var(--muted);font-weight:300;font-size:.95rem;max-width:38ch}
+  .foot-contact a{display:block;color:var(--muted);font-size:.95rem;margin-bottom:8px;transition:color .25s}
+  .foot-contact a:hover{color:var(--gold-soft)}
+  .foot-bottom{margin-top:54px;padding-top:26px;border-top:1px solid var(--line);font-size:.8rem;color:var(--muted-2);letter-spacing:.04em}
+
+  /* REVEAL refinado (sobe saindo de leve desfoque) */
+  [data-reveal]{opacity:0;transform:translateY(40px) scale(.985);filter:blur(7px);transition:opacity 1.15s cubic-bezier(.16,1,.3,1),transform 1.15s cubic-bezier(.16,1,.3,1),filter 1.15s cubic-bezier(.16,1,.3,1);will-change:opacity,transform,filter}
+  [data-reveal].in{opacity:1;transform:none;filter:blur(0)}
+  [data-reveal][data-delay="1"]{transition-delay:.12s}
+  [data-reveal][data-delay="2"]{transition-delay:.24s}
+  [data-reveal][data-delay="3"]{transition-delay:.36s}
+
+  /* HERO META (datas / cidades) */
+  .hero-meta{display:flex;flex-wrap:wrap;gap:12px;margin-top:22px;justify-content:center}
+  .hero-meta .mtag{display:inline-flex;align-items:center;gap:9px;border:1px solid var(--line-strong);border-radius:999px;padding:9px 18px;font-size:.86rem;color:#d8d6cf;font-weight:400;background:rgba(9,11,15,.4)}
+  .hero-meta .mtag b{color:var(--gold-soft);font-weight:600}
+
+  /* ROTEIRO detalhado */
+  .rt{margin-top:58px;border-top:1px solid var(--line)}
+  .rt-day{display:grid;grid-template-columns:130px 1fr;gap:40px;padding:36px 0;border-bottom:1px solid var(--line);transition:background .4s,padding-left .4s}
+  .rt-day:hover{background:rgba(200,164,100,.03);padding-left:12px}
+  .rt-date .d{font-family:var(--serif);font-size:2.6rem;color:var(--gold);line-height:1}
+  .rt-date .mo{font-size:.78rem;letter-spacing:.18em;text-transform:uppercase;color:var(--muted-2);margin-top:4px}
+  .rt-date .wd{font-size:.78rem;letter-spacing:.06em;color:var(--muted);margin-top:2px}
+  .rt-day h3{font-size:1.5rem;font-weight:600;margin-bottom:8px}
+  .rt-day .desc{color:var(--muted);font-weight:300;max-width:64ch}
+  .rt-sched{list-style:none;margin-top:16px;display:grid;gap:7px}
+  .rt-sched li{display:flex;gap:16px;font-size:.9rem;color:var(--muted);font-weight:300}
+  .rt-sched .t{color:var(--gold-soft);min-width:118px;font-variant-numeric:tabular-nums}
+  .rt-stay{display:inline-block;margin-top:14px;font-size:.76rem;letter-spacing:.06em;text-transform:uppercase;color:var(--gold);border:1px solid var(--line-strong);border-radius:999px;padding:5px 14px}
+
+  /* O QUE INCLUI */
+  .incl-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px 44px;max-width:980px;margin:54px auto 0}
+  .incl-grid li{list-style:none;position:relative;padding:9px 0 9px 24px;color:var(--muted);font-weight:300;font-size:1.02rem;line-height:1.5;border-bottom:1px solid var(--line)}
+  .incl-grid li::before{content:"";position:absolute;left:0;top:16px;width:7px;height:7px;background:var(--gold);transform:rotate(45deg)}
+  .incl-grid b{color:inherit;font-weight:inherit}
+
+  /* HOSPEDAGENS */
+  .stays{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;max-width:940px;margin:56px auto 0}
+  .stay-card{background:rgba(9,11,15,.7);border:1px solid var(--line);border-radius:4px;overflow:hidden;transition:transform .4s,border-color .4s}
+  .stay-card:hover{transform:translateY(-6px);border-color:var(--line-strong)}
+  .stay-photo{position:relative;height:200px;overflow:hidden;background:linear-gradient(160deg,#15202a,#0c1419)}
+  .stay-photo img{width:100%;height:100%;object-fit:cover;opacity:.9;transition:transform 1.1s ease}
+  .stay-card:hover .stay-photo img{transform:scale(1.06)}
+  .stay-photo::after{content:"";position:absolute;inset:0;background:linear-gradient(transparent 40%,rgba(8,9,12,.85))}
+  .stay-photo .badge{position:absolute;left:18px;top:18px;z-index:2;font-family:var(--serif);font-size:1.7rem;color:var(--gold-soft);background:rgba(8,9,12,.55);border:1px solid var(--line-strong);width:54px;height:54px;border-radius:50%;display:grid;place-items:center}
+  .stay-photo .city{position:absolute;left:20px;bottom:14px;z-index:2;font-family:var(--serif);font-size:1.7rem;font-weight:600;color:#fff}
+  .stay-body{padding:18px 22px 24px}
+  .stay-body .d{color:var(--gold-soft);font-weight:500;font-size:1rem}
+  .stay-body .dates{color:var(--muted-2);font-size:.86rem;margin-top:3px}
+  .stays-total{text-align:center;margin-top:28px;color:var(--muted);font-weight:300;letter-spacing:.04em}
+  .stays-total b{color:var(--gold-soft);font-weight:600}
+
+  /* disclaimer roteiro */
+  .rt-note{max-width:74ch;margin:44px auto 0;text-align:center;color:var(--muted-2);font-weight:300;font-size:.92rem;font-style:italic}
+
+  /* GATILHO — números / prova de tangibilidade */
+  .stats{padding:52px 0;background:rgba(9,11,15,.66);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+  .stats .row{display:flex;flex-wrap:wrap;justify-content:space-between;gap:24px}
+  .stat{flex:1;min-width:150px;text-align:center}
+  .stat .n{font-family:var(--serif);font-size:clamp(2.4rem,4vw,3.3rem);color:var(--gold);line-height:1}
+  .stat .l{font-size:.74rem;letter-spacing:.22em;text-transform:uppercase;color:var(--muted);margin-top:8px}
+
+  /* GATILHO — autoridade */
+  .authority{text-align:center}
+  .authority .display{max-width:24ch;margin:22px auto 0}
+
+  /* GATILHO — prova social / depoimentos */
+  .quotes{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;margin-top:54px}
+  .qcard{border:1px solid var(--line);border-radius:4px;padding:36px 32px;background:rgba(9,11,15,.6);transition:border-color .4s,transform .4s}
+  .qcard:hover{border-color:var(--line-strong);transform:translateY(-5px)}
+  .qcard .mark{font-family:var(--serif);font-size:3.4rem;color:var(--gold);opacity:.45;line-height:.4;display:block;height:24px}
+  .qcard p{color:var(--text);font-weight:300;font-style:italic;font-size:1.06rem;margin:16px 0 22px}
+  .qcard .who{color:var(--muted);font-size:.86rem;letter-spacing:.02em}
+  .qcard .who b{color:var(--gold-soft);font-weight:600;font-style:normal}
+
+  /* GATILHO — reciprocidade (material gratuito) */
+  .gift{background:linear-gradient(135deg,rgba(200,164,100,.12),rgba(9,11,15,.55));border:1px solid var(--line-strong);border-radius:6px;padding:58px;display:grid;grid-template-columns:1.25fr 1fr;gap:54px;align-items:center}
+  .gift h2{font-size:clamp(1.8rem,3.6vw,2.7rem);font-weight:500;margin:20px 0 14px}
+  .gift p{color:var(--muted);font-weight:300;font-size:1.06rem;margin-bottom:26px;max-width:48ch}
+  .gift p b{color:var(--gold-soft);font-weight:600}
+  .gift-doc{display:flex;justify-content:center}
+  .doc{background:#0e1119;border:1px solid var(--line-strong);border-radius:5px;padding:34px 30px;max-width:330px;box-shadow:0 34px 70px -22px rgba(0,0,0,.75);transform:rotate(-2.5deg);transition:transform .5s}
+  .doc:hover{transform:rotate(0)}
+  .doc-tag{display:inline-block;font-size:.68rem;letter-spacing:.22em;color:var(--gold);border:1px solid var(--line-strong);padding:5px 12px;border-radius:999px}
+  .doc h3{font-size:1.5rem;margin:18px 0 16px;line-height:1.1}
+  .doc ul{list-style:none;display:grid;gap:10px}
+  .doc li{color:var(--muted);font-weight:300;font-size:.92rem;display:flex;gap:11px}
+  .doc li::before{content:"·";color:var(--gold)}
+  .doc-foot{display:block;margin-top:20px;padding-top:16px;border-top:1px solid var(--line);color:var(--gold-soft);font-size:.85rem;letter-spacing:.04em}
+
+  /* GATILHO — barra de escassez/urgência */
+  .urg{display:inline-flex;align-items:center;gap:12px;margin:0 auto 26px;padding:11px 22px;border:1px solid var(--line-strong);border-radius:999px;font-size:.84rem;letter-spacing:.04em;color:var(--gold-soft);background:rgba(200,164,100,.06)}
+  .urg .dot{width:8px;height:8px;border-radius:50%;background:var(--gold);box-shadow:0 0 0 0 rgba(200,164,100,.7);animation:beat 1.8s infinite}
+  @keyframes beat{0%{box-shadow:0 0 0 0 rgba(200,164,100,.55)}70%{box-shadow:0 0 0 10px rgba(200,164,100,0)}100%{box-shadow:0 0 0 0 rgba(200,164,100,0)}}
+  .scar-points{display:flex;flex-wrap:wrap;justify-content:center;gap:14px 30px;margin:0 auto 34px;max-width:760px;color:var(--muted);font-weight:300;font-size:.95rem}
+  .scar-points span{display:inline-flex;align-items:center;gap:9px}
+  .scar-points span::before{content:"✓";color:var(--gold)}
+
+  @media(max-width:920px){
+    section{padding:84px 0}
+    .stats .row{gap:30px 18px}
+    .stat{min-width:42%}
+    .quotes{grid-template-columns:1fr}
+    .gift{grid-template-columns:1fr;gap:40px;padding:38px 26px}
+    .doc{transform:none}
+    .rt-day{grid-template-columns:84px 1fr;gap:22px}
+    .rt-date .d{font-size:2rem}
+    .incl-grid{grid-template-columns:1fr;gap:6px}
+    .stays{grid-template-columns:1fr}
+    .nav-links{display:none;position:absolute;top:82px;left:0;right:0;flex-direction:column;background:rgba(8,9,12,.97);backdrop-filter:blur(14px);padding:26px 28px;gap:22px;border-bottom:1px solid var(--line)}
+    .nav-links.open{display:flex}
+    .menu-btn{display:block}
+    .tese-grid,.see-grid{grid-template-columns:1fr;gap:42px}
+    .grid-cards{grid-template-columns:1fr}
+    .tl-row{grid-template-columns:60px 1fr;gap:22px}
+    .hero-inner{padding:140px 0 90px}
+    #glow{display:none}
+    .float-cta{left:16px;right:16px;bottom:16px;justify-content:center;padding:16px;font-size:1rem}
+  }
+  @media(prefers-reduced-motion:reduce){
+    *{animation:none!important;transition:none!important}
+    [data-reveal]{opacity:1;transform:none}
+  }
+</style>
+</head>
+<body>
+
+<!-- SEXY CANVAS -->
+<canvas id="bg"></canvas>
+<div id="glow"></div>
+<div class="scroll-prog" id="prog"></div>
+<a href="#contato" data-eval class="float-cta" id="floatCta">Garantir minha vaga <span class="arw">→</span></a>
+
+<div class="site">
+
+<!-- NAV -->
+<header class="nav" id="nav">
+  <div class="wrap nav-inner">
+    <div class="brand">China <b>Business</b> Experience</div>
+    <nav class="nav-links" id="navLinks">
+      <a href="#tese">A oportunidade</a>
+      <a href="#diferenciais">A experiência</a>
+      <a href="#roteiro">Roteiro</a>
+      <a href="#incluso">O que inclui</a>
+      <a href="#faq">Dúvidas</a>
+      <a href="#contato" data-eval class="btn nav-cta">Garantir minha vaga <span class="arw">→</span></a>
+    </nav>
+    <button class="menu-btn" id="menuBtn" aria-label="Menu">☰</button>
+  </div>
+</header>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-bg"><img src="img/hero.jpg" alt="China moderna" onerror="this.style.display='none'"></div>
+  <div class="wrap">
+    <div class="hero-inner">
+      <span class="eyebrow line" data-reveal>Imersão de Negócios · China</span>
+      <h1 data-reveal data-delay="1">A China não é apenas um destino.<br><em>É onde muitas oportunidades começam</em>, antes de chegarem ao Brasil.</h1>
+      <p class="sub" data-reveal data-delay="2">Uma imersão de negócios para empresários e empreendedores que querem ver de perto<br>mercados, fornecedores, tendências e possibilidades reais de negócio.</p>
+      <div class="hero-meta" data-reveal data-delay="3">
+        <span class="mtag"><b>11–22 OUT</b> 2026</span>
+        <span class="mtag">Xangai · Guangzhou · Shenzhen</span>
+        <span class="mtag"><b>Canton Fair</b> + visitas técnicas</span>
+      </div>
+      <div class="hero-cta" data-reveal data-delay="3">
+        <a href="#contato" class="btn btn-dark">Quero receber os detalhes da imersão <span class="arw">→</span></a>
+        <span class="micro">Grupo Limitado. Últimas vagas disponíveis.</span>
+      </div>
+    </div>
+  </div>
+  <div class="scroll-hint"><span></span>Role para descobrir</div>
+</section>
+
+<!-- GATILHO: NÚMEROS / TANGIBILIDADE -->
+<section class="stats">
+  <div class="wrap">
+    <div class="row">
+      <div class="stat" data-reveal><div class="n">12</div><div class="l">Dias de imersão</div></div>
+      <div class="stat" data-reveal data-delay="1"><div class="n">3</div><div class="l">Cidades estratégicas</div></div>
+      <div class="stat" data-reveal data-delay="2"><div class="n">9</div><div class="l">Noites de hospedagem</div></div>
+      <div class="stat" data-reveal data-delay="3"><div class="n">2</div><div class="l">Visitas técnicas</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- TESE -->
+<section class="tese panelbg" id="tese">
+  <div class="wrap tese-grid">
+    <div class="col-l" data-reveal>
+      <span class="eyebrow line">A oportunidade</span>
+      <h2 style="margin-top:24px">Enquanto muitos tentam entender a China <em>à distância</em>, outros escolhem estar onde ela acontece.</h2>
+    </div>
+    <div class="col-r" data-reveal data-delay="1">
+      <span class="pullnum">01</span>
+      <p>Há quem tente decifrar a China por vídeos, catálogos e fornecedores encontrados nas bases digitais. É possível? Sim, entretanto é sempre uma leitura de segunda mão, filtrada por intermediários, atrasada em relação ao que realmente está se movendo.</p>
+      <p><strong>A China é um dos maiores laboratórios comerciais do mundo:</strong> onde produtos, fornecedores, tendências e modelos de negócio surgem antes de se tornarem óbvios por aqui.</p>
+      <p>Estar presente muda a equação. Você deixa de reagir ao que já chegou ao Brasil e passa a enxergar o que ainda está por chegar, com tempo de se posicionar antes dos outros.</p>
+    </div>
+  </div>
+</section>
+
+<!-- STATEMENT -->
+<section class="statement">
+  <div class="wrap" data-reveal>
+    <span class="eyebrow line">O posicionamento</span>
+    <h2 class="display">Não é turismo.<br><span class="vs">É imersão de negócios e identificação de oportunidades!</span></h2>
+    <p class="lede">O ganho cultural é consequência, o foco é ampliar a visão comercial, observar mercados em funcionamento, entender como fornecedores operam, enxergar tendências antes que virem consenso, e voltar com repertório prático para decidir melhor no seu próprio negócio.</p>
+  </div>
+</section>
+
+<!-- DIFERENCIAIS -->
+<section id="diferenciais">
+  <div class="wrap">
+    <div data-reveal style="max-width:60ch">
+      <span class="eyebrow line">A experiência</span>
+      <h2 class="display" style="margin-top:22px">Uma curadoria pensada para quem decide.</h2>
+    </div>
+    <div class="grid-cards">
+      <div class="pcard" data-reveal><span class="num">01</span><h3>Curadoria estratégica</h3><p>Cada ambiente, visita e contexto é escolhido com intenção comercial, não por roteiro de cartão-postal.</p></div>
+      <div class="pcard" data-reveal data-delay="1"><span class="num">02</span><h3 class="hl">Grupo seleto</h3><p>Número limitado de participantes, para preservar a profundidade das conversas e a qualidade da experiência.</p></div>
+      <div class="pcard" data-reveal data-delay="2"><span class="num">03</span><h3>Foco em negócios</h3><p>Tudo é orientado a ampliar repertório, leitura de mercado e possibilidades reais, não a entretenimento.</p></div>
+      <div class="pcard" data-reveal><span class="num">04</span><h3 class="hl">Observação real de mercado</h3><p>Ver de perto como produtos nascem, como fornecedores trabalham e como a escala chinesa realmente opera.</p></div>
+      <div class="pcard" data-reveal data-delay="1"><span class="num">05</span><h3>Experiência com contexto</h3><p>Não basta ver. É preciso entender o que se está vendo, com leitura e interpretação ao longo do caminho.</p></div>
+      <div class="pcard" data-reveal data-delay="2"><span class="num">06</span><h3 class="hl">Networking empreendedor</h3><p>Conviver com um grupo de perfil empresarial gera trocas que, muitas vezes, valem tanto quanto a própria viagem.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- SEE -->
+<section class="see panelbg">
+  <div class="wrap see-grid">
+    <div class="see-img" data-reveal>
+      <img src="img/fair.jpg" alt="Mercado e feira na China" onerror="this.style.display='none';this.parentElement.style.background='linear-gradient(160deg,#15202a,#0c1419)'">
+    </div>
+    <div data-reveal data-delay="1">
+      <span class="eyebrow line">O que você pode enxergar</span>
+      <h2 class="display" style="margin:22px 0 14px;font-size:clamp(1.9rem,4vw,3rem)">O que normalmente só se vê depois, quando já é tarde.</h2>
+      <ul class="see-list">
+        <li><span class="k">i</span><span><b>Novos produtos</b> antes de se popularizarem no Brasil</span></li>
+        <li><span class="k">ii</span><span><b>Tendências de consumo</b> em formação</span></li>
+        <li><span class="k">iii</span><span><b>Fornecedores</b> e diferentes formas de operar</span></li>
+        <li><span class="k">iv</span><span><b>Modelos de operação</b> e eficiência em escala</span></li>
+        <li><span class="k">v</span><span><b>Logística</b> e a engrenagem por trás do comércio</span></li>
+        <li><span class="k">vi</span><span><b>Escala comercial</b> em sua real dimensão</span></li>
+        <li><span class="k">vii</span><span><b>Oportunidades</b> que podem inspirar negócios no Brasil</span></li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- WHO -->
+<section class="who">
+  <div class="wrap">
+    <div data-reveal style="max-width:60ch;margin:0 auto">
+      <span class="eyebrow line">Para quem é</span>
+      <h2 class="display" style="margin-top:22px">Para quem busca diferenciação e novas oportunidades de mercado.</h2>
+    </div>
+    <div class="who-grid" data-reveal data-delay="1">
+      <span class="who-chip"><b>Empresários</b></span>
+      <span class="who-chip"><b>Empreendedores</b></span>
+      <span class="who-chip"><b>Comerciantes</b></span>
+      <span class="who-chip"><b>Importadores</b></span>
+      <span class="who-chip"><b>Investidores</b></span>
+      <span class="who-chip">Quem quer ampliar <b>repertório comercial</b></span>
+      <span class="who-chip">Quem quer ver <b>oportunidades de perto</b></span>
+    </div>
+  </div>
+</section>
+
+<!-- JORNADA -->
+<section class="journey panelbg" id="jornada">
+  <div class="wrap">
+    <div data-reveal style="max-width:60ch">
+      <span class="eyebrow line">A jornada</span>
+      <h2 class="display tl-title" style="margin-top:22px">Do preparo ao retorno, com propósito em cada etapa.</h2>
+    </div>
+    <div class="tl">
+      <div class="tl-row" data-reveal><span class="step">01</span><div><h3>Preparação</h3><p>Antes de embarcar, o olhar é alinhado: o que observar, como interpretar e como aproveitar cada ambiente com mentalidade de negócios.</p></div></div>
+      <div class="tl-row" data-reveal><span class="step">02</span><div><h3>Chegada à China</h3><p>O primeiro contato com a escala, a velocidade e a infraestrutura de um dos ambientes comerciais mais relevantes do mundo.</p></div></div>
+      <div class="tl-row" data-reveal><span class="step">03</span><div><h3>Imersão em mercados e ambientes comerciais</h3><p>Estar dentro dos lugares onde o comércio acontece, observando produtos, dinâmicas e movimentos de mercado em primeira mão.</p></div></div>
+      <div class="tl-row" data-reveal><span class="step">04</span><div><h3>Observação de fornecedores e tendências</h3><p>Entender como fornecedores operam, comparar possibilidades e perceber tendências que ainda não chegaram por aqui.</p></div></div>
+      <div class="tl-row" data-reveal><span class="step">05</span><div><h3>Networking e troca com o grupo</h3><p>A leitura compartilhada entre empresários revela ângulos e oportunidades que dificilmente se enxerga sozinho.</p></div></div>
+      <div class="tl-row" data-reveal><span class="step">06</span><div><h3>Retorno com mais visão, repertório e possibilidades</h3><p>Voltar não com lembranças, mas com referências, contatos e clareza sobre caminhos para o seu negócio.</p></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ROTEIRO DETALHADO -->
+<section id="roteiro">
+  <div class="wrap">
+    <div data-reveal style="max-width:64ch">
+      <span class="eyebrow line">O roteiro · 11 a 22 de outubro de 2026</span>
+      <h2 class="display tl-title" style="margin-top:22px">Doze dias com intenção comercial em cada etapa.</h2>
+      <p class="lede" style="margin-top:18px">De Xangai à Canton Fair em Guangzhou, com visitas técnicas a fábricas e o encerramento em Shenzhen.</p>
+    </div>
+
+    <div class="rt">
+      <div class="rt-day" data-reveal>
+        <div class="rt-date"><div class="d">11</div><div class="mo">Outubro</div><div class="wd">Domingo</div></div>
+        <div>
+          <h3>Embarque do Brasil para a China</h3>
+          <p class="desc">Início da jornada empresarial. O grupo embarca em São Paulo (Guarulhos) com destino a Xangai, com conexão internacional em Doha.</p>
+          <ul class="rt-sched">
+            <li><span class="t">01h55</span><span>Embarque em São Paulo / GRU</span></li>
+            <li><span class="t">·</span><span>Conexão internacional em Doha · pernoite em trânsito</span></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="rt-day" data-reveal>
+        <div class="rt-date"><div class="d">12</div><div class="mo">Outubro</div><div class="wd">Segunda</div></div>
+        <div>
+          <h3>Chegada em Xangai</h3>
+          <p class="desc">A porta de entrada para a China moderna: velocidade, escala, inovação e visão de futuro. Recepção do grupo, traslado ao hotel e descanso para adaptação ao fuso.</p>
+          <ul class="rt-sched">
+            <li><span class="t">16h20</span><span>Chegada em Xangai / PVG</span></li>
+            <li><span class="t">17h30–19h00</span><span>Imigração, bagagens e recepção do grupo</span></li>
+            <li><span class="t">19h00–20h30</span><span>Traslado do aeroporto ao hotel</span></li>
+            <li><span class="t">20h30–21h30</span><span>Check-in · noite livre</span></li>
+          </ul>
+          <span class="rt-stay">Hospedagem · Xangai</span>
+        </div>
+      </div>
+
+      <div class="rt-day" data-reveal>
+        <div class="rt-date"><div class="d">13</div><div class="mo">Outubro</div><div class="wd">Terça</div></div>
+        <div>
+          <h3>Boas-vindas e preparação empresarial</h3>
+          <p class="desc">Manhã livre para adaptação. Almoço de boas-vindas e briefing empresarial: como aproveitar a Canton Fair, abordar fornecedores, avaliar produtos, pensar em MOQ, amostras, prazos e próximos passos comerciais.</p>
+          <ul class="rt-sched">
+            <li><span class="t">09h00–11h30</span><span>Manhã livre para adaptação</span></li>
+            <li><span class="t">12h00–14h00</span><span>Almoço de boas-vindas (incluso)</span></li>
+            <li><span class="t">14h30–16h30</span><span>Briefing empresarial da imersão</span></li>
+            <li><span class="t">17h00+</span><span>Horário livre em Xangai</span></li>
+          </ul>
+          <span class="rt-stay">Hospedagem · Xangai</span>
+        </div>
+      </div>
+
+      <div class="rt-day" data-reveal>
+        <div class="rt-date"><div class="d">14</div><div class="mo">Outubro</div><div class="wd">Quarta</div></div>
+        <div>
+          <h3>Xangai → Guangzhou em trem de alta velocidade</h3>
+          <p class="desc">Uma das experiências mais marcantes da infraestrutura chinesa. Guangzhou será a base para a Canton Fair, a maior feira multissetorial da China.</p>
+          <ul class="rt-sched">
+            <li><span class="t">07h00</span><span>Check-out e saída do hotel em Xangai</span></li>
+            <li><span class="t">09h00–16h00</span><span>Trem de alta velocidade Xangai → Guangzhou</span></li>
+            <li><span class="t">16h00–17h30</span><span>Chegada e traslado ao hotel</span></li>
+            <li><span class="t">17h30–18h30</span><span>Check-in · noite livre</span></li>
+          </ul>
+          <span class="rt-stay">Hospedagem · Guangzhou</span>
+        </div>
+      </div>
+
+      <div class="rt-day" data-reveal>
+        <div class="rt-date"><div class="d">15</div><div class="mo">Outubro</div><div class="wd">Quinta</div></div>
+        <div>
+          <h3>Canton Fair, primeiro dia</h3>
+          <p class="desc">Reconhecimento dos pavilhões, leitura da dinâmica da feira e primeiros contatos comerciais. Mais que uma feira de produtos: um ambiente de leitura de mercado.</p>
+          <ul class="rt-sched">
+            <li><span class="t">08h00</span><span>Saída do hotel para a Canton Fair</span></li>
+            <li><span class="t">09h30–12h30</span><span>Reconhecimento dos pavilhões</span></li>
+            <li><span class="t">14h00–17h30</span><span>Continuação da visita à feira</span></li>
+            <li><span class="t">18h00–19h00</span><span>Retorno ao hotel · noite livre</span></li>
+          </ul>
+          <span class="rt-stay">Hospedagem · Guangzhou</span>
+        </div>
+      </div>
+
+      <div class="rt-day" data-reveal>
+        <div class="rt-date"><div class="d">16</div><div class="mo">Outubro</div><div class="wd">Sexta</div></div>
+        <div>
+          <h3>Canton Fair, fornecedores e oportunidades</h3>
+          <p class="desc">Foco direcionado: fornecedores estratégicos, catálogos, preços, prazos, MOQ e capacidade produtiva. Transformar curiosidade em oportunidade.</p>
+          <ul class="rt-sched">
+            <li><span class="t">09h30–12h30</span><span>Visita direcionada aos setores prioritários</span></li>
+            <li><span class="t">14h00–17h30</span><span>Análise de fornecedores e coleta de contatos</span></li>
+            <li><span class="t">18h00–19h00</span><span>Retorno ao hotel · noite livre</span></li>
+          </ul>
+          <span class="rt-stay">Hospedagem · Guangzhou</span>
+        </div>
+      </div>
+
+      <div class="rt-day" data-reveal>
+        <div class="rt-date"><div class="d">17</div><div class="mo">Outubro</div><div class="wd">Sábado</div></div>
+        <div>
+          <h3>Canton Fair, negociação e comparação</h3>
+          <p class="desc">Dia de aprofundamento: retornar aos melhores stands, tirar dúvidas técnicas e construir uma lista qualificada de potenciais parceiros, separando curiosidade de oportunidade real.</p>
+          <ul class="rt-sched">
+            <li><span class="t">09h30–12h30</span><span>Retorno aos fornecedores prioritários</span></li>
+            <li><span class="t">14h00–17h30</span><span>Rodadas de negociação e comparação de propostas</span></li>
+            <li><span class="t">18h00–19h00</span><span>Retorno ao hotel · noite livre</span></li>
+          </ul>
+          <span class="rt-stay">Hospedagem · Guangzhou</span>
+        </div>
+      </div>
+
+      <div class="rt-day" data-reveal>
+        <div class="rt-date"><div class="d">18</div><div class="mo">Outubro</div><div class="wd">Domingo</div></div>
+        <div>
+          <h3>Consolidação de oportunidades</h3>
+          <p class="desc">Dia flexível: retorno à feira, reuniões com fornecedores ou agendas individuais. No fim da tarde, encontro do grupo para troca de percepções e próximos passos.</p>
+          <ul class="rt-sched">
+            <li><span class="t">09h00–16h30</span><span>Dia flexível (feira, reuniões ou agendas individuais)</span></li>
+            <li><span class="t">17h00–18h30</span><span>Encontro do grupo para consolidação</span></li>
+          </ul>
+          <span class="rt-stay">Hospedagem · Guangzhou</span>
+        </div>
+      </div>
+
+      <div class="rt-day" data-reveal>
+        <div class="rt-date"><div class="d">19</div><div class="mo">Outubro</div><div class="wd">Segunda</div></div>
+        <div>
+          <h3>Visita técnica + Guangzhou → Shenzhen</h3>
+          <p class="desc">1ª visita técnica a uma fábrica ou fornecedor estratégico: operação, showroom e linha produtiva, seguida de reuniões e negociações. À noite, trem de alta velocidade para Shenzhen.</p>
+          <ul class="rt-sched">
+            <li><span class="t">09h00–11h30</span><span>Visita técnica 1 em Guangzhou ou região industrial</span></li>
+            <li><span class="t">13h30–16h30</span><span>Reuniões, negociações e agendas comerciais</span></li>
+            <li><span class="t">18h00–18h40</span><span>Trem de alta velocidade Guangzhou → Shenzhen</span></li>
+            <li><span class="t">20h00+</span><span>Chegada, check-in · noite livre</span></li>
+          </ul>
+          <span class="rt-stay">Hospedagem · Shenzhen</span>
+        </div>
+      </div>
+
+      <div class="rt-day" data-reveal>
+        <div class="rt-date"><div class="d">20</div><div class="mo">Outubro</div><div class="wd">Terça</div></div>
+        <div>
+          <h3>Visita técnica em Shenzhen</h3>
+          <p class="desc">Shenzhen, símbolo da China tecnológica e inovadora. 2ª visita técnica (Shenzhen, Dongguan, Huizhou ou polo compatível) com tempo real para reuniões, showrooms e negociação.</p>
+          <ul class="rt-sched">
+            <li><span class="t">09h30–12h00</span><span>Visita técnica 2 em Shenzhen ou região industrial</span></li>
+            <li><span class="t">13h30–17h30</span><span>Reuniões, showrooms e agendas comerciais</span></li>
+            <li><span class="t">17h30–18h30</span><span>Retorno ao hotel · noite livre</span></li>
+          </ul>
+          <span class="rt-stay">Hospedagem · Shenzhen</span>
+        </div>
+      </div>
+
+      <div class="rt-day" data-reveal>
+        <div class="rt-date"><div class="d">21</div><div class="mo">Outubro</div><div class="wd">Quarta</div></div>
+        <div>
+          <h3>Dia livre estratégico + despedida</h3>
+          <p class="desc">Manhã livre para compras técnicas, showrooms ou reuniões individuais. Almoço de despedida e, à noite, traslado de Shenzhen ao Aeroporto Internacional de Hong Kong.</p>
+          <ul class="rt-sched">
+            <li><span class="t">09h00–12h00</span><span>Manhã livre em Shenzhen</span></li>
+            <li><span class="t">12h30–14h30</span><span>Almoço de despedida (incluso)</span></li>
+            <li><span class="t">19h30</span><span>Saída para o aeroporto de Hong Kong</span></li>
+            <li><span class="t">01h25</span><span>Embarque Hong Kong → Doha → São Paulo</span></li>
+          </ul>
+          <span class="rt-stay">Embarque na madrugada de 22/10</span>
+        </div>
+      </div>
+
+      <div class="rt-day" data-reveal>
+        <div class="rt-date"><div class="d">22</div><div class="mo">Outubro</div><div class="wd">Quinta</div></div>
+        <div>
+          <h3>Retorno ao Brasil</h3>
+          <p class="desc">Mais que uma viagem: cada empresário volta com novas referências, novos contatos, visão ampliada de mercado e clareza sobre oportunidades reais.</p>
+          <ul class="rt-sched">
+            <li><span class="t">01h25</span><span>Embarque em Hong Kong · conexão em Doha</span></li>
+            <li><span class="t">17h05</span><span>Chegada prevista em São Paulo / GRU</span></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- O QUE ESTÁ INCLUSO -->
+<section class="panelbg" id="incluso">
+  <div class="wrap">
+    <div data-reveal style="max-width:60ch">
+      <span class="eyebrow line">A experiência por inteiro</span>
+      <h2 class="display" style="margin-top:22px">O que está incluso.</h2>
+    </div>
+    <ul class="incl-grid" data-reveal data-delay="1">
+      <li><b>Passagem aérea internacional</b> conforme voos definidos para o grupo</li>
+      <li><b>9 noites de hospedagem</b> em hotéis selecionados</li>
+      <li>Traslado de chegada em Xangai</li>
+      <li>Almoço de boas-vindas em Xangai</li>
+      <li><b>Briefing empresarial</b> de preparação para a imersão</li>
+      <li>Trem de alta velocidade Xangai → Guangzhou</li>
+      <li>Traslado estação → hotel em Guangzhou</li>
+      <li><b>Participação na Canton Fair</b> (primeira fase)</li>
+      <li>Traslados operacionais para a Canton Fair</li>
+      <li><b>Visita técnica</b> a fábrica/fornecedor em Guangzhou ou região</li>
+      <li>Períodos reservados para reuniões e negociações</li>
+      <li>Trem de alta velocidade Guangzhou → Shenzhen</li>
+      <li><b>Visita técnica</b> a fábrica/fornecedor em Shenzhen ou região</li>
+      <li>Meio período livre estratégico em Shenzhen</li>
+      <li>Almoço de despedida em Shenzhen</li>
+      <li>Traslado final de Shenzhen ao aeroporto de Hong Kong</li>
+      <li><b>Acompanhamento operacional</b> do grupo durante toda a imersão</li>
+      <li><b>Suporte pré-viagem</b>: documentos, bagagem e preparação comercial</li>
+    </ul>
+
+    <div class="stays">
+      <div class="stay-card" data-reveal>
+        <div class="stay-photo"><img src="img/xangai.jpg" alt="Xangai" onerror="this.style.display='none'"><span class="badge">2</span><span class="city">Xangai</span></div>
+        <div class="stay-body"><div class="d">2 dias · 2 Noites</div><div class="dates">12/10 a 14/10</div></div>
+      </div>
+      <div class="stay-card" data-reveal data-delay="1">
+        <div class="stay-photo"><img src="img/guangzhou.jpg" alt="Guangzhou" onerror="this.style.display='none'"><span class="badge">5</span><span class="city">Guangzhou</span></div>
+        <div class="stay-body"><div class="d">6 dias · 5 Noites</div><div class="dates">14/10 a 19/10</div></div>
+      </div>
+      <div class="stay-card" data-reveal data-delay="2">
+        <div class="stay-photo"><img src="img/shenzhen.jpg" alt="Shenzhen" onerror="this.style.display='none'"><span class="badge">2</span><span class="city">Shenzhen</span></div>
+        <div class="stay-body"><div class="d">2 dias · 2 Noites</div><div class="dates">19/10 a 21/10</div></div>
+      </div>
+    </div>
+    <p class="stays-total" data-reveal>Total: <b>9 noites</b> de hospedagem</p>
+
+    <p class="rt-note" data-reveal>A programação é uma previsão operacional e poderá sofrer ajustes conforme confirmação de voos, hotéis, horários de trens, localização das fábricas, disponibilidade dos fornecedores e agenda da Canton Fair. A essência permanece: estar na China ao lado de empresários, onde as oportunidades acontecem primeiro.</p>
+  </div>
+</section>
+
+<!-- GATILHO: AUTORIDADE + PROVA SOCIAL -->
+<section class="panelbg authority" id="depoimentos">
+  <div class="wrap">
+    <div data-reveal>
+      <span class="eyebrow line">No epicentro do comércio mundial</span>
+      <h2 class="display">A Canton Fair é a maior feira multissetorial da China, e uma das principais vitrines de fornecedores do mundo.</h2>
+      <p class="lede" style="margin:22px auto 0">Estar lá, com curadoria e contexto, é diferente de tentar acompanhar de longe.</p>
+    </div>
+
+    <!--
+      ⚠️ DEPOIMENTOS: troque os textos e nomes abaixo por relatos REAIS de participantes
+      ou de quem já fez imersões com você. Não publique depoimentos fictícios.
+    -->
+    <div class="quotes">
+      <div class="qcard" data-reveal>
+        <span class="mark">”</span>
+        <p>Voltei enxergando oportunidades que eu nem sabia que existiam. Ver de perto muda completamente a forma de pensar o negócio.</p>
+        <div class="who"><b>Nome do participante</b> · Segmento / cidade</div>
+      </div>
+      <div class="qcard" data-reveal data-delay="1">
+        <span class="mark">”</span>
+        <p>Não é turismo. É repertório. Em poucos dias entendi fornecedores, preços e tendências que levaria meses para mapear daqui.</p>
+        <div class="who"><b>Nome do participante</b> · Segmento / cidade</div>
+      </div>
+      <div class="qcard" data-reveal data-delay="2">
+        <p style="margin-top:0"><span class="mark">”</span></p>
+        <p>O networking com o grupo valeu tanto quanto a viagem. Trocas entre empresários que continuam rendendo até hoje.</p>
+        <div class="who"><b>Nome do participante</b> · Segmento / cidade</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SCARCITY -->
+<section class="scarcity" id="contato">
+  <div class="wrap" data-reveal>
+    <div class="urg"><span class="dot"></span>Edição 2026 · alinhada à Canton Fair</div>
+    <span class="eyebrow line">Grupo limitado</span>
+    <h2 class="display scar-title">Para preservar a qualidade da experiência,<br>a imersão será realizada com<br><em>grupo limitado.</em></h2>
+    <p class="lede">A profundidade dessa experiência depende de manter o grupo pequeno e bem alinhado. Por isso, o acesso é por avaliação de participação, e as vagas são confirmadas por ordem de inscrição.</p>
+    <div class="scar-points">
+      <span>Data definida: 11 a 22 de outubro</span>
+      <span>Vagas por ordem de confirmação</span>
+      <span>Acesso por avaliação de participação</span>
+    </div>
+    <a href="#contato" data-eval class="btn btn-gold">Quero avaliar minha participação <span class="arw">→</span></a>
+    <span class="micro">Você será direcionado para receber datas, condições e próximos passos.</span>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section id="faq">
+  <div class="wrap">
+    <div data-reveal style="max-width:60ch">
+      <span class="eyebrow line">Dúvidas frequentes</span>
+      <h2 class="display" style="margin-top:22px">O que costumam perguntar.</h2>
+    </div>
+    <div class="faq-wrap" data-reveal data-delay="1">
+      <div class="faq-item"><button class="faq-q">Essa viagem é turística?</button><div class="faq-a"><p>Não. É uma imersão de negócios. O foco é ampliar visão comercial, observar mercados, fornecedores e tendências, e não fazer turismo convencional. Cada etapa tem intenção estratégica.</p></div></div>
+      <div class="faq-item"><button class="faq-q">Preciso já importar produtos?</button><div class="faq-a"><p>Não. A experiência é valiosa tanto para quem já importa quanto para quem deseja ampliar repertório, entender o mercado e enxergar possibilidades antes de tomar decisões.</p></div></div>
+      <div class="faq-item"><button class="faq-q">Para quem essa experiência é indicada?</button><div class="faq-a"><p>Para empresários, empreendedores, comerciantes, importadores e investidores, em geral para quem tem visão comercial e quer sair da teoria para ver oportunidades de perto.</p></div></div>
+      <div class="faq-item"><button class="faq-q">Como recebo os detalhes?</button><div class="faq-a"><p>Ao clicar em um dos botões da página, você é direcionado para o nosso WhatsApp, onde enviamos datas, condições, investimento e próximos passos com calma e de forma personalizada.</p></div></div>
+      <div class="faq-item"><button class="faq-q">As vagas são limitadas?</button><div class="faq-a"><p>Sim. Para preservar a qualidade da experiência e a profundidade das trocas, o grupo é intencionalmente reduzido. O acesso é por avaliação de participação.</p></div></div>
+      <div class="faq-item"><button class="faq-q">A viagem garante fornecedores ou negócios fechados?</button><div class="faq-a"><p>Não prometemos resultados ou negócios garantidos, seria leviano. O que oferecemos é acesso, curadoria, contexto e visão. As oportunidades reais nascem do que você enxerga e constrói a partir da experiência.</p></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- FINAL -->
+<section class="final">
+  <div class="final-bg"><img src="img/skyline.jpg" alt="" data-speed="0.12" onerror="this.style.display='none'"></div>
+  <div class="wrap" data-reveal>
+    <span class="eyebrow line">A decisão</span>
+    <h2 class="display">A maioria escuta falar sobre a China.<br><em>Alguns escolhem enxergá-la de perto.</em></h2>
+    <a href="https://wa.me/55SEUNUMERO?text=Ol%C3%A1!%20Quero%20conhecer%20a%20experi%C3%AAncia%20completa%20da%20imers%C3%A3o%20de%20neg%C3%B3cios%20na%20China." target="_blank" rel="noopener" class="btn btn-gold">Quero conhecer a experiência completa <span class="arw">→</span></a>
+    <span class="micro">Grupo Limitado. Últimas vagas disponíveis.</span>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="wrap foot-grid">
+    <div>
+      <span class="brand">China <b>Business</b> Experience</span>
+      <p>Uma imersão de negócios na China para quem prefere enxergar as oportunidades antes que se tornem óbvias.</p>
+    </div>
+    <div class="foot-contact">
+      <a href="https://wa.me/55SEUNUMERO" target="_blank" rel="noopener">WhatsApp · (00) 00000-0000</a>
+      <a href="mailto:contato@seudominio.com">contato@seudominio.com</a>
+      <a href="#">Instagram · @seuinstagram</a>
+    </div>
+  </div>
+  <div class="wrap foot-bottom">© 2026 China Business Experience · Todos os direitos reservados.</div>
+</footer>
+
+</div><!-- /.site -->
+
+<!-- ===== MODAL: AVALIAÇÃO DE PERFIL ===== -->
+<div class="modal" id="evalModal" aria-hidden="true">
+  <div class="modal-backdrop" data-close></div>
+  <div class="modal-card" role="dialog" aria-modal="true" aria-labelledby="evalTitle">
+    <button class="modal-x" data-close aria-label="Fechar">&times;</button>
+
+    <div id="evalBody">
+      <span class="eyebrow line">Avaliação de participação</span>
+      <h3 id="evalTitle">Vamos avaliar o seu perfil</h3>
+      <p class="modal-lede">O grupo é limitado e selecionado. Responda abaixo para avaliarmos a sua participação — em seguida, nossa equipe entra em contato com os próximos passos.</p>
+
+      <!--
+        Para receber as respostas: crie um formulário grátis em https://formspree.io
+        e substitua SEU_CODIGO_AQUI na constante FORM_ENDPOINT (no script, ao final do arquivo).
+      -->
+      <form id="evalForm">
+        <div class="modal-section">Seus dados</div>
+        <div class="fld"><input type="text" name="nome" placeholder="Nome completo *" required></div>
+        <div class="fld"><input type="email" name="email" placeholder="E-mail *" required></div>
+        <div class="fld"><input type="tel" name="whatsapp" placeholder="WhatsApp *" required></div>
+        <div class="fld"><input type="text" name="empresa" placeholder="Empresa / segmento de atuação"></div>
+
+        <div class="modal-section">Sobre o seu perfil</div>
+
+        <div class="fld">
+          <span class="q">Você é empresário(a) ou empreendedor(a)? *</span>
+          <div class="opts">
+            <label class="opt"><input type="radio" name="perfil" value="Empresário/empreendedor" required> Sim, sou empresário(a) / empreendedor(a)</label>
+            <label class="opt"><input type="radio" name="perfil" value="Executivo/gestor"> Sou executivo(a) / gestor(a)</label>
+            <label class="opt"><input type="radio" name="perfil" value="Ainda não, mas pretendo"> Ainda não, mas pretendo empreender</label>
+          </div>
+        </div>
+
+        <div class="fld">
+          <span class="q">O que você busca nesta viagem? *</span>
+          <div class="opts">
+            <label class="opt"><input type="radio" name="objetivo" value="Negócios" required> Negócios e oportunidades comerciais</label>
+            <label class="opt"><input type="radio" name="objetivo" value="Negócios e turismo"> Negócios e também conhecer a China</label>
+            <label class="opt"><input type="radio" name="objetivo" value="Turismo"> Principalmente turismo</label>
+          </div>
+        </div>
+
+        <div class="fld">
+          <span class="q">Você tem disponibilidade para investir um valor acima de R$ 50 mil nesta imersão? *</span>
+          <div class="opts">
+            <label class="opt"><input type="radio" name="investimento" value="Sim" required> Sim, tenho disponibilidade</label>
+            <label class="opt"><input type="radio" name="investimento" value="Talvez, preciso de detalhes"> Talvez — preciso conhecer os detalhes</label>
+            <label class="opt"><input type="radio" name="investimento" value="Não"> No momento, não</label>
+          </div>
+        </div>
+
+        <div class="fld">
+          <span class="q">Você tem disponibilidade para viajar de 11 a 22 de outubro de 2026 (inclusive se houver pequenos ajustes no período)? *</span>
+          <div class="opts">
+            <label class="opt"><input type="radio" name="disponibilidade" value="Sim" required> Sim, tenho disponibilidade nas datas</label>
+            <label class="opt"><input type="radio" name="disponibilidade" value="Preciso confirmar"> Preciso confirmar a agenda</label>
+            <label class="opt"><input type="radio" name="disponibilidade" value="Não"> Não consigo nessas datas</label>
+          </div>
+        </div>
+
+        <div class="fld">
+          <span class="q">Observações (opcional)</span>
+          <textarea name="observacoes" rows="2" placeholder="Algo que queira nos contar sobre seu interesse?"></textarea>
+        </div>
+
+        <button type="submit" class="btn btn-gold modal-submit">Enviar para avaliação <span class="arw">→</span></button>
+        <p class="modal-note">Suas respostas são usadas apenas para avaliar a sua participação na imersão.</p>
+      </form>
+    </div>
+
+    <div class="modal-success" id="evalSuccess" hidden>
+      <div class="ok">✓</div>
+      <h3>Recebemos a sua candidatura</h3>
+      <p>Obrigado! Nossa equipe vai avaliar o seu perfil e entrar em contato em breve pelo WhatsApp com os próximos passos.</p>
+      <button class="btn btn-gold" data-close>Fechar</button>
+    </div>
+  </div>
+</div>
+
+<script src="https://unpkg.com/lenis@1.1.14/dist/lenis.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="config.js"></script>
+<script>
+  /* ===== SEXY CANVAS — rede de partículas douradas reativa ao mouse ===== */
+  (function(){
+    const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    const canvas = document.getElementById('bg');
+    const ctx = canvas.getContext('2d');
+    const glow = document.getElementById('glow');
+    let w, h, dpr, particles = [], raf;
+    const mouse = { x: -9999, y: -9999, active:false };
+
+    function size(){
+      dpr = Math.min(window.devicePixelRatio || 1, 2);
+      w = window.innerWidth; h = window.innerHeight;
+      canvas.width = w * dpr; canvas.height = h * dpr;
+      canvas.style.width = w+'px'; canvas.style.height = h+'px';
+      ctx.setTransform(dpr,0,0,dpr,0,0);
+      const target = Math.round((w*h)/15000);          // densidade adaptativa
+      const count = Math.max(40, Math.min(120, target));
+      particles = Array.from({length:count}, () => ({
+        x: Math.random()*w, y: Math.random()*h,
+        vx: (Math.random()-.5)*.32, vy: (Math.random()-.5)*.32,
+        r: Math.random()*1.6 + .6
+      }));
+    }
+
+    function step(){
+      ctx.clearRect(0,0,w,h);
+      const LINK = 132, LINK2 = LINK*LINK;
+      for(let i=0;i<particles.length;i++){
+        const p = particles[i];
+        p.x += p.vx; p.y += p.vy;
+        if(p.x<0||p.x>w) p.vx*=-1;
+        if(p.y<0||p.y>h) p.vy*=-1;
+        // leve atração ao cursor
+        if(mouse.active){
+          const dx = mouse.x-p.x, dy = mouse.y-p.y, d2 = dx*dx+dy*dy;
+          if(d2 < 26000){ p.x += dx*0.0009; p.y += dy*0.0009; }
+        }
+        // partícula
+        ctx.beginPath();
+        ctx.fillStyle = 'rgba(200,164,100,.75)';
+        ctx.shadowColor = 'rgba(200,164,100,.8)';
+        ctx.shadowBlur = 6;
+        ctx.arc(p.x,p.y,p.r,0,Math.PI*2); ctx.fill();
+      }
+      ctx.shadowBlur = 0;
+      // conexões
+      for(let i=0;i<particles.length;i++){
+        const a = particles[i];
+        for(let j=i+1;j<particles.length;j++){
+          const b = particles[j];
+          const dx=a.x-b.x, dy=a.y-b.y, d2=dx*dx+dy*dy;
+          if(d2 < LINK2){
+            const o = (1 - d2/LINK2) * .22;
+            ctx.strokeStyle = 'rgba(200,164,100,'+o+')';
+            ctx.lineWidth = .6;
+            ctx.beginPath(); ctx.moveTo(a.x,a.y); ctx.lineTo(b.x,b.y); ctx.stroke();
+          }
+        }
+        // linha até o cursor
+        if(mouse.active){
+          const dx=a.x-mouse.x, dy=a.y-mouse.y, d2=dx*dx+dy*dy;
+          if(d2 < 30000){
+            const o = (1 - d2/30000) * .5;
+            ctx.strokeStyle = 'rgba(224,200,150,'+o+')';
+            ctx.lineWidth = .7;
+            ctx.beginPath(); ctx.moveTo(a.x,a.y); ctx.lineTo(mouse.x,mouse.y); ctx.stroke();
+          }
+        }
+      }
+      raf = requestAnimationFrame(step);
+    }
+
+    window.addEventListener('resize', () => { cancelAnimationFrame(raf); size(); if(!reduce) step(); });
+    window.addEventListener('mousemove', e => {
+      mouse.x = e.clientX; mouse.y = e.clientY; mouse.active = true;
+      glow.style.opacity = '1';
+      glow.style.transform = 'translate('+e.clientX+'px,'+e.clientY+'px) translate(-50%,-50%)';
+    });
+    window.addEventListener('mouseout', () => { mouse.active=false; mouse.x=mouse.y=-9999; glow.style.opacity='0'; });
+
+    size();
+    if(reduce){ step(); cancelAnimationFrame(raf); ctx.clearRect(0,0,w,h);
+      // estado estático: desenha só as partículas uma vez
+      particles.forEach(p=>{ctx.fillStyle='rgba(200,164,100,.6)';ctx.beginPath();ctx.arc(p.x,p.y,p.r,0,Math.PI*2);ctx.fill();});
+    } else { step(); }
+  })();
+
+  /* Nav scroll + botão flutuante */
+  const nav = document.getElementById('nav');
+  const floatCta = document.getElementById('floatCta');
+  const contato = document.getElementById('contato');
+  const onScroll = () => {
+    nav.classList.toggle('scrolled', window.scrollY > 40);
+    // mostra o botão após sair do topo; esconde ao chegar na seção de vagas
+    const past = window.scrollY > window.innerHeight * 0.55;
+    let nearContact = false;
+    if(contato){
+      const r = contato.getBoundingClientRect();
+      if(r.top < window.innerHeight * 0.85 && r.bottom > 0) nearContact = true;
+    }
+    floatCta.classList.toggle('show', past && !nearContact);
+  };
+  onScroll(); window.addEventListener('scroll', onScroll, {passive:true});
+
+  /* Menu mobile */
+  const menuBtn = document.getElementById('menuBtn');
+  const navLinks = document.getElementById('navLinks');
+  menuBtn.addEventListener('click', () => navLinks.classList.toggle('open'));
+  navLinks.querySelectorAll('a').forEach(a => a.addEventListener('click', () => navLinks.classList.remove('open')));
+
+  /* Reveal on scroll */
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach(e => { if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target); } });
+  }, {threshold:.15, rootMargin:'0px 0px -8% 0px'});
+  document.querySelectorAll('[data-reveal]').forEach(el => io.observe(el));
+
+  /* FAQ */
+  document.querySelectorAll('.faq-q').forEach(q => {
+    q.addEventListener('click', () => {
+      const item = q.parentElement;
+      const wasOpen = item.classList.contains('open');
+      document.querySelectorAll('.faq-item.open').forEach(i => i.classList.remove('open'));
+      if(!wasOpen) item.classList.add('open');
+    });
+  });
+
+  /* ===== MODAL DE AVALIAÇÃO DE PERFIL (grava no Supabase) ===== */
+  (function(){
+    // Credenciais ficam em config.js (window.SUPABASE_URL / window.SUPABASE_ANON_KEY)
+    const SB_URL = window.SUPABASE_URL, SB_KEY = window.SUPABASE_ANON_KEY;
+    const sb = (window.supabase && SB_URL && !/SEU_PROJETO/.test(SB_URL))
+      ? window.supabase.createClient(SB_URL, SB_KEY) : null;
+
+    const modal = document.getElementById('evalModal');
+    const form = document.getElementById('evalForm');
+    const body = document.getElementById('evalBody');
+    const success = document.getElementById('evalSuccess');
+
+    const open = () => {
+      modal.classList.add('open'); modal.setAttribute('aria-hidden','false');
+      document.body.style.overflow = 'hidden'; window.__lenis && window.__lenis.stop();
+      setTimeout(() => modal.querySelector('input')?.focus(), 250);
+    };
+    const close = () => {
+      modal.classList.remove('open'); modal.setAttribute('aria-hidden','true');
+      document.body.style.overflow = ''; window.__lenis && window.__lenis.start();
+    };
+
+    document.querySelectorAll('[data-eval]').forEach(b => b.addEventListener('click', e => { e.preventDefault(); open(); }));
+    modal.querySelectorAll('[data-close]').forEach(b => b.addEventListener('click', close));
+    document.addEventListener('keydown', e => { if(e.key === 'Escape' && modal.classList.contains('open')) close(); });
+
+    form.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      const showThanks = () => { body.hidden = true; success.hidden = false; };
+      const dados = Object.fromEntries(new FormData(form).entries());
+      if(sb){
+        const btn = form.querySelector('button[type=submit]');
+        btn.disabled = true; btn.style.opacity = .6;
+        const { error } = await sb.from('candidaturas').insert([dados]);
+        btn.disabled = false; btn.style.opacity = 1;
+        if(error){ console.error(error); alert('Não foi possível enviar agora. Tente novamente em instantes.'); return; }
+      }
+      showThanks();
+    });
+  })();
+
+  /* ===== EXPERIÊNCIA DE SCROLL PREMIUM ===== */
+  (function(){
+    const prog = document.getElementById('prog');
+    const heroInner = document.querySelector('.hero-inner');
+    const scrollHint = document.querySelector('.scroll-hint');
+    const parallax = [...document.querySelectorAll('[data-speed]')];
+    const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+    function onFrame(scrollY){
+      // barra de progresso
+      const max = document.documentElement.scrollHeight - window.innerHeight;
+      prog.style.width = (max > 0 ? (scrollY / max) * 100 : 0) + '%';
+      // hero: sobe e some suavemente
+      if(heroInner){
+        const t = Math.min(scrollY / (window.innerHeight * 1.25), 1);
+        heroInner.style.transform = 'translate3d(0,' + (scrollY * 0.12) + 'px,0)';
+        heroInner.style.opacity = (1 - t * 0.85).toFixed(3);
+        if(scrollHint) scrollHint.style.opacity = (1 - Math.min(scrollY/220,1)).toFixed(3);
+      }
+      // parallax de imagens
+      for(const el of parallax){
+        const r = el.getBoundingClientRect();
+        const off = (r.top + r.height/2) - window.innerHeight/2;
+        el.style.transform = 'translate3d(0,' + (off * -parseFloat(el.dataset.speed)) + 'px,0)';
+      }
+    }
+
+    if(reduce || !window.Lenis){
+      // sem scroll suave: ainda atualiza progresso/parallax no scroll nativo
+      window.addEventListener('scroll', () => onFrame(window.scrollY), {passive:true});
+      onFrame(window.scrollY);
+      return;
+    }
+
+    const lenis = new Lenis({
+      duration: 1.25,
+      easing: t => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
+      smoothWheel: true,
+      wheelMultiplier: 0.95,
+      touchMultiplier: 1.4
+    });
+    window.__lenis = lenis;
+    lenis.on('scroll', e => onFrame(e.animatedScroll ?? e.scroll ?? window.scrollY));
+    function raf(time){ lenis.raf(time); requestAnimationFrame(raf); }
+    requestAnimationFrame(raf);
+    onFrame(0);
+
+    // âncoras com scroll suave da Lenis
+    document.querySelectorAll('a[href^="#"]').forEach(a => {
+      a.addEventListener('click', (ev) => {
+        if(a.hasAttribute('data-eval')) return; // botões de avaliação abrem o modal
+        const id = a.getAttribute('href');
+        if(id.length < 2) return;
+        const target = document.querySelector(id);
+        if(target){ ev.preventDefault(); lenis.scrollTo(target, {offset:-70, duration:1.4}); }
+      });
+    });
+  })();
+</script>
+
+</body>
+</html>
