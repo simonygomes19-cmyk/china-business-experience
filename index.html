@@ -170,6 +170,12 @@
   .modal .btn-gold.modal-submit{width:100%;justify-content:center;margin-top:10px}
   .modal-note{font-size:.8rem;color:var(--muted-2);text-align:center;margin-top:12px}
   .pay-note{font-size:.82rem;color:var(--gold-soft);background:rgba(200,164,100,.08);border:1px solid var(--line-strong);border-radius:8px;padding:11px 14px;margin-top:10px;line-height:1.45}
+  .invest-box{margin-top:6px;border:1px solid var(--line-strong);border-radius:10px;padding:20px 22px;background:linear-gradient(160deg,rgba(200,164,100,.12),rgba(9,11,15,.4))}
+  .invest-label{font-size:.7rem;letter-spacing:.16em;text-transform:uppercase;color:var(--gold);font-weight:700}
+  .invest-value{font-family:var(--serif);font-size:2.3rem;color:var(--gold-soft);font-weight:600;margin:4px 0 14px;line-height:1}
+  .invest-list{list-style:none;display:grid;gap:9px}
+  .invest-list li{display:flex;gap:11px;align-items:flex-start;color:var(--text);font-weight:300;font-size:.96rem}
+  .invest-list li::before{content:"✓";color:var(--gold);font-weight:700;flex:0 0 auto}
   .check-row{display:flex;gap:11px;align-items:flex-start;margin:18px 0 4px;font-size:.9rem;color:var(--muted);cursor:pointer}
   .check-row input{width:auto;margin-top:3px;accent-color:var(--gold);flex:0 0 auto}
   .modal-success{text-align:center;padding:26px 6px}
@@ -1029,13 +1035,25 @@
         <div class="fld"><input type="text" name="empresa" placeholder="Empresa"></div>
         <div class="fld"><input type="text" name="cnpj" placeholder="CNPJ"></div>
 
+        <div class="modal-section">Investimento</div>
+        <div class="invest-box">
+          <div class="invest-label">Valor da imersão</div>
+          <div class="invest-value">R$ 49.990,90</div>
+          <ul class="invest-list">
+            <li>Passagem aérea São Paulo ⇄ China</li>
+            <li>Hospedagem</li>
+            <li>Translados internos na China</li>
+            <li>Participação na Canton Fair</li>
+          </ul>
+        </div>
+
         <div class="modal-section">Forma de pagamento</div>
         <div class="opts">
           <label class="opt"><input type="radio" name="forma_pagamento" value="À vista (Pix/transferência)" required> À vista — Pix ou transferência</label>
           <label class="opt"><input type="radio" name="forma_pagamento" value="20% entrada + cartão de crédito"> 20% de entrada + parcelas no cartão de crédito</label>
           <label class="opt"><input type="radio" name="forma_pagamento" value="20% entrada + boleto bancário"> 20% de entrada + parcelas no boleto bancário</label>
         </div>
-        <p class="pay-note">O pagamento deve ser <strong>liquidado até 01/10/2026</strong>. A cobrança é realizada fora do site: após o cadastro, enviamos o contrato e o link de pagamento pelo WhatsApp.</p>
+        <p class="pay-note">O pagamento deve ser <strong>liquidado até 01/10/2026</strong>. Enviamos o contrato e link para pagamento via WhatsApp.</p>
 
         <label class="check-row">
           <input type="checkbox" name="aceite" value="sim" required>
