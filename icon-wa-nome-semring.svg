@@ -1,0 +1,37 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1024" height="1024" viewBox="0 0 1024 1024">
+  <defs>
+    <clipPath id="br"><circle cx="436" cy="392" r="172"/></clipPath>
+    <clipPath id="cn"><circle cx="596" cy="392" r="172"/></clipPath>
+    <radialGradient id="g" cx="50%" cy="40%" r="75%">
+      <stop offset="0%" stop-color="#16181f"/>
+      <stop offset="100%" stop-color="#0a0b0e"/>
+    </radialGradient>
+  </defs>
+
+  <rect width="1024" height="1024" fill="#0a0b0e"/>
+  <rect width="1024" height="1024" fill="url(#g)"/>
+  <circle cx="512" cy="512" r="486" fill="none" stroke="#c8a464" stroke-width="4" opacity="0.5"/>
+
+  <!-- Bandeira do Brasil -->
+  <g clip-path="url(#br)">
+    <rect x="240" y="200" width="392" height="392" fill="#009c3b"/>
+    <polygon points="436,256 588,392 436,528 284,392" fill="#ffdf00"/>
+    <circle cx="436" cy="392" r="68" fill="#002776"/>
+    <path d="M372 383 a68 68 0 0 1 128 22" fill="none" stroke="#fff" stroke-width="11"/>
+  </g>
+
+  <!-- Bandeira da China -->
+  <g clip-path="url(#cn)">
+    <rect x="424" y="200" width="392" height="392" fill="#de2910"/>
+    <text x="528" y="372" font-family="Helvetica,Arial,sans-serif" font-size="112" fill="#ffde00">★</text>
+    <text x="624" y="328" font-family="Helvetica,Arial,sans-serif" font-size="40" fill="#ffde00">★</text>
+    <text x="652" y="372" font-family="Helvetica,Arial,sans-serif" font-size="40" fill="#ffde00">★</text>
+    <text x="648" y="424" font-family="Helvetica,Arial,sans-serif" font-size="40" fill="#ffde00">★</text>
+    <text x="622" y="468" font-family="Helvetica,Arial,sans-serif" font-size="40" fill="#ffde00">★</text>
+  </g>
+  <circle cx="596" cy="392" r="172" fill="none" stroke="#0a0b0e" stroke-width="12"/>
+
+  <!-- Nome -->
+  <text x="512" y="688" font-family="Georgia,'Times New Roman',serif" font-size="74" fill="#e6e2da" text-anchor="middle" font-weight="600">China <tspan fill="#c8a464">Business</tspan></text>
+  <text x="512" y="772" font-family="Helvetica,Arial,sans-serif" font-size="50" letter-spacing="14" fill="#c8a464" text-anchor="middle" font-weight="700">EXPERIENCE</text>
+</svg>
