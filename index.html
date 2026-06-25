@@ -1385,6 +1385,8 @@
     };
 
     const busy = (f, on) => { const b=f.querySelector('button[type=submit]'); if(b){ b.disabled=on; b.style.opacity=on?.6:1; } };
+    // avisa no Telegram (não bloqueia a interface)
+    const notify = (payload) => { try { fetch('/api/notify', { method:'POST', headers:{'Content-Type':'application/json'}, body: JSON.stringify(payload) }).catch(()=>{}); } catch(_){} };
 
     // ===== Validação premium (mensagens inline, sem o balão do navegador) =====
     const clearErrors = (f) => {
@@ -1462,6 +1464,7 @@
         busy(form, false);
         if(error){ console.error(error); alert('Não foi possível enviar agora. Tente novamente em instantes.'); return; }
       }
+      notify({ _tipo:'avaliacao', ...dados, qualificado });
       if(qualificado){
         // leva para a etapa 2, pré-preenchendo o que já temos
         regForm.nome.value = dados.nome || '';
@@ -1493,6 +1496,7 @@
         busy(regForm, false);
         if(error){ console.error(error); alert('Não foi possível enviar agora. Tente novamente em instantes.'); return; }
       }
+      notify({ _tipo:'inscricao', ...d2 });
       showPanel(regSuccess);
       modal.querySelector('.modal-card').scrollTop = 0;
     });
