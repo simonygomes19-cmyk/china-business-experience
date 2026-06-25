@@ -121,15 +121,14 @@
   }
   .float-wrap.show{opacity:1;transform:none;pointer-events:auto}
   .float-cta{
-    display:inline-flex;align-items:center;gap:8px;
-    background:linear-gradient(120deg,var(--gold-soft),var(--gold));color:#15110a;
+    display:inline-flex;align-items:center;
+    background:linear-gradient(160deg,#16181f,#0a0b0e);color:var(--gold-soft);border:1px solid var(--line-strong);
     font-family:var(--sans);font-weight:700;font-size:.82rem;letter-spacing:.02em;
-    padding:11px 20px;border-radius:999px;text-decoration:none;
-    box-shadow:0 14px 36px -12px rgba(200,164,100,.6);transition:transform .35s;
+    padding:12px 22px;border-radius:999px;text-decoration:none;
+    box-shadow:0 14px 36px -12px rgba(0,0,0,.7), inset 0 1px 0 rgba(255,255,255,.05);
+    transition:transform .35s,background .35s,color .35s,border-color .35s,box-shadow .35s;
   }
-  .float-cta:hover{transform:translateY(-3px)}
-  .float-cta .arw{transition:transform .35s}
-  .float-cta:hover .arw{transform:translateX(4px)}
+  .float-cta:hover{transform:translateY(-3px);background:linear-gradient(120deg,var(--gold-soft),var(--gold));color:#15110a;border-color:var(--gold)}
   .float-wa{display:inline-flex;align-items:center;justify-content:center;width:44px;height:44px;border-radius:50%;
     background:linear-gradient(160deg,#16181f,#0a0b0e);color:var(--gold-soft);border:1px solid var(--line-strong);text-decoration:none;
     box-shadow:0 12px 30px -12px rgba(0,0,0,.7), inset 0 1px 0 rgba(255,255,255,.06);
@@ -169,6 +168,11 @@
   .fld input[type=text],.fld input[type=email],.fld input[type=tel],.fld textarea,.fld select{width:100%;padding:13px 15px;background:rgba(255,255,255,.03);border:1px solid var(--line);border-radius:8px;color:var(--text);font-family:inherit;font-size:1rem;transition:border-color .2s}
   .fld select:focus{outline:none;border-color:var(--gold)}
   .fld select option{background:#13151c;color:var(--text)}
+  .form-row{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+  @media(max-width:560px){.form-row{grid-template-columns:1fr}}
+  .fld input.invalid,.fld select.invalid{border-color:#d9534f;background:rgba(217,83,79,.06)}
+  .field-error{display:flex;align-items:flex-start;gap:8px;color:#eb938c;font-size:.82rem;margin-top:8px;line-height:1.35}
+  .field-error::before{content:"!";display:inline-flex;align-items:center;justify-content:center;width:16px;height:16px;border-radius:50%;background:#d9534f;color:#fff;font-size:.72rem;font-weight:700;flex:0 0 auto;margin-top:1px}
   .fld input:focus,.fld textarea:focus{outline:none;border-color:var(--gold)}
   .fld input::placeholder,.fld textarea::placeholder{color:var(--muted-2)}
   .opts{display:grid;gap:9px}
@@ -495,7 +499,7 @@
 <div id="glow"></div>
 <div class="scroll-prog" id="prog"></div>
 <div class="float-wrap" id="floatWrap">
-  <a href="#contato" data-eval class="float-cta">Garantir minha vaga <span class="arw">→</span></a>
+  <a href="#contato" data-eval class="float-cta">Garantir minha vaga</a>
   <a href="https://wa.me/55SEUNUMERO?text=Ol%C3%A1!%20Tenho%20interesse%20na%20China%20Business%20Experience." target="_blank" rel="noopener" class="float-wa" aria-label="Falar no WhatsApp">
     <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.149-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.52.151-.174.2-.298.3-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51l-.57-.01c-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.71.306 1.263.489 1.694.625.712.227 1.36.195 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.885-9.885 9.885M20.52 3.449C18.24 1.245 15.24 0 12.045 0 5.463 0 .104 5.359.101 11.945c0 2.096.547 4.142 1.588 5.945L0 24l6.305-1.654a11.95 11.95 0 005.71 1.456h.005c6.582 0 11.94-5.358 11.945-11.945a11.86 11.86 0 00-3.495-8.408"/></svg>
   </a>
@@ -1033,7 +1037,7 @@
         Para receber as respostas: crie um formulário grátis em https://formspree.io
         e substitua SEU_CODIGO_AQUI na constante FORM_ENDPOINT (no script, ao final do arquivo).
       -->
-      <form id="evalForm">
+      <form id="evalForm" novalidate>
         <div class="modal-section">Seus dados</div>
         <div class="fld"><input type="text" name="nome" placeholder="Nome completo *" required></div>
         <div class="fld"><input type="email" name="email" placeholder="E-mail *" required></div>
@@ -1107,10 +1111,10 @@
     <!-- ETAPA 2: cadastro + pagamento (perfis qualificados) -->
     <div id="regBody" hidden>
       <span class="eyebrow line">Cadastro e pagamento</span>
-      <h3 id="regTitle">Seu perfil está alinhado. Garanta sua vaga.</h3>
-      <p class="modal-lede">Preencha os dados para gerarmos o seu contrato. A cobrança é feita fora do site, com liquidação até <strong>01/10/2026</strong>.</p>
+      <h3 id="regTitle">Perfil Aprovado! Finalize o cadastro para Garantir sua Imersão.</h3>
+      <p class="modal-lede">Preencha os dados para emissão de contrato e condições de pagamento.</p>
 
-      <form id="regForm">
+      <form id="regForm" novalidate>
         <div class="modal-section">Dados para o contrato</div>
         <div class="fld"><input type="text" name="nome" placeholder="Nome completo *" required></div>
         <div class="fld"><input type="text" name="cpf" placeholder="CPF *" required></div>
@@ -1118,7 +1122,17 @@
         <div class="fld"><input type="text" name="nascimento" placeholder="Data de nascimento (dd/mm/aaaa)"></div>
         <div class="fld"><input type="email" name="email" placeholder="E-mail *" required></div>
         <div class="fld"><input type="tel" name="whatsapp" placeholder="WhatsApp *" required></div>
-        <div class="fld"><input type="text" name="endereco" placeholder="Endereço completo (rua, nº, bairro, cidade/UF, CEP) *" required></div>
+        <div class="fld"><input type="text" name="cep" placeholder="CEP *" required></div>
+        <div class="fld"><input type="text" name="rua" placeholder="Rua / logradouro *" required></div>
+        <div class="form-row">
+          <div class="fld"><input type="text" name="numero" placeholder="Número *" required></div>
+          <div class="fld"><input type="text" name="complemento" placeholder="Complemento"></div>
+        </div>
+        <div class="fld"><input type="text" name="bairro" placeholder="Bairro *" required></div>
+        <div class="form-row">
+          <div class="fld"><input type="text" name="cidade" placeholder="Cidade *" required></div>
+          <div class="fld"><input type="text" name="estado" placeholder="Estado (UF) *" required></div>
+        </div>
         <div class="fld"><input type="text" name="empresa" placeholder="Empresa"></div>
         <div class="fld"><input type="text" name="cnpj" placeholder="CNPJ"></div>
 
@@ -1356,9 +1370,65 @@
 
     const busy = (f, on) => { const b=f.querySelector('button[type=submit]'); if(b){ b.disabled=on; b.style.opacity=on?.6:1; } };
 
+    // ===== Validação premium (mensagens inline, sem o balão do navegador) =====
+    const clearErrors = (f) => {
+      f.querySelectorAll('.invalid').forEach(el => el.classList.remove('invalid'));
+      f.querySelectorAll('.field-error').forEach(el => el.remove());
+    };
+    const addError = (container, msg, styleEl) => {
+      if(styleEl) styleEl.classList.add('invalid');
+      if(container && !container.querySelector(':scope > .field-error')){
+        const e = document.createElement('div');
+        e.className = 'field-error'; e.textContent = msg;
+        container.appendChild(e);
+      }
+    };
+    const validateForm = (f) => {
+      clearErrors(f);
+      let first = null;
+      // campos de texto / e-mail / select
+      f.querySelectorAll('input[required], select[required], textarea[required]').forEach(el => {
+        if(el.type === 'radio' || el.type === 'checkbox') return;
+        if(!el.value.trim()){
+          const msg = el.type === 'email' ? 'Informe um e-mail válido.' : 'Preencha este campo.';
+          addError(el.closest('.fld'), msg, el);
+          if(!first) first = el;
+        } else if(el.type === 'email' && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(el.value)){
+          addError(el.closest('.fld'), 'Informe um e-mail válido.', el);
+          if(!first) first = el;
+        }
+      });
+      // grupos de rádio obrigatórios
+      const radios = new Set();
+      f.querySelectorAll('input[type=radio][required]').forEach(el => radios.add(el.name));
+      radios.forEach(name => {
+        if(!f.querySelector('input[name="'+name+'"]:checked')){
+          const fld = f.querySelector('input[name="'+name+'"]').closest('.fld');
+          addError(fld, 'Selecione uma opção.');
+          if(!first) first = fld;
+        }
+      });
+      // checkbox obrigatório (aceite)
+      f.querySelectorAll('input[type=checkbox][required]').forEach(el => {
+        if(!el.checked){
+          const row = el.closest('.check-row');
+          addError(row ? row.parentElement : el.parentElement, 'É necessário concordar para continuar.');
+          if(!first) first = row || el;
+        }
+      });
+      if(first){ first.scrollIntoView({behavior:'smooth', block:'center'}); return false; }
+      return true;
+    };
+    // limpa o erro do campo assim que o usuário começa a preencher
+    [form, regForm].forEach(f => f.addEventListener('input', e => {
+      const fld = e.target.closest('.fld') || e.target.closest('.check-row')?.parentElement;
+      if(fld){ e.target.classList.remove('invalid'); fld.querySelector(':scope > .field-error')?.remove(); }
+    }));
+
     // ETAPA 1 — avaliação
     form.addEventListener('submit', async (e) => {
       e.preventDefault();
+      if(!validateForm(form)) return;
       const dados = Object.fromEntries(new FormData(form).entries());
       const qualificado = isQualified(dados);
       if(sb){
@@ -1384,8 +1454,13 @@
     // ETAPA 2 — cadastro + pagamento
     regForm.addEventListener('submit', async (e) => {
       e.preventDefault();
+      if(!validateForm(regForm)) return;
       const d2 = Object.fromEntries(new FormData(regForm).entries());
-      delete d2.aceite;                      // não vai pro banco
+      // monta o endereço completo a partir dos campos separados
+      const linha1 = d2.rua + (d2.numero ? ', ' + d2.numero : '') + (d2.complemento ? ' - ' + d2.complemento : '');
+      d2.endereco = [linha1, d2.bairro, (d2.cidade || '') + (d2.estado ? '/' + d2.estado : ''), d2.cep ? 'CEP ' + d2.cep : '']
+        .filter(s => s && s.trim()).join(' - ');
+      ['cep','rua','numero','complemento','bairro','cidade','estado','aceite'].forEach(k => delete d2[k]);
       d2.segmento = regForm.dataset.segmento || '';
       if(sb){
         busy(regForm, true);

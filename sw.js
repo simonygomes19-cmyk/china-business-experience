@@ -1,5 +1,5 @@
 // Service Worker — China Business Experience (PWA)
-const CACHE = 'cbe-v11';
+const CACHE = 'cbe-v12';
 const ASSETS = [
   '/', '/index.html', '/config.js', '/manifest.webmanifest',
   '/icons/icon-192.png', '/icons/icon-512.png',
