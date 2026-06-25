@@ -232,7 +232,10 @@
   .tese .col-r p:last-child{margin-bottom:0}
   .tese .col-r strong{color:var(--text);font-weight:500}
   .pullnum{font-family:var(--serif);font-size:5rem;color:var(--gold);opacity:.25;line-height:1;display:block;margin-bottom:10px}
-  .tese-img{margin-top:30px;border-radius:6px;overflow:hidden;border:1px solid var(--line)}
+  .tese-stack{max-width:900px;margin:0 auto}
+  .tese-p{color:var(--muted);font-weight:300;font-size:1.08rem;margin-top:24px;max-width:62ch}
+  .tese-p strong{color:var(--text);font-weight:500}
+  .tese-img{margin-top:40px;border-radius:6px;overflow:hidden;border:1px solid var(--line);max-width:620px}
   .tese-img img{width:100%;height:auto;display:block}
 
   /* STATEMENT */
@@ -507,15 +510,13 @@
 
 <!-- TESE -->
 <section class="tese panelbg" id="tese">
-  <div class="wrap tese-grid">
-    <div class="col-l" data-reveal>
+  <div class="wrap tese-stack">
+    <div data-reveal>
       <span class="eyebrow line">A oportunidade</span>
       <h2 style="margin-top:24px">Enquanto muitos tentam entender a China <em>à distância</em>, outros escolhem estar onde ela acontece.</h2>
+      <p class="tese-p"><strong>A China é um dos maiores laboratórios comerciais do mundo:</strong> onde produtos, fornecedores, tendências e modelos de negócio surgem antes de se tornarem óbvios por aqui.</p>
     </div>
-    <div class="col-r" data-reveal data-delay="1">
-      <p><strong>A China é um dos maiores laboratórios comerciais do mundo:</strong> onde produtos, fornecedores, tendências e modelos de negócio surgem antes de se tornarem óbvios por aqui.</p>
-      <figure class="tese-img"><img src="img/foto4.jpg?v=3" alt="Tecnologia e inovação na China" loading="lazy"></figure>
-    </div>
+    <figure class="tese-img" data-reveal data-delay="1"><img src="img/foto4.jpg?v=4" alt="Tecnologia e inovação na China" loading="lazy"></figure>
   </div>
 </section>
 
