@@ -178,8 +178,9 @@
   .opts{display:grid;gap:9px}
   .opt{display:flex;align-items:center;gap:12px;padding:12px 15px;border:1px solid var(--line);border-radius:8px;cursor:pointer;color:var(--muted);font-size:.95rem;font-weight:300;transition:border-color .2s,background .2s,color .2s}
   .opt:hover{border-color:var(--line-strong)}
-  .opt input{accent-color:var(--gold);width:auto;flex:0 0 auto}
+  .opt input{accent-color:var(--gold);width:20px;height:20px;flex:0 0 auto}
   .opt:has(input:checked){border-color:var(--gold);background:rgba(200,164,100,.08);color:var(--text)}
+  .opt.checked{border-color:var(--gold);background:rgba(200,164,100,.08);color:var(--text)}
   .modal .btn-gold.modal-submit{width:100%;justify-content:center;margin-top:10px}
   .modal-note{font-size:.8rem;color:var(--muted-2);text-align:center;margin-top:12px}
   .pay-note{font-size:.82rem;color:var(--gold-soft);background:rgba(200,164,100,.08);border:1px solid var(--line-strong);border-radius:8px;padding:11px 14px;margin-top:10px;line-height:1.45}
@@ -485,9 +486,11 @@
     .hero-inner{padding:140px 0 90px}
     #glow{display:none}
     .float-wrap{left:16px;right:16px;bottom:16px}
-    .float-cta{flex:1;justify-content:center;height:44px;padding:0 16px;font-size:.8rem;font-weight:700;
-      background:linear-gradient(120deg,var(--gold-soft),var(--gold));color:#15110a;border-color:transparent;
-      box-shadow:0 14px 36px -12px rgba(200,164,100,.6)}
+    .float-cta{flex:1;justify-content:center;height:44px;padding:0 16px;
+      font-family:var(--sans);font-size:.72rem;font-weight:700;letter-spacing:.12em;
+      background:linear-gradient(125deg,var(--gold-soft) 0%,var(--gold) 52%,var(--bronze) 110%);color:#1c1305;
+      border:1px solid rgba(255,242,214,.5);
+      box-shadow:0 8px 26px -8px rgba(200,164,100,.7), inset 0 1px 0 rgba(255,255,255,.45)}
   }
   @media(prefers-reduced-motion:reduce){
     *{animation:none!important;transition:none!important}
@@ -1427,6 +1430,15 @@
       const fld = e.target.closest('.fld') || e.target.closest('.check-row')?.parentElement;
       if(fld){ e.target.classList.remove('invalid'); fld.querySelector(':scope > .field-error')?.remove(); }
     }));
+
+    // destaque da opção selecionada (funciona em qualquer navegador, sem depender de :has)
+    modal.querySelectorAll('.opt input[type=radio]').forEach(r => {
+      r.addEventListener('change', () => {
+        modal.querySelectorAll('.opt input[name="' + r.name + '"]').forEach(x => {
+          x.closest('.opt').classList.toggle('checked', x.checked);
+        });
+      });
+    });
 
     // ETAPA 1 — avaliação
     form.addEventListener('submit', async (e) => {
