@@ -33,5 +33,5 @@
   <circle cx="632" cy="512" r="232" fill="none" stroke="#0a0b0e" stroke-width="14"/>
   <circle cx="632" cy="512" r="232" fill="none" stroke="#c8a464" stroke-width="7"/>
 
-  <text x="512" y="858" font-family="Helvetica,Arial,sans-serif" font-size="70" letter-spacing="8" fill="#c8a464" text-anchor="middle" font-weight="700">CHINA</text>
+  <text x="512" y="858" font-family="Helvetica,Arial,sans-serif" font-size="58" letter-spacing="6" fill="#c8a464" text-anchor="middle" font-weight="700">EXPERIENCE</text>
 </svg>
