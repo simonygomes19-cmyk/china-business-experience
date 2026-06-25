@@ -157,7 +157,9 @@
   .fld{margin-bottom:18px}
   .modal-section{font-size:.72rem;letter-spacing:.12em;text-transform:uppercase;color:var(--gold);font-weight:700;margin:26px 0 12px}
   .fld .q{display:block;font-weight:600;font-size:.94rem;color:var(--text);margin-bottom:9px}
-  .fld input[type=text],.fld input[type=email],.fld input[type=tel],.fld textarea{width:100%;padding:13px 15px;background:rgba(255,255,255,.03);border:1px solid var(--line);border-radius:8px;color:var(--text);font-family:inherit;font-size:1rem;transition:border-color .2s}
+  .fld input[type=text],.fld input[type=email],.fld input[type=tel],.fld textarea,.fld select{width:100%;padding:13px 15px;background:rgba(255,255,255,.03);border:1px solid var(--line);border-radius:8px;color:var(--text);font-family:inherit;font-size:1rem;transition:border-color .2s}
+  .fld select:focus{outline:none;border-color:var(--gold)}
+  .fld select option{background:#13151c;color:var(--text)}
   .fld input:focus,.fld textarea:focus{outline:none;border-color:var(--gold)}
   .fld input::placeholder,.fld textarea::placeholder{color:var(--muted-2)}
   .opts{display:grid;gap:9px}
@@ -167,6 +169,9 @@
   .opt:has(input:checked){border-color:var(--gold);background:rgba(200,164,100,.08);color:var(--text)}
   .modal .btn-gold.modal-submit{width:100%;justify-content:center;margin-top:10px}
   .modal-note{font-size:.8rem;color:var(--muted-2);text-align:center;margin-top:12px}
+  .pay-note{font-size:.82rem;color:var(--gold-soft);background:rgba(200,164,100,.08);border:1px solid var(--line-strong);border-radius:8px;padding:11px 14px;margin-top:10px;line-height:1.45}
+  .check-row{display:flex;gap:11px;align-items:flex-start;margin:18px 0 4px;font-size:.9rem;color:var(--muted);cursor:pointer}
+  .check-row input{width:auto;margin-top:3px;accent-color:var(--gold);flex:0 0 auto}
   .modal-success{text-align:center;padding:26px 6px}
   .modal-success .ok{width:66px;height:66px;border-radius:50%;border:1px solid var(--gold);color:var(--gold);display:grid;place-items:center;font-size:1.9rem;margin:0 auto 20px}
   .modal-success p{color:var(--muted);font-weight:300;margin:6px auto 22px;max-width:42ch}
@@ -228,15 +233,14 @@
   /* TESE */
   .tese-grid{display:grid;grid-template-columns:1fr 1.15fr;gap:80px;align-items:center}
   .tese h2{font-size:clamp(2rem,4.4vw,3.4rem);font-weight:500}
-  .tese .col-r p{color:var(--muted);font-weight:300;font-size:1.08rem;margin-bottom:22px}
-  .tese .col-r p:last-child{margin-bottom:0}
-  .tese .col-r strong{color:var(--text);font-weight:500}
-  .pullnum{font-family:var(--serif);font-size:5rem;color:var(--gold);opacity:.25;line-height:1;display:block;margin-bottom:10px}
-  .tese-stack{max-width:900px;margin:0 auto}
-  .tese-p{color:var(--muted);font-weight:300;font-size:1.08rem;margin-top:24px;max-width:62ch}
+  .tese-p{color:var(--muted);font-weight:300;font-size:1.08rem;margin-top:24px}
   .tese-p strong{color:var(--text);font-weight:500}
-  .tese-img{margin-top:40px;border-radius:6px;overflow:hidden;border:1px solid var(--line);max-width:620px}
-  .tese-img img{width:100%;height:auto;display:block}
+  .tese-img{position:relative;border-radius:10px;overflow:hidden;border:1px solid var(--line-strong);box-shadow:0 26px 64px -26px rgba(0,0,0,.75)}
+  .tese-img img{width:100%;height:auto;display:block;filter:saturate(.85) brightness(.82) contrast(1.03);transition:filter .6s ease, transform 1.2s ease}
+  .tese-img::after{content:"";position:absolute;inset:0;pointer-events:none;background:linear-gradient(155deg, rgba(200,164,100,.12), transparent 38%, rgba(8,9,12,.6));transition:opacity .6s}
+  .tese-img:hover img{filter:none;transform:scale(1.03)}
+  .tese-img:hover::after{opacity:.35}
+  .img-cap{position:absolute;left:16px;top:15px;z-index:2;font-family:var(--sans);font-size:.68rem;letter-spacing:.16em;text-transform:uppercase;color:var(--gold-soft);background:rgba(8,9,12,.5);border:1px solid var(--line-strong);padding:7px 14px;border-radius:999px;backdrop-filter:blur(5px)}
 
   /* STATEMENT */
   .statement{background:linear-gradient(160deg,rgba(10,22,32,.82),rgba(12,15,21,.82));text-align:center}
@@ -246,8 +250,15 @@
 
   /* CARDS */
   .grid-cards{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--line);border:1px solid var(--line);border-radius:4px;overflow:hidden;margin-top:64px}
-  .pcard{background:rgba(9,11,15,.78);padding:46px 38px;transition:background .4s,transform .4s}
+  .pcard{position:relative;overflow:hidden;cursor:pointer;background:rgba(9,11,15,.78);padding:46px 38px;transition:background .4s,transform .4s}
   .pcard:hover{background:var(--panel)}
+  .card-hint{position:absolute;right:18px;bottom:16px;font-family:var(--sans);font-size:.66rem;letter-spacing:.14em;text-transform:uppercase;color:var(--gold);opacity:.7;transition:opacity .3s}
+  .pcard:hover .card-hint{opacity:1}
+  .card-photo{position:absolute;inset:0;z-index:3;opacity:0;visibility:hidden;transition:opacity .5s ease}
+  .card-photo img{width:100%;height:100%;object-fit:cover;object-position:50% 38%;filter:saturate(.85) brightness(.8) contrast(1.03)}
+  .card-photo::after{content:"";position:absolute;inset:0;pointer-events:none;background:linear-gradient(155deg, rgba(200,164,100,.12), transparent 38%, rgba(8,9,12,.62))}
+  .pcard:hover .card-photo, .pcard.open .card-photo{opacity:1;visibility:visible}
+  .cards-hint-top{margin-top:34px;font-size:.85rem;color:var(--muted-2);letter-spacing:.03em}
   .pcard .num{font-family:var(--serif);font-size:1rem;color:var(--gold);letter-spacing:.1em}
   .pcard h3{font-size:1.55rem;margin:18px 0 12px;font-weight:600}
   .pcard h3.hl{color:var(--gold-soft)}
@@ -392,8 +403,8 @@
   /* GALERIA — momentos reais da imersão */
   .gallery{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-top:54px}
   .gphoto{position:relative;aspect-ratio:1/1;overflow:hidden;border-radius:6px;border:1px solid var(--line)}
-  .gphoto img{width:100%;height:100%;object-fit:cover;object-position:50% 35%;transition:transform 1s ease}
-  .gphoto:hover img{transform:scale(1.06)}
+  .gphoto img{width:100%;height:100%;object-fit:cover;object-position:50% 35%;filter:saturate(.88) brightness(.86) contrast(1.02);transition:transform 1s ease, filter .6s ease}
+  .gphoto:hover img{transform:scale(1.06);filter:none}
   .gphoto figcaption{position:absolute;left:0;right:0;bottom:0;padding:36px 16px 14px;background:linear-gradient(transparent,rgba(8,9,12,.92));color:#fff;font-weight:500;font-size:.95rem;line-height:1.3}
   .gphoto figcaption span{display:block;font-size:.66rem;letter-spacing:.16em;text-transform:uppercase;color:var(--gold-soft);margin-bottom:4px}
   @media(max-width:900px){.gallery{grid-template-columns:repeat(2,1fr)}}
@@ -502,7 +513,7 @@
     <div class="row">
       <div class="stat" data-reveal><div class="n">12</div><div class="l">Dias de imersão</div></div>
       <div class="stat" data-reveal data-delay="1"><div class="n">3</div><div class="l">Cidades estratégicas</div></div>
-      <div class="stat" data-reveal data-delay="2"><div class="n">9</div><div class="l">Noites de hospedagem</div></div>
+      <div class="stat" data-reveal data-delay="2"><div class="n">4</div><div class="l">Dias de Canton Fair</div></div>
       <div class="stat" data-reveal data-delay="3"><div class="n">2</div><div class="l">Visitas técnicas</div></div>
     </div>
   </div>
@@ -510,13 +521,15 @@
 
 <!-- TESE -->
 <section class="tese panelbg" id="tese">
-  <div class="wrap tese-stack">
-    <div data-reveal>
+  <div class="wrap tese-grid">
+    <div class="col-l" data-reveal>
       <span class="eyebrow line">A oportunidade</span>
       <h2 style="margin-top:24px">Enquanto muitos tentam entender a China <em>à distância</em>, outros escolhem estar onde ela acontece.</h2>
       <p class="tese-p"><strong>A China é um dos maiores laboratórios comerciais do mundo:</strong> onde produtos, fornecedores, tendências e modelos de negócio surgem antes de se tornarem óbvios por aqui.</p>
     </div>
-    <figure class="tese-img" data-reveal data-delay="1"><img src="img/foto4.jpg?v=4" alt="Tecnologia e inovação na China" loading="lazy"></figure>
+    <div class="col-r" data-reveal data-delay="1">
+      <figure class="tese-img"><img src="img/foto4.jpg?v=4" alt="Tecnologia e inovação na China" loading="lazy"><figcaption class="img-cap">Inovação na China</figcaption></figure>
+    </div>
   </div>
 </section>
 
@@ -525,7 +538,7 @@
   <div class="wrap" data-reveal>
     <span class="eyebrow line">O posicionamento</span>
     <h2 class="display">Não é turismo.<br><span class="vs">É imersão de negócios e identificação de oportunidades!</span></h2>
-    <p class="lede">O ganho cultural é consequência, o foco é ampliar a visão comercial, observar mercados em funcionamento, entender como fornecedores operam, enxergar tendências antes que virem consenso, e voltar com repertório prático para decidir melhor no seu próprio negócio.</p>
+    <p class="lede">O ganho cultural é consequência, o foco é ampliar a visão comercial, observar mercados em funcionamento, entender como fornecedores operam, enxergar tendências antes que virem consenso e voltar com repertório prático para decidir melhor no seu próprio negócio.</p>
   </div>
 </section>
 
@@ -536,35 +549,14 @@
       <span class="eyebrow line">A experiência</span>
       <h2 class="display" style="margin-top:22px">Uma curadoria pensada para quem decide.</h2>
     </div>
+    <p class="cards-hint-top" data-reveal>Passe o mouse em cada item para ver um momento real da imersão.</p>
     <div class="grid-cards">
-      <div class="pcard" data-reveal><span class="num">01</span><h3>Curadoria estratégica</h3><p>Cada ambiente, visita e contexto é escolhido com intenção comercial, não por roteiro de cartão-postal.</p></div>
-      <div class="pcard" data-reveal data-delay="1"><span class="num">02</span><h3 class="hl">Grupo seleto</h3><p>Número limitado de participantes, para preservar a profundidade das conversas e a qualidade da experiência.</p></div>
-      <div class="pcard" data-reveal data-delay="2"><span class="num">03</span><h3>Foco em negócios</h3><p>Tudo é orientado a ampliar repertório, leitura de mercado e possibilidades reais, não a entretenimento.</p></div>
-      <div class="pcard" data-reveal><span class="num">04</span><h3 class="hl">Observação real de mercado</h3><p>Ver de perto como produtos nascem, como fornecedores trabalham e como a escala chinesa realmente opera.</p></div>
-      <div class="pcard" data-reveal data-delay="1"><span class="num">05</span><h3>Experiência com contexto</h3><p>Não basta ver. É preciso entender o que se está vendo, com leitura e interpretação ao longo do caminho.</p></div>
-      <div class="pcard" data-reveal data-delay="2"><span class="num">06</span><h3 class="hl">Networking empreendedor</h3><p>Conviver com um grupo de perfil empresarial gera trocas que, muitas vezes, valem tanto quanto a própria viagem.</p></div>
-    </div>
-  </div>
-</section>
-
-<!-- SEE -->
-<section class="see panelbg">
-  <div class="wrap see-grid">
-    <div class="see-img" data-reveal>
-      <img src="img/fair.jpg" alt="Canton Fair — feira de fornecedores na China" onerror="this.style.display='none';this.parentElement.style.background='linear-gradient(160deg,#15202a,#0c1419)'">
-    </div>
-    <div data-reveal data-delay="1">
-      <span class="eyebrow line">O que você pode enxergar</span>
-      <h2 class="display" style="margin:22px 0 14px;font-size:clamp(1.9rem,4vw,3rem)">O que normalmente só se vê depois, quando já é tarde.</h2>
-      <ul class="see-list">
-        <li><span class="k">i</span><span><b>Novos produtos</b> antes de se popularizarem no Brasil</span></li>
-        <li><span class="k">ii</span><span><b>Tendências de consumo</b> em formação</span></li>
-        <li><span class="k">iii</span><span><b>Fornecedores</b> e diferentes formas de operar</span></li>
-        <li><span class="k">iv</span><span><b>Modelos de operação</b> e eficiência em escala</span></li>
-        <li><span class="k">v</span><span><b>Logística</b> e a engrenagem por trás do comércio</span></li>
-        <li><span class="k">vi</span><span><b>Escala comercial</b> em sua real dimensão</span></li>
-        <li><span class="k">vii</span><span><b>Oportunidades</b> que podem inspirar negócios no Brasil</span></li>
-      </ul>
+      <div class="pcard" data-reveal><span class="num">01</span><h3>Curadoria estratégica</h3><p>Cada ambiente, visita e contexto é escolhido com intenção comercial.</p><span class="card-hint">Ver foto +</span><div class="card-photo"><img src="img/foto3.jpg" alt="Visita a fornecedor na China" loading="lazy"></div></div>
+      <div class="pcard" data-reveal data-delay="1"><span class="num">02</span><h3 class="hl">Grupo seleto</h3><p>Número limitado de participantes, para preservar a profundidade das conversas e a qualidade da experiência.</p><span class="card-hint">Ver foto +</span><div class="card-photo"><img src="img/exp-grupo.jpg" alt="Grupo no trem de alta velocidade na China" loading="lazy"></div></div>
+      <div class="pcard" data-reveal data-delay="2"><span class="num">03</span><h3>Foco em negócios</h3><p>Tudo é orientado a ampliar repertório, leitura de mercado e possibilidades reais.</p><span class="card-hint">Ver foto +</span><div class="card-photo"><img src="img/exp-foco.jpg" alt="Reunião de negócios com fornecedor na China" loading="lazy"></div></div>
+      <div class="pcard" data-reveal><span class="num">04</span><h3 class="hl">Observação real de mercado</h3><p>Ver de perto como produtos nascem, como fornecedores trabalham e como a escala chinesa realmente opera.</p><span class="card-hint">Ver foto +</span><div class="card-photo"><img src="img/foto2.jpg" alt="Recepção e apresentação na China" loading="lazy"></div></div>
+      <div class="pcard" data-reveal data-delay="1"><span class="num">05</span><h3>Experiência com contexto</h3><p>Não basta ver. É preciso entender o que se está vendo, com leitura e interpretação ao longo do caminho.</p><span class="card-hint">Ver foto +</span><div class="card-photo"><img src="img/exp-contexto.jpg" alt="Grupo em templo na China" loading="lazy"></div></div>
+      <div class="pcard" data-reveal data-delay="2"><span class="num">06</span><h3 class="hl">Networking empreendedor</h3><p>Conviver com um grupo de perfil empresarial gera trocas que, muitas vezes, valem tanto quanto a própria viagem.</p><span class="card-hint">Ver foto +</span><div class="card-photo"><img src="img/exp-networking.jpg" alt="Jantar de confraternização do grupo na China" loading="lazy"></div></div>
     </div>
   </div>
 </section>
@@ -600,7 +592,7 @@
       <div class="tl-row" data-reveal><span class="step">02</span><div><h3>Chegada à China</h3><p>O primeiro contato com a escala, a velocidade e a infraestrutura de um dos ambientes comerciais mais relevantes do mundo.</p></div></div>
       <div class="tl-row" data-reveal><span class="step">03</span><div><h3>Imersão em mercados e ambientes comerciais</h3><p>Estar dentro dos lugares onde o comércio acontece, observando produtos, dinâmicas e movimentos de mercado em primeira mão.</p></div></div>
       <div class="tl-row" data-reveal><span class="step">04</span><div><h3>Observação de fornecedores e tendências</h3><p>Entender como fornecedores operam, comparar possibilidades e perceber tendências que ainda não chegaram por aqui.</p></div></div>
-      <div class="tl-row" data-reveal><span class="step">05</span><div><h3>Networking e troca com o grupo</h3><p>A leitura compartilhada entre empresários revela ângulos e oportunidades que dificilmente se enxerga sozinho.</p></div></div>
+      <div class="tl-row" data-reveal><span class="step">05</span><div><h3>Networking e troca com o grupo</h3><p>A leitura compartilhada entre empresários revela ângulos e oportunidades que dificilmente se enxergam sozinhos.</p></div></div>
       <div class="tl-row" data-reveal><span class="step">06</span><div><h3>Retorno com mais visão, repertório e possibilidades</h3><p>Voltar não com lembranças, mas com referências, contatos e clareza sobre caminhos para o seu negócio.</p></div></div>
     </div>
   </div>
@@ -632,11 +624,11 @@
         <div class="rt-date"><div class="d">12</div><div class="mo">Outubro</div><div class="wd">Segunda</div></div>
         <div>
           <h3>Chegada em Xangai</h3>
-          <p class="desc">A porta de entrada para a China moderna: velocidade, escala, inovação e visão de futuro. Recepção do grupo, traslado ao hotel e descanso para adaptação ao fuso.</p>
+          <p class="desc">A porta de entrada para a China moderna: velocidade, escala, inovação e visão de futuro. Recepção do grupo, translado ao hotel e descanso para adaptação ao fuso.</p>
           <ul class="rt-sched">
             <li><span class="t">16h20</span><span>Chegada em Xangai / PVG</span></li>
             <li><span class="t">17h30–19h00</span><span>Imigração, bagagens e recepção do grupo</span></li>
-            <li><span class="t">19h00–20h30</span><span>Traslado do aeroporto ao hotel</span></li>
+            <li><span class="t">19h00–20h30</span><span>Translado do aeroporto ao hotel</span></li>
             <li><span class="t">20h30–21h30</span><span>Check-in · noite livre</span></li>
           </ul>
           <span class="rt-stay">Hospedagem · Xangai</span>
@@ -666,7 +658,7 @@
           <ul class="rt-sched">
             <li><span class="t">07h00</span><span>Check-out e saída do hotel em Xangai</span></li>
             <li><span class="t">09h00–16h00</span><span>Trem de alta velocidade Xangai → Guangzhou</span></li>
-            <li><span class="t">16h00–17h30</span><span>Chegada e traslado ao hotel</span></li>
+            <li><span class="t">16h00–17h30</span><span>Chegada e translado ao hotel</span></li>
             <li><span class="t">17h30–18h30</span><span>Check-in · noite livre</span></li>
           </ul>
           <span class="rt-stay">Hospedagem · Guangzhou</span>
@@ -677,7 +669,7 @@
         <div class="rt-date"><div class="d">15</div><div class="mo">Outubro</div><div class="wd">Quinta</div></div>
         <div>
           <h3>Canton Fair, primeiro dia</h3>
-          <p class="desc">Reconhecimento dos pavilhões, leitura da dinâmica da feira e primeiros contatos comerciais. Mais que uma feira de produtos: um ambiente de leitura de mercado.</p>
+          <p class="desc">Reconhecimento dos pavilhões, leitura da dinâmica da feira e primeiros contatos comerciais. Mais que uma feira de produtos, um ambiente de leitura de mercado.</p>
           <ul class="rt-sched">
             <li><span class="t">08h00</span><span>Saída do hotel para a Canton Fair</span></li>
             <li><span class="t">09h30–12h30</span><span>Reconhecimento dos pavilhões</span></li>
@@ -762,7 +754,7 @@
         <div class="rt-date"><div class="d">21</div><div class="mo">Outubro</div><div class="wd">Quarta</div></div>
         <div>
           <h3>Dia livre estratégico + despedida</h3>
-          <p class="desc">Manhã livre para compras técnicas, showrooms ou reuniões individuais. Almoço de despedida e, à noite, traslado de Shenzhen ao Aeroporto Internacional de Hong Kong.</p>
+          <p class="desc">Manhã livre para compras técnicas, showrooms ou reuniões individuais. Almoço de despedida e, à noite, translado de Shenzhen ao Aeroporto Internacional de Hong Kong.</p>
           <ul class="rt-sched">
             <li><span class="t">09h00–12h00</span><span>Manhã livre em Shenzhen</span></li>
             <li><span class="t">12h30–14h30</span><span>Almoço de despedida (incluso)</span></li>
@@ -798,20 +790,20 @@
     <ul class="incl-grid" data-reveal data-delay="1">
       <li><b>Passagem aérea internacional</b> conforme voos definidos para o grupo</li>
       <li><b>9 noites de hospedagem</b> em hotéis selecionados</li>
-      <li>Traslado de chegada em Xangai</li>
+      <li>Translado de chegada em Xangai</li>
       <li>Almoço de boas-vindas em Xangai</li>
       <li><b>Briefing empresarial</b> de preparação para a imersão</li>
       <li>Trem de alta velocidade Xangai → Guangzhou</li>
-      <li>Traslado estação → hotel em Guangzhou</li>
+      <li>Translado estação → hotel em Guangzhou</li>
       <li><b>Participação na Canton Fair</b> (primeira fase)</li>
-      <li>Traslados operacionais para a Canton Fair</li>
+      <li>Translados operacionais para a Canton Fair</li>
       <li><b>Visita técnica</b> a fábrica/fornecedor em Guangzhou ou região</li>
       <li>Períodos reservados para reuniões e negociações</li>
       <li>Trem de alta velocidade Guangzhou → Shenzhen</li>
       <li><b>Visita técnica</b> a fábrica/fornecedor em Shenzhen ou região</li>
       <li>Meio período livre estratégico em Shenzhen</li>
       <li>Almoço de despedida em Shenzhen</li>
-      <li>Traslado final de Shenzhen ao aeroporto de Hong Kong</li>
+      <li>Translado final de Shenzhen ao aeroporto de Hong Kong</li>
       <li><b>Acompanhamento operacional</b> do grupo durante toda a imersão</li>
       <li><b>Suporte pré-viagem</b>: documentos, bagagem e preparação comercial</li>
     </ul>
@@ -836,6 +828,28 @@
   </div>
 </section>
 
+<!-- SEE -->
+<section class="see panelbg">
+  <div class="wrap see-grid">
+    <div class="see-img" data-reveal>
+      <img src="img/fair.jpg" alt="Canton Fair — feira de fornecedores na China" onerror="this.style.display='none';this.parentElement.style.background='linear-gradient(160deg,#15202a,#0c1419)'">
+    </div>
+    <div data-reveal data-delay="1">
+      <span class="eyebrow line">O que você pode enxergar</span>
+      <h2 class="display" style="margin:22px 0 14px;font-size:clamp(1.9rem,4vw,3rem)">O que normalmente só se vê depois, quando já é tarde.</h2>
+      <ul class="see-list">
+        <li><span class="k">i</span><span><b>Novos produtos</b> antes de se popularizarem no Brasil</span></li>
+        <li><span class="k">ii</span><span><b>Tendências de consumo</b> em formação</span></li>
+        <li><span class="k">iii</span><span><b>Fornecedores</b> e diferentes formas de operar</span></li>
+        <li><span class="k">iv</span><span><b>Modelos de operação</b> e eficiência em escala</span></li>
+        <li><span class="k">v</span><span><b>Logística</b> e a engrenagem por trás do comércio</span></li>
+        <li><span class="k">vi</span><span><b>Escala comercial</b> em sua real dimensão</span></li>
+        <li><span class="k">vii</span><span><b>Oportunidades</b> que podem inspirar negócios no Brasil</span></li>
+      </ul>
+    </div>
+  </div>
+</section>
+
 <!-- GATILHO: AUTORIDADE + PROVA SOCIAL -->
 <section class="panelbg authority" id="depoimentos">
   <div class="wrap">
@@ -843,25 +857,6 @@
       <span class="eyebrow line">No epicentro do comércio mundial</span>
       <h2 class="display">A Canton Fair é a maior feira multissetorial da China, e uma das principais vitrines de fornecedores do mundo.</h2>
       <p class="lede" style="margin:22px auto 0">Estar lá, com curadoria e contexto, é diferente de tentar acompanhar de longe.</p>
-    </div>
-
-    <div class="gallery">
-      <figure class="gphoto" data-reveal>
-        <img src="img/foto2.jpg?v=3" alt="Recepção de boas-vindas do grupo na China" loading="lazy">
-        <figcaption><span>Boas-vindas</span>Recepção do grupo na chegada</figcaption>
-      </figure>
-      <figure class="gphoto" data-reveal data-delay="1">
-        <img src="img/foto3.jpg?v=3" alt="Grupo em visita técnica a fornecedor na China" loading="lazy">
-        <figcaption><span>Visita técnica</span>Nos fornecedores e fábricas</figcaption>
-      </figure>
-      <figure class="gphoto" data-reveal data-delay="1">
-        <img src="img/foto1.jpg?v=3" alt="Empresários ao lado de parceiros locais" loading="lazy">
-        <figcaption><span>Negociação</span>Conexões com parceiros locais</figcaption>
-      </figure>
-      <figure class="gphoto" data-reveal data-delay="2">
-        <img src="img/foto5.jpg?v=3" alt="Jantar de confraternização do grupo" loading="lazy">
-        <figcaption><span>Networking</span>Convívio entre empresários</figcaption>
-      </figure>
     </div>
   </div>
 </section>
@@ -872,7 +867,7 @@
     <div class="urg"><span class="dot"></span>Edição 2026 · alinhada à Canton Fair</div>
     <span class="eyebrow line">Grupo limitado</span>
     <h2 class="display scar-title">Para preservar a qualidade da experiência,<br>a imersão será realizada com<br><em>grupo limitado.</em></h2>
-    <p class="lede">A profundidade dessa experiência depende de manter o grupo pequeno e bem alinhado. Por isso, o acesso é por avaliação de participação, e as vagas são confirmadas por ordem de inscrição.</p>
+    <p class="lede">A profundidade dessa experiência depende de manter o grupo reduzido e bem alinhado. Por isso, o acesso é por avaliação de participação, as vagas são confirmadas por ordem de inscrição.</p>
     <div class="scar-points">
       <span>Data definida: 11 a 22 de outubro</span>
       <span>Vagas por ordem de confirmação</span>
@@ -933,7 +928,7 @@
 <!-- ===== MODAL: AVALIAÇÃO DE PERFIL ===== -->
 <div class="modal" id="evalModal" aria-hidden="true">
   <div class="modal-backdrop" data-close></div>
-  <div class="modal-card" role="dialog" aria-modal="true" aria-labelledby="evalTitle">
+  <div class="modal-card" role="dialog" aria-modal="true" aria-labelledby="evalTitle" data-lenis-prevent>
     <button class="modal-x" data-close aria-label="Fechar">&times;</button>
 
     <div id="evalBody">
@@ -953,6 +948,22 @@
         <div class="fld"><input type="text" name="empresa" placeholder="Empresa / segmento de atuação"></div>
 
         <div class="modal-section">Sobre o seu perfil</div>
+
+        <div class="fld">
+          <label class="q" for="segmento">Em qual segmento sua empresa atua? *</label>
+          <select name="segmento" id="segmento" required>
+            <option value="" disabled selected>Selecione o segmento...</option>
+            <option>Eletrônicos e eletrodomésticos</option>
+            <option>Iluminação</option>
+            <option>Veículos, peças, motos e bicicletas</option>
+            <option>Máquinas e equipamentos industriais</option>
+            <option>Materiais de construção</option>
+            <option>Ferragens e ferramentas</option>
+            <option>Produtos químicos e novos materiais</option>
+            <option>Energia e novas energias (solar/eólica)</option>
+            <option>Outro segmento (não listado)</option>
+          </select>
+        </div>
 
         <div class="fld">
           <span class="q">Você é empresário(a) ou empreendedor(a)? *</span>
@@ -1000,10 +1011,55 @@
       </form>
     </div>
 
+    <!-- ETAPA 2: cadastro + pagamento (perfis qualificados) -->
+    <div id="regBody" hidden>
+      <span class="eyebrow line">Cadastro e pagamento</span>
+      <h3 id="regTitle">Seu perfil está alinhado. Garanta sua vaga.</h3>
+      <p class="modal-lede">Preencha os dados para gerarmos o seu contrato. A cobrança é feita fora do site, com liquidação até <strong>01/10/2026</strong>.</p>
+
+      <form id="regForm">
+        <div class="modal-section">Dados para o contrato</div>
+        <div class="fld"><input type="text" name="nome" placeholder="Nome completo *" required></div>
+        <div class="fld"><input type="text" name="cpf" placeholder="CPF *" required></div>
+        <div class="fld"><input type="text" name="rg" placeholder="RG / órgão emissor"></div>
+        <div class="fld"><input type="text" name="nascimento" placeholder="Data de nascimento (dd/mm/aaaa)"></div>
+        <div class="fld"><input type="email" name="email" placeholder="E-mail *" required></div>
+        <div class="fld"><input type="tel" name="whatsapp" placeholder="WhatsApp *" required></div>
+        <div class="fld"><input type="text" name="endereco" placeholder="Endereço completo (rua, nº, bairro, cidade/UF, CEP) *" required></div>
+        <div class="fld"><input type="text" name="empresa" placeholder="Empresa"></div>
+        <div class="fld"><input type="text" name="cnpj" placeholder="CNPJ"></div>
+
+        <div class="modal-section">Forma de pagamento</div>
+        <div class="opts">
+          <label class="opt"><input type="radio" name="forma_pagamento" value="À vista (Pix/transferência)" required> À vista — Pix ou transferência</label>
+          <label class="opt"><input type="radio" name="forma_pagamento" value="20% entrada + cartão de crédito"> 20% de entrada + parcelas no cartão de crédito</label>
+          <label class="opt"><input type="radio" name="forma_pagamento" value="20% entrada + boleto bancário"> 20% de entrada + parcelas no boleto bancário</label>
+        </div>
+        <p class="pay-note">O pagamento deve ser <strong>liquidado até 01/10/2026</strong>. A cobrança é realizada fora do site: após o cadastro, enviamos o contrato e o link de pagamento pelo WhatsApp.</p>
+
+        <label class="check-row">
+          <input type="checkbox" name="aceite" value="sim" required>
+          <span>Li e concordo em receber o contrato e o link de pagamento para confirmar a minha vaga.</span>
+        </label>
+
+        <button type="submit" class="btn btn-gold modal-submit">Concluir inscrição <span class="arw">→</span></button>
+        <p class="modal-note">Seus dados são usados apenas para o contrato e a confirmação da vaga.</p>
+      </form>
+    </div>
+
+    <!-- Perfil em avaliação (não qualificado) -->
     <div class="modal-success" id="evalSuccess" hidden>
       <div class="ok">✓</div>
       <h3>Recebemos a sua candidatura</h3>
       <p>Obrigado! Nossa equipe vai avaliar o seu perfil e entrar em contato em breve pelo WhatsApp com os próximos passos.</p>
+      <button class="btn btn-gold" data-close>Fechar</button>
+    </div>
+
+    <!-- Sucesso final (após cadastro) -->
+    <div class="modal-success" id="regSuccess" hidden>
+      <div class="ok">✓</div>
+      <h3>Inscrição recebida!</h3>
+      <p>Em instantes enviaremos o <strong>contrato</strong> e o <strong>link de pagamento</strong> no seu WhatsApp. Lembrando: o pagamento deve ser liquidado até 01/10/2026.</p>
       <button class="btn btn-gold" data-close>Fechar</button>
     </div>
   </div>
@@ -1139,6 +1195,15 @@
     });
   });
 
+  /* Cards "A experiência" — clique revela a foto */
+  document.querySelectorAll('.pcard').forEach(card => {
+    card.addEventListener('click', () => {
+      const isOpen = card.classList.contains('open');
+      document.querySelectorAll('.pcard.open').forEach(c => c.classList.remove('open'));
+      if(!isOpen) card.classList.add('open');
+    });
+  });
+
   /* ===== MODAL DE AVALIAÇÃO DE PERFIL (grava no Supabase) ===== */
   (function(){
     // Credenciais ficam em config.js (window.SUPABASE_URL / window.SUPABASE_ANON_KEY)
@@ -1147,14 +1212,23 @@
       ? window.supabase.createClient(SB_URL, SB_KEY) : null;
 
     const modal = document.getElementById('evalModal');
-    const form = document.getElementById('evalForm');
+    const form = document.getElementById('evalForm');     // etapa 1
     const body = document.getElementById('evalBody');
-    const success = document.getElementById('evalSuccess');
+    const regBody = document.getElementById('regBody');    // etapa 2
+    const regForm = document.getElementById('regForm');
+    const evalSuccess = document.getElementById('evalSuccess'); // não qualificado
+    const regSuccess = document.getElementById('regSuccess');   // sucesso final
+
+    // mostra um dos painéis do modal
+    const showPanel = (el) => {
+      [body, regBody, evalSuccess, regSuccess].forEach(p => p.hidden = (p !== el));
+    };
 
     const open = () => {
+      showPanel(body);                       // sempre abre na etapa 1
       modal.classList.add('open'); modal.setAttribute('aria-hidden','false');
       document.body.style.overflow = 'hidden'; window.__lenis && window.__lenis.stop();
-      setTimeout(() => modal.querySelector('input')?.focus(), 250);
+      setTimeout(() => modal.querySelector('input,select')?.focus(), 250);
     };
     const close = () => {
       modal.classList.remove('open'); modal.setAttribute('aria-hidden','true');
@@ -1165,18 +1239,57 @@
     modal.querySelectorAll('[data-close]').forEach(b => b.addEventListener('click', close));
     document.addEventListener('keydown', e => { if(e.key === 'Escape' && modal.classList.contains('open')) close(); });
 
+    // critério de qualificação (ajuste à vontade)
+    const isQualified = (d) => {
+      const setorOk = d.segmento && d.segmento !== 'Outro segmento (não listado)';
+      const objetivoOk = d.objetivo && d.objetivo !== 'Turismo';
+      const investOk = d.investimento === 'Sim' || d.investimento === 'Talvez, preciso de detalhes';
+      const dataOk = d.disponibilidade && d.disponibilidade !== 'Não';
+      const perfilOk = d.perfil === 'Empresário/empreendedor' || d.perfil === 'Executivo/gestor';
+      return setorOk && objetivoOk && investOk && dataOk && perfilOk;
+    };
+
+    const busy = (f, on) => { const b=f.querySelector('button[type=submit]'); if(b){ b.disabled=on; b.style.opacity=on?.6:1; } };
+
+    // ETAPA 1 — avaliação
     form.addEventListener('submit', async (e) => {
       e.preventDefault();
-      const showThanks = () => { body.hidden = true; success.hidden = false; };
       const dados = Object.fromEntries(new FormData(form).entries());
+      const qualificado = isQualified(dados);
       if(sb){
-        const btn = form.querySelector('button[type=submit]');
-        btn.disabled = true; btn.style.opacity = .6;
-        const { error } = await sb.from('candidaturas').insert([dados]);
-        btn.disabled = false; btn.style.opacity = 1;
+        busy(form, true);
+        const { error } = await sb.from('candidaturas').insert([{ ...dados, qualificado }]);
+        busy(form, false);
         if(error){ console.error(error); alert('Não foi possível enviar agora. Tente novamente em instantes.'); return; }
       }
-      showThanks();
+      if(qualificado){
+        // leva para a etapa 2, pré-preenchendo o que já temos
+        regForm.nome.value = dados.nome || '';
+        regForm.email.value = dados.email || '';
+        regForm.whatsapp.value = dados.whatsapp || '';
+        regForm.empresa.value = dados.empresa || '';
+        regForm.dataset.segmento = dados.segmento || '';
+        showPanel(regBody);
+        modal.querySelector('.modal-card').scrollTop = 0;
+      } else {
+        showPanel(evalSuccess);
+      }
+    });
+
+    // ETAPA 2 — cadastro + pagamento
+    regForm.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      const d2 = Object.fromEntries(new FormData(regForm).entries());
+      delete d2.aceite;                      // não vai pro banco
+      d2.segmento = regForm.dataset.segmento || '';
+      if(sb){
+        busy(regForm, true);
+        const { error } = await sb.from('inscricoes').insert([d2]);
+        busy(regForm, false);
+        if(error){ console.error(error); alert('Não foi possível enviar agora. Tente novamente em instantes.'); return; }
+      }
+      showPanel(regSuccess);
+      modal.querySelector('.modal-card').scrollTop = 0;
     });
   })();
 
