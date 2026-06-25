@@ -113,21 +113,29 @@
   .menu-btn{display:none;background:none;border:none;color:var(--text);font-size:1.5rem;cursor:pointer}
 
   /* BOTÃO FLUTUANTE — acompanha o scroll e induz ao próximo passo */
-  .float-cta{
+  .float-wrap{
     position:fixed;right:26px;bottom:26px;z-index:70;
-    display:inline-flex;align-items:center;gap:10px;
-    background:linear-gradient(120deg,var(--gold-soft),var(--gold));color:#15110a;
-    font-family:var(--sans);font-weight:700;font-size:.92rem;letter-spacing:.02em;
-    padding:15px 26px;border-radius:999px;text-decoration:none;
-    box-shadow:0 16px 42px -10px rgba(200,164,100,.6);
+    display:flex;align-items:center;gap:12px;
     opacity:0;transform:translateY(26px) scale(.96);pointer-events:none;
     transition:opacity .5s cubic-bezier(.2,.7,.2,1),transform .5s cubic-bezier(.2,.7,.2,1);
   }
-  .float-cta.show{opacity:1;transform:none;pointer-events:auto;animation:floatpulse 2.8s ease-in-out infinite}
+  .float-wrap.show{opacity:1;transform:none;pointer-events:auto}
+  .float-cta{
+    display:inline-flex;align-items:center;gap:8px;
+    background:linear-gradient(120deg,var(--gold-soft),var(--gold));color:#15110a;
+    font-family:var(--sans);font-weight:700;font-size:.82rem;letter-spacing:.02em;
+    padding:11px 20px;border-radius:999px;text-decoration:none;
+    box-shadow:0 14px 36px -12px rgba(200,164,100,.6);transition:transform .35s;
+  }
   .float-cta:hover{transform:translateY(-3px)}
   .float-cta .arw{transition:transform .35s}
   .float-cta:hover .arw{transform:translateX(4px)}
-  @keyframes floatpulse{0%,100%{box-shadow:0 16px 42px -10px rgba(200,164,100,.55)}50%{box-shadow:0 18px 54px -6px rgba(200,164,100,.9)}}
+  .float-wa{display:inline-flex;align-items:center;justify-content:center;width:44px;height:44px;border-radius:50%;
+    background:linear-gradient(160deg,#16181f,#0a0b0e);color:var(--gold-soft);border:1px solid var(--line-strong);text-decoration:none;
+    box-shadow:0 12px 30px -12px rgba(0,0,0,.7), inset 0 1px 0 rgba(255,255,255,.06);
+    transition:transform .35s,box-shadow .35s,background .35s,color .35s,border-color .35s}
+  .float-wa:hover{transform:translateY(-3px) scale(1.06);background:#25D366;color:#fff;border-color:#25D366;box-shadow:0 16px 36px -10px rgba(37,211,102,.7)}
+  .float-wa svg{width:21px;height:21px}
 
   /* CTA refinado do menu */
   .nav-links .nav-cta{
@@ -142,6 +150,7 @@
   .nav-links .nav-cta:hover::before{left:160%}
   .nav-links .nav-cta .arw{font-size:.85rem;transition:transform .35s}
   .nav-links .nav-cta:hover .arw{transform:translateX(4px)}
+  /* ícone WhatsApp no menu */
 
   /* ===== MODAL DE AVALIAÇÃO DE PERFIL ===== */
   .modal{position:fixed;inset:0;z-index:200;display:none}
@@ -299,6 +308,18 @@
   .tl-row .step{font-family:var(--serif);font-size:2.4rem;color:var(--gold);opacity:.5;line-height:1}
   .tl-row h3{font-size:1.7rem;font-weight:600;margin-bottom:8px}
   .tl-row p{color:var(--muted);font-weight:300;max-width:62ch}
+
+  /* CANTON FAIR — Fase 1 */
+  .cf-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;margin-top:54px}
+  .cf-card{background:rgba(9,11,15,.6);border:1px solid var(--line);border-radius:10px;padding:30px 28px;transition:border-color .35s,transform .35s}
+  .cf-card:hover{border-color:var(--line-strong);transform:translateY(-4px)}
+  .cf-card h3{font-family:var(--serif);font-size:1.4rem;color:var(--gold-soft);font-weight:600;margin-bottom:14px}
+  .cf-card ul{list-style:none;display:grid;gap:9px}
+  .cf-card li{display:flex;gap:11px;color:var(--muted);font-weight:300;font-size:.95rem;line-height:1.4}
+  .cf-card li::before{content:"";flex:0 0 6px;width:6px;height:6px;margin-top:7px;background:var(--gold);transform:rotate(45deg)}
+  .cf-source{margin-top:26px;font-size:.8rem;color:var(--muted-2);letter-spacing:.02em}
+  @media(max-width:900px){.cf-grid{grid-template-columns:repeat(2,1fr)}}
+  @media(max-width:560px){.cf-grid{grid-template-columns:1fr}}
 
   /* SCARCITY */
   .scarcity{background:linear-gradient(160deg,rgba(17,21,28,.85),rgba(10,22,32,.85));text-align:center}
@@ -458,7 +479,8 @@
     .tl-row{grid-template-columns:60px 1fr;gap:22px}
     .hero-inner{padding:140px 0 90px}
     #glow{display:none}
-    .float-cta{left:16px;right:16px;bottom:16px;justify-content:center;padding:16px;font-size:1rem}
+    .float-wrap{left:16px;right:16px;bottom:16px}
+    .float-cta{flex:1;justify-content:center;padding:16px;font-size:1rem}
   }
   @media(prefers-reduced-motion:reduce){
     *{animation:none!important;transition:none!important}
@@ -472,7 +494,12 @@
 <canvas id="bg"></canvas>
 <div id="glow"></div>
 <div class="scroll-prog" id="prog"></div>
-<a href="#contato" data-eval class="float-cta" id="floatCta">Garantir minha vaga <span class="arw">→</span></a>
+<div class="float-wrap" id="floatWrap">
+  <a href="#contato" data-eval class="float-cta">Garantir minha vaga <span class="arw">→</span></a>
+  <a href="https://wa.me/55SEUNUMERO?text=Ol%C3%A1!%20Tenho%20interesse%20na%20China%20Business%20Experience." target="_blank" rel="noopener" class="float-wa" aria-label="Falar no WhatsApp">
+    <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.149-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.52.151-.174.2-.298.3-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51l-.57-.01c-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.71.306 1.263.489 1.694.625.712.227 1.36.195 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.885-9.885 9.885M20.52 3.449C18.24 1.245 15.24 0 12.045 0 5.463 0 .104 5.359.101 11.945c0 2.096.547 4.142 1.588 5.945L0 24l6.305-1.654a11.95 11.95 0 005.71 1.456h.005c6.582 0 11.94-5.358 11.945-11.945a11.86 11.86 0 00-3.495-8.408"/></svg>
+  </a>
+</div>
 
 <div class="site">
 
@@ -505,7 +532,6 @@
         <span class="mtag"><b>Canton Fair</b> + visitas técnicas</span>
       </div>
       <div class="hero-cta" data-reveal data-delay="3">
-        <a href="#contato" class="btn btn-dark">Quero receber os detalhes da imersão <span class="arw">→</span></a>
         <span class="micro">Grupo Limitado. Últimas vagas disponíveis.</span>
       </div>
     </div>
@@ -558,11 +584,11 @@
     <p class="cards-hint-top" data-reveal>Passe o mouse em cada item para ver um momento real da imersão.</p>
     <div class="grid-cards">
       <div class="pcard" data-reveal><span class="num">01</span><h3>Curadoria estratégica</h3><p>Cada ambiente, visita e contexto é escolhido com intenção comercial.</p><span class="card-hint">Ver foto +</span><div class="card-photo"><img src="img/foto3.jpg" alt="Visita a fornecedor na China" loading="lazy"></div></div>
-      <div class="pcard" data-reveal data-delay="1"><span class="num">02</span><h3 class="hl">Grupo seleto</h3><p>Número limitado de participantes, para preservar a profundidade das conversas e a qualidade da experiência.</p><span class="card-hint">Ver foto +</span><div class="card-photo"><img src="img/exp-grupo.jpg" alt="Grupo no trem de alta velocidade na China" loading="lazy"></div></div>
+      <div class="pcard" data-reveal data-delay="1"><span class="num">02</span><h3 class="hl">Grupo seleto</h3><p>Número limitado de participantes, para preservar a profundidade das conversas e a qualidade da experiência.</p><span class="card-hint">Ver foto +</span><div class="card-photo"><img src="img/exp-networking.jpg" alt="Jantar do grupo em mesa redonda na China" loading="lazy"></div></div>
       <div class="pcard" data-reveal data-delay="2"><span class="num">03</span><h3>Foco em negócios</h3><p>Tudo é orientado a ampliar repertório, leitura de mercado e possibilidades reais.</p><span class="card-hint">Ver foto +</span><div class="card-photo"><img src="img/exp-foco.jpg" alt="Reunião de negócios com fornecedor na China" loading="lazy"></div></div>
       <div class="pcard" data-reveal><span class="num">04</span><h3 class="hl">Observação real de mercado</h3><p>Ver de perto como produtos nascem, como fornecedores trabalham e como a escala chinesa realmente opera.</p><span class="card-hint">Ver foto +</span><div class="card-photo"><img src="img/foto2.jpg" alt="Recepção e apresentação na China" loading="lazy"></div></div>
       <div class="pcard" data-reveal data-delay="1"><span class="num">05</span><h3>Experiência com contexto</h3><p>Não basta ver. É preciso entender o que se está vendo, com leitura e interpretação ao longo do caminho.</p><span class="card-hint">Ver foto +</span><div class="card-photo"><img src="img/exp-contexto.jpg" alt="Grupo em templo na China" loading="lazy"></div></div>
-      <div class="pcard" data-reveal data-delay="2"><span class="num">06</span><h3 class="hl">Networking empreendedor</h3><p>Conviver com um grupo de perfil empresarial gera trocas que, muitas vezes, valem tanto quanto a própria viagem.</p><span class="card-hint">Ver foto +</span><div class="card-photo"><img src="img/exp-networking.jpg" alt="Jantar de confraternização do grupo na China" loading="lazy"></div></div>
+      <div class="pcard" data-reveal data-delay="2"><span class="num">06</span><h3 class="hl">Networking empreendedor</h3><p>Conviver com um grupo de perfil empresarial gera trocas que, muitas vezes, valem tanto quanto a própria viagem.</p><span class="card-hint">Ver foto +</span><div class="card-photo"><img src="img/foto5.jpg?v=10" alt="Jantar de confraternização do grupo na China" loading="lazy"></div></div>
     </div>
   </div>
 </section>
@@ -867,6 +893,69 @@
   </div>
 </section>
 
+<!-- CANTON FAIR · FASE 1 -->
+<section id="fase1">
+  <div class="wrap">
+    <div data-reveal style="max-width:66ch">
+      <span class="eyebrow line">Canton Fair · Fase 1 · 15 a 18 de outubro</span>
+      <h2 class="display" style="margin-top:22px">Os setores que você vai explorar.</h2>
+      <p class="lede" style="margin-top:18px">A imersão participa da <strong>1ª fase</strong> da Canton Fair, dedicada a manufatura avançada, eletrônicos, veículos, máquinas e energia. Estes são os segmentos em exposição no período da nossa visita.</p>
+    </div>
+
+    <div class="cf-grid">
+      <div class="cf-card" data-reveal>
+        <h3>Eletrônicos e eletrodomésticos</h3>
+        <ul>
+          <li>Eletrônicos de consumo e produtos de TI</li>
+          <li>Eletrodomésticos</li>
+          <li>Produtos elétricos e eletrônicos</li>
+        </ul>
+      </div>
+      <div class="cf-card" data-reveal data-delay="1">
+        <h3>Veículos e duas rodas</h3>
+        <ul>
+          <li>Veículos de nova energia e mobilidade inteligente</li>
+          <li>Veículos e autopeças</li>
+          <li>Motocicletas e bicicletas</li>
+        </ul>
+      </div>
+      <div class="cf-card" data-reveal data-delay="2">
+        <h3>Máquinas e manufatura</h3>
+        <ul>
+          <li>Automação industrial e manufatura inteligente</li>
+          <li>Máquinas de processamento</li>
+          <li>Força motriz e energia elétrica</li>
+          <li>Máquinas gerais e peças mecânicas</li>
+          <li>Robôs de serviço</li>
+        </ul>
+      </div>
+      <div class="cf-card" data-reveal>
+        <h3>Construção e agrícola</h3>
+        <ul>
+          <li>Máquinas de construção</li>
+          <li>Máquinas agrícolas</li>
+          <li>Ferragens e ferramentas</li>
+        </ul>
+      </div>
+      <div class="cf-card" data-reveal data-delay="1">
+        <h3>Iluminação, energia e químicos</h3>
+        <ul>
+          <li>Iluminação</li>
+          <li>Novas energias (solar e eólica)</li>
+          <li>Novos materiais e produtos químicos</li>
+        </ul>
+      </div>
+      <div class="cf-card" data-reveal data-delay="2">
+        <h3>Pavilhão Internacional</h3>
+        <ul>
+          <li>Expositores internacionais de diversos países</li>
+        </ul>
+      </div>
+    </div>
+    <p class="cf-source">Setores conforme a estrutura oficial da Canton Fair (Fase 1). A programação pode sofrer ajustes da organização da feira.</p>
+  </div>
+</section>
+
 <!-- SCARCITY -->
 <section class="scarcity" id="contato">
   <div class="wrap" data-reveal>
@@ -880,7 +969,6 @@
       <span>Acesso por avaliação de participação</span>
     </div>
     <a href="#contato" data-eval class="btn btn-gold">Quero avaliar minha participação <span class="arw">→</span></a>
-    <span class="micro">Você será direcionado para receber datas, condições e próximos passos.</span>
   </div>
 </section>
 
@@ -908,7 +996,7 @@
   <div class="wrap" data-reveal>
     <span class="eyebrow line">A decisão</span>
     <h2 class="display">A maioria escuta falar sobre a China.<br><em>Alguns escolhem enxergá-la de perto.</em></h2>
-    <a href="https://wa.me/55SEUNUMERO?text=Ol%C3%A1!%20Quero%20conhecer%20a%20experi%C3%AAncia%20completa%20da%20imers%C3%A3o%20de%20neg%C3%B3cios%20na%20China." target="_blank" rel="noopener" class="btn btn-gold">Quero conhecer a experiência completa <span class="arw">→</span></a>
+    <a href="#contato" data-eval class="btn btn-gold">Quero conhecer a experiência completa <span class="arw">→</span></a>
     <span class="micro">Grupo Limitado. Últimas vagas disponíveis.</span>
   </div>
 </section>
@@ -1068,8 +1156,8 @@
     <!-- Perfil em avaliação (não qualificado) -->
     <div class="modal-success" id="evalSuccess" hidden>
       <div class="ok">✓</div>
-      <h3>Recebemos a sua candidatura</h3>
-      <p>Obrigado! Nossa equipe vai avaliar o seu perfil e entrar em contato em breve pelo WhatsApp com os próximos passos.</p>
+      <h3>Recebemos sua inscrição!</h3>
+      <p>Nossa equipe entrará em contato por WhatsApp com detalhes da sua candidatura.</p>
       <button class="btn btn-gold" data-close>Fechar</button>
     </div>
 
@@ -1176,7 +1264,7 @@
 
   /* Nav scroll + botão flutuante */
   const nav = document.getElementById('nav');
-  const floatCta = document.getElementById('floatCta');
+  const floatCta = document.getElementById('floatWrap');
   const contato = document.getElementById('contato');
   const onScroll = () => {
     nav.classList.toggle('scrolled', window.scrollY > 40);
