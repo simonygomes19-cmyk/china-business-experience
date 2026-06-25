@@ -384,6 +384,16 @@
   .qcard .who{color:var(--muted);font-size:.86rem;letter-spacing:.02em}
   .qcard .who b{color:var(--gold-soft);font-weight:600;font-style:normal}
 
+  /* GALERIA — momentos reais da imersão */
+  .gallery{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-top:54px}
+  .gphoto{position:relative;aspect-ratio:1/1;overflow:hidden;border-radius:6px;border:1px solid var(--line)}
+  .gphoto img{width:100%;height:100%;object-fit:cover;object-position:50% 35%;transition:transform 1s ease}
+  .gphoto:hover img{transform:scale(1.06)}
+  .gphoto figcaption{position:absolute;left:0;right:0;bottom:0;padding:36px 16px 14px;background:linear-gradient(transparent,rgba(8,9,12,.92));color:#fff;font-weight:500;font-size:.95rem;line-height:1.3}
+  .gphoto figcaption span{display:block;font-size:.66rem;letter-spacing:.16em;text-transform:uppercase;color:var(--gold-soft);margin-bottom:4px}
+  @media(max-width:900px){.gallery{grid-template-columns:repeat(2,1fr)}}
+  @media(max-width:520px){.gallery{grid-template-columns:1fr}}
+
   /* GATILHO — reciprocidade (material gratuito) */
   .gift{background:linear-gradient(135deg,rgba(200,164,100,.12),rgba(9,11,15,.55));border:1px solid var(--line-strong);border-radius:6px;padding:58px;display:grid;grid-template-columns:1.25fr 1fr;gap:54px;align-items:center}
   .gift h2{font-size:clamp(1.8rem,3.6vw,2.7rem);font-weight:500;margin:20px 0 14px}
@@ -540,7 +550,7 @@
 <section class="see panelbg">
   <div class="wrap see-grid">
     <div class="see-img" data-reveal>
-      <img src="img/fair.jpg" alt="Mercado e feira na China" onerror="this.style.display='none';this.parentElement.style.background='linear-gradient(160deg,#15202a,#0c1419)'">
+      <img src="img/foto4.jpg" alt="Tecnologia e inovação na China" onerror="this.style.display='none';this.parentElement.style.background='linear-gradient(160deg,#15202a,#0c1419)'">
     </div>
     <div data-reveal data-delay="1">
       <span class="eyebrow line">O que você pode enxergar</span>
@@ -834,26 +844,23 @@
       <p class="lede" style="margin:22px auto 0">Estar lá, com curadoria e contexto, é diferente de tentar acompanhar de longe.</p>
     </div>
 
-    <!--
-      ⚠️ DEPOIMENTOS: troque os textos e nomes abaixo por relatos REAIS de participantes
-      ou de quem já fez imersões com você. Não publique depoimentos fictícios.
-    -->
-    <div class="quotes">
-      <div class="qcard" data-reveal>
-        <span class="mark">”</span>
-        <p>Voltei enxergando oportunidades que eu nem sabia que existiam. Ver de perto muda completamente a forma de pensar o negócio.</p>
-        <div class="who"><b>Nome do participante</b> · Segmento / cidade</div>
-      </div>
-      <div class="qcard" data-reveal data-delay="1">
-        <span class="mark">”</span>
-        <p>Não é turismo. É repertório. Em poucos dias entendi fornecedores, preços e tendências que levaria meses para mapear daqui.</p>
-        <div class="who"><b>Nome do participante</b> · Segmento / cidade</div>
-      </div>
-      <div class="qcard" data-reveal data-delay="2">
-        <p style="margin-top:0"><span class="mark">”</span></p>
-        <p>O networking com o grupo valeu tanto quanto a viagem. Trocas entre empresários que continuam rendendo até hoje.</p>
-        <div class="who"><b>Nome do participante</b> · Segmento / cidade</div>
-      </div>
+    <div class="gallery">
+      <figure class="gphoto" data-reveal>
+        <img src="img/foto2.jpg" alt="Recepção de boas-vindas do grupo na China" loading="lazy">
+        <figcaption><span>Boas-vindas</span>Recepção do grupo na chegada</figcaption>
+      </figure>
+      <figure class="gphoto" data-reveal data-delay="1">
+        <img src="img/foto3.jpg" alt="Grupo em visita técnica a fornecedor na China" loading="lazy">
+        <figcaption><span>Visita técnica</span>Nos fornecedores e fábricas</figcaption>
+      </figure>
+      <figure class="gphoto" data-reveal data-delay="1">
+        <img src="img/foto1.jpg" alt="Empresários ao lado de parceiros locais" loading="lazy">
+        <figcaption><span>Negociação</span>Conexões com parceiros locais</figcaption>
+      </figure>
+      <figure class="gphoto" data-reveal data-delay="2">
+        <img src="img/foto5.jpg" alt="Jantar de confraternização do grupo" loading="lazy">
+        <figcaption><span>Networking</span>Convívio entre empresários</figcaption>
+      </figure>
     </div>
   </div>
 </section>
